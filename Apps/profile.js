@@ -12,11 +12,11 @@ export class gs_profile extends plugin {
       priority: 300,
       rule: [
         {
-          reg: new RegExp(`${reg}?(全部面板更新|更新全部面板|获取游戏角色详情|更新面板|面板更新)\\s*((18|[1-9])[0-9]{8})?$`, 'i'),
+          reg: new RegExp(`^${reg}?(全部面板更新|更新全部面板|获取游戏角色详情|更新面板|面板更新)\\s*((18|[1-9])[0-9]{8})?$`, 'i'),
           fnc: 'Refresh'
         },
         {
-          reg: new RegExp(`${reg}?面板(列表)?\\s*((18|[1-9])[0-9]{8})?$`, 'i'),
+          reg: new RegExp(`^${reg}?面板(列表)?\\s*((18|[1-9])[0-9]{8})?$`, 'i'),
           fnc: 'List'
         },
         {

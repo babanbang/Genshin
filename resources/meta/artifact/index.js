@@ -26,6 +26,11 @@ _.forEach(Data.readJSON('data.json', import.meta.url), (ds) => {
         name: as.name,
         idx
       })
+      artiMeta.addDataItem(as.id, {
+        set: ds.name,
+        name: as.name,
+        idx
+      })
 
       setIds[artiSet.name] = setIds[artiSet.name] || as.id.toString().slice(0, 2)
     }

@@ -12,11 +12,11 @@ export class gs_role extends plugin {
       priority: 200,
       rule: [
         {
-          reg: new RegExp(`^${reg}?(角色|查询|查询角色|角色查询)[ |0-9]*$|^${reg}?uid(\\+|\\s)*(18|[1-9])[0-9]{8}$|^#(18|[1-9])[0-9]{8}`, 'i'),
+          reg: new RegExp(`^${reg}?(角色|查询|查询角色|角色查询)((18|[1-9])[0-9]{8})*$|^${reg}?uid(\\+|\\s)*(18|[1-9])[0-9]{8}$|^#(18|[1-9])[0-9]{8}`, 'i'),
           fnc: 'roleList'
         },
         {
-          reg: new RegExp(`^${reg}?(刷新|更新)(角色)?天赋(数据)?[ |0-9]*$`, 'i'),
+          reg: new RegExp(`^${reg}?(刷新|更新)(角色)?天赋(数据)?((18|[1-9])[0-9]{8})*$`, 'i'),
           fnc: 'refreshTalent'
         }
       ]

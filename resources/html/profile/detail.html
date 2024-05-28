@@ -1,0 +1,406 @@
+{{extend elemLayout}}
+
+{{block 'css'}}
+<link rel="stylesheet" type="text/css" href="{{pluResPath}}html/profile/detail.css" />
+<script src="{{res_Path}}script/chart.js"></script>
+{{/block}}
+
+{{set weapon = avatar.weapon}}
+{{set dataSource = avatar.dataSource}}
+{{set talentMap = {a: '普攻', e: '战技', q: '爆发'} }}
+{{set {imgs, costumeSplash} = avatar }}
+{{set imgs = imgs || {} }}
+{{set talentlist=['a','e','q']}}
+
+{{block 'main'}}
+<div class="profile-cont">
+  <div class="basic">
+    <div class="main-pic" style="background-image: url({{pluResPath}}{{costumeSplash||imgs?.splash}})"></div>
+    <div class="detail-basic">
+      <div class="char-name">{{avatar.name}}</div>
+      <div class="char-lv">UID {{uid}} - Lv.{{avatar.level}}
+        <span class="cons cons-{{avatar.cons}}">{{avatar.cons}}命</span>
+      </div>
+      <span class="avatar-element"
+        style="background-image:url('{{pluResPath}}imgs/element/{{avatar.elem}}.png')"></span>
+    </div>
+    <div class="char-talents">
+      {{each talentMap tName key}}
+      {{set talent = avatar.talent[key] || {} }}
+      <div class="talent-item">
+        <div class="talent-icon
+                           {{talent.level > talent.original ? `talent-plus`:``}}
+                            {{talent.original >= 10 ? `talent-crown`:``}}">
+          <div class="talent-icon-img" style="background-image: url({{pluResPath}}{{imgs[key]}})"></div>
+          <strong>{{talent.level}}</strong>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="data-info">
+      {{if avatar.dataSource}}
+      <span>数据源：{{ {change:"面板变换"}[avatar.dataSource]||avatar.dataSource }}</span>
+      {{/if}}
+      {{if avatar.updateTime}}
+      <span class="time">{{avatar.updateTime}}</span>
+      {{/if}}
+    </div>
+    <div class="char-cons">
+      {{set conslist=[1,2,3,4,5,6]}}
+      {{each conslist i}}
+      <span class="bg-{{avatar.elem}} {{avatar.cons<i?'noact':''}}"><img src="{{pluResPath}}{{imgs['cons'+i]}}"></span>
+      {{/each}}
+    </div>
+    <div class="canvas-radarChart"><canvas id="radarChart"></canvas></div>
+    <div class="char-attr">
+      {{set attrMap = {
+      hp:'生命值',atk:'攻击力',def:'防御力',mastery:'元素精通',cpct:'暴击率',cdmg:'暴击伤害',recharge:'元素充能',dmg:'伤害加成',heal:'治疗加成'
+      } }}
+      {{set cw = artisDetail?.charWeight || {} }}
+      {{each attrMap title key}}
+      <li>
+        <div class="icon"><i class="attr-icon-gs i-{{key}}"></i></div>
+
+        <div class="title">{{title}}</div>
+        <div class="weight">
+          {{if cw[key]}}
+          <span class="{{cw[key]>=80?'gold':'normal'}}">{{cw[key]}}</span>
+          {{/if}}
+        </div>
+        <div class="value2">
+          <span class="base {{attr[key+'Base'] === '0.0%' ? 'zero':''}}">{{attr[key+'Base']}}</span>
+          <span class="plus">+{{attr[key+'Plus']}}</span>
+        </div>
+
+      </li>
+      {{/each}}
+    </div>
+  </div>
+
+  <!-- 【 武器+圣遗物列表】 -->
+  <div class="profile-detail">
+    <div class="profile-detail-left">
+      {{if weapon && weapon.name}}
+      <div class="gs-weapon">
+        <div class="weapon-img" style="background-image: url({{pluResPath}}{{weapon.icon}})"></div>
+        <div class="weapon-info">
+          <div class="weapon-title">
+            <strong>{{weapon.name}}</strong>
+            <span>Lv.{{weapon.level}}</span>
+            <span>叠影{{weapon.affix}}阶</span>
+          </div>
+          <div class="weapon-attr">
+            {{set a = weapon.attrs}}
+            {{ set titleMap = {atkPct:'攻击力',mastery:'元素精通',dmg:'伤害加成',hpPct:'生命值',defPct:'防御力',
+            cpct:'暴击率', cdmg:'爆击伤害', phy:'物理伤害加成', recharge:'元素充能效率', heal:'治疗加成', shield:'护盾'} }}
+            <div><span>攻击</span> +{{a.atkBase}}</div>
+            {{each a v k}}
+            {{if k!== 'atkBase' }}
+            <div><span>{{ titleMap[k] }}</span> +{{v}}</div>
+            {{/if}}
+            {{/each}}
+          </div>
+          <div class="weapon-desc">
+            {{@weapon.desc?.desc }}
+          </div>
+        </div>
+      </div>
+      {{/if}}
+
+      {{set ad = artisDetail}}
+      <div class="cont arti-mark-cont">
+        <div class="arti-stat">
+          <div class="arti-stat-ret">
+            <div><span>圣遗物总分</span><strong>{{ad.mark}}</strong></div>
+            <div><span>圣遗物评级</span><strong class="mark-{{ad.markClass}}">{{ad.markClass}}</strong></div>
+          </div>
+          <div class="arti-class-title">评分规则：{{ad.classTitle}}</div>
+        </div>
+        <div class="arti-info">
+          <div class="arti-all-attr">
+            {{set sTitle = {暴击率:'暴击',暴击伤害:'爆伤',充能效率:'充能',元素精通:'精通',效果命中:'命中',效果抵抗:'抵抗',击破特攻:'击破',
+            大生命:'生命',大攻击:'攻击',大防御:'防御',小生命:'生命',小攻击:'攻击',小防御:'防御'}
+            }}
+            <ul class="detail attr arti-attr">
+              {{each ad.allAttr attr idx}}
+              {{if attr && attr.key}}
+              <li
+                class="{{ad.charWeight[attr.key]*1 > 79.9 ?`great`:(ad.charWeight[attr.key]*1>0 ? `useful`:`nouse`)}}">
+                <span class="title">{{if attr.eff}}<i class="eff">{{attr.eff || ''}}</i>{{/if}}
+                  {{sTitle[artisKeyTitle[attr.key]] || artisKeyTitle[attr.key]}}</span>
+                <span class="val">+{{attr.value}}</span>
+              </li>
+              {{else}}
+              <li></li>
+              {{/if}}
+              {{if useBrowser==='-wk'&&(idx+1)%3===0&&idx<ad.allAttr.length-1}} </ul>
+                <ul class="detail attr arti-attr">
+                  {{/if}}
+                  {{/each}}
+                </ul>
+          </div>
+          <div class="dmg-desc arti-notice">
+            评分为<strong>喵喵版规则</strong>，仅供参考与娱乐。
+          </div>
+        </div>
+      </div>
+
+      <div class="artis">
+        {{set artisnum=0}}
+        {{each ad.artis ds idx}}
+        {{if ds && ds.name && ds.main && ds.main.key && ds.main.key!="undefined"}}
+        {{if useBrowser==='-wk'&&(artisnum=artisnum+1)===4}}
+      </div>
+      <div class="artis" style="margin-top: 0px;">
+        {{/if}}
+        <div class="item arti arti-class-{{ds.markClass}}">
+          <div class="arti-icon">
+            <div class="img" style="background-image: url({{pluResPath}}{{ds.img}})"></div>
+            <span>+{{ds.level}}</span>
+          </div>
+          <div class="head">
+            <strong>{{ds.abbr || ds.name}}</strong>
+            <span class="mark mark-{{ds.markClass}}"><span>{{ds.mark}}分</span> - {{ds.markClass}}</span>
+          </div>
+          <ul class="detail attr">
+            <li class="arti-main"><span class="title">{{artisKeyTitle[ds.main?.key]}}</span><span
+                class="val">+{{ds.main.value}}</span>
+            </li>
+            {{each ds.attrs attr}}
+            {{if attr && attr.key}}
+            <li class="{{ad.charWeight[attr.key]*1 > 79.9 ?`great`:(ad.charWeight[attr.key]*1>0 ? `useful`:`nouse`)}}">
+              <span class="title">{{if attr.eff}}<i class="eff">{{attr.eff || ''}}</i>{{/if}}{{if attr.upNum}}<i
+                  class="up-num up-{{attr.upNum}}"></i>{{/if}}{{artisKeyTitle[attr.key] || attr.key}}</span>
+              <span class="val">+{{attr.value}}</span>
+            </li>
+            {{/if}}
+            {{/each}}
+          </ul>
+        </div>
+        {{/if}}
+        {{/each}}
+      </div>
+
+      <!-- 【 伤害表格 】 -->
+      {{ set {dmgRet, dmgCfg, enemyLv, enemyName, dmgMsg, dmgData, createdBy} = dmgCalc }}
+      <div>
+        {{if dmgData?.length > 0}}
+        <div class="dmg-cont dmg-list cont">
+          <div class="cont-title">
+            伤害计算
+            <span class="not-dmg-mode dmg-desc">使用<strong>#gs{{avatar.name}}伤害+序号</strong>命令可以查看伤害详情</span>
+          </div>
+          <div class="cont-table">
+            <div class="tr thead">
+              <div class="title dmg-idx">#</div>
+              <div class="title dmg-title">伤害类型</div>
+              <div>暴击伤害</div>
+              <div>期望伤害</div>
+            </div>
+            {{each dmgData dmg idx}}
+            <div class="dmg tr">
+              <div class="title dmg-idx">{{idx+1}}</div>
+              <div class="title dmg-title">{{dmg.title}}</div>
+              {{if !dmg.dmg || dmg.dmg === "NaN"}}
+              <div class="value value-full">{{dmg.avg}}{{dmg.unit}}</div>
+              <div class="value value-none"></div>
+              {{else}}
+              <div class="value">{{dmg.dmg}}{{dmg.unit}}</div>
+              <div class="value">{{dmg.avg}}{{dmg.unit}}</div>
+              {{/if}}
+            </div>
+            {{/each}}
+          </div>
+          <div class="cont-footer dmg-desc">
+            <span>目标为{{enemyLv}}级{{enemyName||'小宝'}}{{if
+              game==='gs'}}，使用<strong>#敌人等级{{enemyLv}}</strong>命令可指定等级{{/if}}</span>
+            {{if createdBy}}
+            <!-- 优先展示calc.js中 返回的createdBy字段，用于展示伤害计算作者-->
+            <span class="dmg-created-by">伤害计算来源：<strong>{{createdBy}}</strong></span>
+            {{/if}}
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="profile-detail-right">
+      <!-- 【 伤害变化详情 】 -->
+      <div>
+        {{if dmgCfg && dmgCfg.attr && dmgCfg.attr.length>0 && dmgRet}}
+        <div class="dmg-calc dmg-cont cont">
+          <div class="cont-title">
+            词条伤害计算<span>#gs{{avatar.name}}伤害{{dmgCfg.userIdx+1}}: 当前计算为<span
+                style="color: #d3bc8e;">{{dmgCfg.title}}</span></span>
+          </div>
+          <div class="cont-table">
+            <div class="tr thead ">
+              <div class="td">词条变化</div>
+              {{each dmgCfg.attr attr}}
+              <div class="td">
+                <strong>{{attr?.title}}</strong>
+                <span>+{{attr?.text}}</span>
+              </div>
+              {{/each}}
+            </div>
+            {{each dmgRet row rowIdx}}
+            <div class="tr">
+              <div class="title">
+                <strong>{{dmgCfg.attr[rowIdx].title}}</strong>
+                <span>-{{dmgCfg.attr[rowIdx].text}}</span>
+              </div>
+              {{each row cell colIdx}}
+              {{if cell.type === "na"}}
+              <div class="td na">
+                <strong>-</strong>
+                <span>{{dmgCfg.basicRet.avg}}{{(dmgCfg.basicRet.dmg&&dmgCfg.basicRet.dmg!="NaN")?`/${dmgCfg.basicRet.dmg}`:''}}</span>
+              </div>
+              {{else}}
+              <div class="td {{cell.type}}">
+                <strong>{{cell.val}}</strong>
+
+                <span>{{cell.avg}}{{cell.dmg!="NaN"?`/${cell.dmg}`:''}}</span>
+              </div>
+              {{/if}}
+              {{/each}}
+            </div>
+            {{/each}}
+          </div>
+          <div class="cont-footer dmg-desc">
+            <ul>
+              <li>
+                大数字的含义为圣遗物副词条置换后<strong>平均伤害</strong>的变化，下方的详情数字为<strong>平均伤害</strong>/<strong>暴击伤害</strong>。
+              </li>
+              <li>关于<strong>平均伤害</strong>：是将暴击率计算在内的伤害期望，能反映综合的输出能力，不等于实际伤害数字。</li>
+              <li>可用于评估当前面板下圣遗物副词条的侧重方向。实际游戏情况更加复杂，结果供参考~</li>
+              <li>如需更换计算的伤害类型，可使用命令 <strong>#gs{{avatar.name}}伤害+序号</strong>来切换，序号参见伤害计算板块</li>
+            </ul>
+          </div>
+        </div>
+        {{/if}}
+
+        <div class="dmg-cont dmg-msg cont">
+          <div class="cont-title">{{dmgCfg.title}}-Buff列表<span>部分Buff的触发条件以及层数可能影响实际伤害结果</span></div>
+          <div class="cont-table">
+            {{each dmgMsg msg}}
+            <div class="tr">
+              <div class="th">{{msg[0]}}</div>
+              <div class="td">{{msg[1]}}</div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ctx = document.getElementById('radarChart').getContext('2d')
+
+  // 属性最大值和最小值
+  const attributes = [
+    { label: '生命值', max: 50000 },
+    { label: '攻击力', max: 4000 },
+    { label: '防御力', max: 1500 },
+    { label: '元素精通', max: 1000 },
+    { label: '暴击率', max: 100 },
+    { label: '暴击伤害', max: 300 },
+    { label: '元素充能', max: 300 },
+    { label: '伤害加成', max: 100 },
+    { label: '治疗加成', max: 100 },
+  ]
+
+  const actualValues = JSON.parse(`{{@ actual}}`)
+  const normalizedValues = actualValues.map((value, index) => {
+    const max = attributes[index].max
+    return value / max * 100
+  })
+
+  const data = {
+    labels: attributes.map(attr => attr.label),
+    datasets: [{
+      label: '当前属性',
+      data: normalizedValues,
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1,
+      pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(255, 99, 132, 1)',
+    }]
+  }
+
+  const options = {
+    scales: {
+      r: {
+        angleLines: {
+          color: 'rgba(255, 255, 255, 0.3)' // 雷达图的角线颜色
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.3)' // 雷达图的网格线颜色
+        },
+        pointLabels: {
+          color: '#ffffff', // 标签的字体颜色
+          font: {
+            size: 16
+          },
+          callback: function (label, index) {
+            return '';
+          }
+        },
+        ticks: {
+          display: false // 不显示刻度数值
+        },
+        suggestedMin: 0, // 雷达图的最小值
+        suggestedMax: 100 // 归一化后的最大值
+      }
+    },
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: '#fff'
+        }
+      }
+    },
+    elements: {
+      line: {
+        borderWidth: 2
+      }
+    }
+  }
+
+  const radarChart = new Chart(ctx, {
+    type: 'radar',
+    data: data,
+    options: options,
+    plugins: [{
+      afterDraw: (chart) => {
+        const { ctx, scales: { r }, data } = chart
+
+        ctx.save()
+        ctx.font = `${14}px Arial`
+        ctx.textAlign = 'center'
+        ctx.textBaseline = 'middle'
+        ctx.fillStyle = '#ffffff'
+
+        const distance = r.drawingArea * 0.95 // 缩小雷达图比例
+
+        data.labels.forEach((label, index) => {
+          const { x, y } = r.getPointPosition(index, distance)
+          let value = actualValues[index]
+
+          ctx.fillText(label, x, y)
+          if (['暴击率', '暴击伤害', '元素充能', '伤害加成', '治疗加成'].includes(label)) {
+            value += '%'
+          }
+          ctx.fillText(value, x, y + 16)
+        })
+
+        ctx.restore()
+      }
+    }]
+  })
+</script>
+{{/block}}

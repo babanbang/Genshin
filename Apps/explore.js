@@ -12,7 +12,7 @@ export class gs_explore extends plugin {
       priority: 200,
       rule: [
         {
-          reg: new RegExp(`^${reg}?(宝箱|成就|尘歌壶|家园|声望|(探险|探索)(度)?)[ |0-9]*$`, 'i'),
+          reg: new RegExp(`^${reg}?(宝箱|成就|尘歌壶|家园|声望|(探险|探索)(度)?)((18|[1-9])[0-9]{8})*$`, 'i'),
           fnc: 'Explore'
         }
       ]

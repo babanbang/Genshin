@@ -51,7 +51,10 @@
       <span class="bg-{{avatar.elem}} {{avatar.cons<i?'noact':''}}"><img src="{{pluResPath}}{{imgs['cons'+i]}}"></span>
       {{/each}}
     </div>
-    <div class="canvas-radarChart"><canvas id="radarChart"></canvas></div>
+    <div class="canvas-radarChart">
+      <canvas id="radarChart"></canvas>
+      <span>暂未对每个角色进行单独处理</span>
+    </div>
     <div class="char-attr">
       {{set attrMap = {
       hp:'生命值',atk:'攻击力',def:'防御力',mastery:'元素精通',cpct:'暴击率',cdmg:'暴击伤害',recharge:'元素充能',dmg:'伤害加成',heal:'治疗加成'

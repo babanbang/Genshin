@@ -96,12 +96,20 @@ body {
 
 .canvas-radarChart {
   width: 350px;
-  height: 350px;
+  height: 360px;
   position: absolute;
   bottom: -10px;
-  right: 0;
+  right: 10px;
   background-color: rgba(0, 0, 0, 0.15);
   border-radius: 24% 0 0 0;
+}
+
+.canvas-radarChart span {
+  font-size: 12px;
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  color: #ffffff;
 }
 
 .avatar-element {

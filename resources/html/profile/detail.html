@@ -90,7 +90,7 @@
           <div class="weapon-title">
             <strong>{{weapon.name}}</strong>
             <span>Lv.{{weapon.level}}</span>
-            <span>叠影{{weapon.affix}}阶</span>
+            <span>精炼{{weapon.affix}}阶</span>
           </div>
           <div class="weapon-attr">
             {{set a = weapon.attrs}}
@@ -121,8 +121,8 @@
         </div>
         <div class="arti-info">
           <div class="arti-all-attr">
-            {{set sTitle = {暴击率:'暴击',暴击伤害:'爆伤',充能效率:'充能',元素精通:'精通',效果命中:'命中',效果抵抗:'抵抗',击破特攻:'击破',
-            大生命:'生命',大攻击:'攻击',大防御:'防御',小生命:'生命',小攻击:'攻击',小防御:'防御'}
+            {{set sTitle =
+            {暴击率:'暴击',暴击伤害:'爆伤',充能效率:'充能',元素精通:'精通',大生命:'生命',大攻击:'攻击',大防御:'防御',小生命:'生命',小攻击:'攻击',小防御:'防御'}
             }}
             <ul class="detail attr arti-attr">
               {{each ad.allAttr attr idx}}

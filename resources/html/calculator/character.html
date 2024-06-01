@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="shortcut icon" href="#" />
+  <link rel="stylesheet" type="text/css" href="{{res_Path}}common/common.css" />
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/calculator/character.css" />
+  <link rel="preload" href="{{fontsPath}}tttgbnumber.ttf" as="font">
+</head>
+
+<body style="width: {{460*(avatars.length+1)+10}}px;">
+  <div class="container">
+    <div class="overall">
+      <div class="info_box">
+        <div class="uidRight">
+          <span>UID : {{uid}}</span>
+        </div>
+        <div class="topLeft">
+          <span>养成计算器</span>
+        </div>
+      </div>
+      <div class="data_box">
+        <div class="data_box_repeat"></div>
+        <div class="role_separate_line">养成消耗总和</div>
+        {{if overall.length > 0}}
+        <div class="cailiao_box">
+          <div class="cailiao_item all">
+            <div class="cailiao_box_title">
+              <p>材料</p>
+              <p>消耗</p>
+              <p>差值</p>
+            </div>
+          </div>
+          {{each overall val}}
+          <div class="cailiao_item all">
+            <div class="item-icon star{{val.level}} cailiao_img">
+              <img class="cailiao_item_img"
+                src="{{itemsImgs.imgs[val.name]?`${pluResPath}${itemsImgs.imgs[val.name]}`:`${itemsImgs.icons[val.name]}`}}" />
+            </div>
+            <div class="cailiao_item_title">
+              <p>{{val.name}}</p>
+              <p>{{val.num}}</p>
+              {{@ val.lack_num}}
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        {{if available?.length>0}}
+        <div class="role_separate_line">背包内多余可合成的材料</div>
+        <div class="available_cailiao_box">
+          {{each available val}}
+          <div class="cailiao_item available">
+            <div class="cailiao_img">
+              <img class="item-icon star{{val.level}} cailiao_item_img"
+                src="{{itemsImgs.imgs[val.name]?`${pluResPath}${itemsImgs.imgs[val.name]}`:`${itemsImgs.icons[val.name]}`}}" />
+            </div>
+            <div class="cailiao_available_num">{{val.num}}</div>
+          </div>
+          {{/each}}
+        </div>
+        <div class="biye">背包数据计算存在10分钟延迟，请旅行者知悉！</div>
+        {{/if}}
+        {{else}}
+        <div class="biye">暂无养成材料消耗！</div>
+        {{/if}}
+      </div>
+    </div>
+    {{each avatars avatar}}
+    <div class="data_box avatar_box">
+      <div class="data_box_repeat"></div>
+
+      <!-- 角色养成 -->
+      {{if avatar.name}}
+      <div class="item">
+        <div class="role_box bg{{avatar.star}}">
+          <img class="role_img" src="{{pluResPath}}{{avatar.imgs.face}}" />
+        </div>
+        <div class="role_name">
+          {{avatar.name}}
+          <div class="role_LV">{{avatar.level[0]}}级 <span class="jt"></span> {{avatar.level[1]}}级</div>
+        </div>
+      </div>
+
+      <div class="role_separate_line">角色升级消耗</div>
+      <div class="cailiao_tips ">
+        {{if avatar.mona.avatar}}
+        <div class="cailiao_tips_item">
+          <img class="cailiao_tips_img"
+            src="{{itemsImgs.imgs['摩拉']?`${pluResPath}${itemsImgs.imgs['摩拉']}`:`${itemsImgs.icons['摩拉']}`}}" />{{avatar.mona.avatar}}
+        </div>
+        {{/if}}
+        {{if avatar.exper.avatar}}
+        <div class="cailiao_tips_item">
+          <img class="cailiao_tips_img"
+            src="{{itemsImgs.imgs['大英雄的经验']?`${pluResPath}${itemsImgs.imgs['大英雄的经验']}`:`${itemsImgs.icons['大英雄的经验']}`}}" />{{avatar.exper.avatar}}
+        </div>
+        {{/if}}
+      </div>
+
+      {{if avatar.avatar?.length>0}}
+      <div class="cailiao_box">
+        {{each avatar.avatar val}}
+        <div class="cailiao_item">
+          <div class="item-icon star{{val.level}} cailiao_img">
+            <img class="cailiao_item_img"
+              src="{{itemsImgs.imgs[val.name]?`${pluResPath}${itemsImgs.imgs[val.name]}`:`${itemsImgs.icons[val.name]}`}}" />
+          </div>
+          <div class="cailiao_avatar_title">
+            {{val.name}}<br> × {{val.num}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      {{else}}
+      <div class="biye">暂无角色升级消耗！</div>
+      {{/if}}
+
+      <div class="role_separate_line">天赋培养消耗</div>
+      <div class="cailiao_tips ">
+        {{if avatar.mona.avatar_skill}}
+        <div class="cailiao_tips_item">
+          <img class="cailiao_tips_img"
+            src="{{itemsImgs.imgs['摩拉']?`${pluResPath}${itemsImgs.imgs['摩拉']}`:`${itemsImgs.icons['摩拉']}`}}" />{{avatar.mona.avatar_skill}}
+        </div>
+        {{/if}}
+        {{if avatar.skillPlus}}
+        <div class="cailiao_tips_item">
+          <img class="cailiao_tips_img"
+            src="{{itemsImgs.imgs['智识之冕']?`${pluResPath}${itemsImgs.imgs['智识之冕']}`:`${itemsImgs.icons['智识之冕']}`}}" />{{avatar.skillPlus}}
+        </div>
+        {{/if}}
+      </div>
+      {{if avatar.calendar}}
+      <div class="role_top" style="margin-top: 5px;">
+        <div class="role_top_name">
+          <div class="calendar_img"></div>{{avatar.calendar.name}}
+        </div>
+        <div class="role_top_LV">{{avatar.calendar.time}} <span class="jt"></span></div>
+      </div>
+      {{/if}}
+      {{each avatar.skillList val}}
+      {{set skill = avatar.skills?.[val.id]}}
+      {{if !avatar.skills?.[val.id]}}
+      <div class="role_top">
+        <div class="role_top_name">{{val.info.name}}</div>
+        <div class="role_top_LV">Lv.{{val.info.level_current}} <span class="jt"></span> Lv.{{val.info.level_target}}
+        </div>
+      </div>
+      {{else}}
+      <div class="role_top">
+        <div class="role_top_name">{{skill.info.name}}</div>
+        <div class="role_top_LV">Lv.{{skill.info.level_current}} <span class="jt"></span>
+          Lv.{{skill.info.level_target}}
+        </div>
+      </div>
+      <div class="cailiao_box">
+        {{each skill.list v}}
+        <div class="cailiao_item">
+          <div class="item-icon star{{v.level}} cailiao_img">
+            <img class="cailiao_item_img"
+              src="{{itemsImgs.imgs[v.name]?`${pluResPath}${itemsImgs.imgs[v.name]}`:`${itemsImgs.icons[v.name]}`}}" />
+          </div>
+          <div class="cailiao_avatar_title">
+            {{v.name}}<br> × {{v.num}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      {{/if}}
+      {{/each}}
+      {{/if}}
+
+      <!-- 武器养成 -->
+      {{if avatar.weaponInfo}}
+      <div class="item">
+        <div class="role_box bg{{avatar.weaponInfo.star}}">
+          <img class="weapon_img" src="{{pluResPath}}{{avatar.weaponInfo.icon}}" />
+        </div>
+        <div class="role_name">
+          {{avatar.weaponInfo.name}}
+          <div class="role_LV">{{avatar.weaponInfo.level[0]}}级 <span class="jt"></span>
+            {{avatar.weaponInfo.level[1]}}级
+          </div>
+        </div>
+      </div>
+      <div class="role_separate_line">武器升级消耗</div>
+      {{if avatar.weapon?.length>0}}
+      <div class="cailiao_tips ">
+        {{if avatar.mona.weapon}}
+        <div class="cailiao_tips_item">
+          <img class="cailiao_tips_img"
+            src="{{itemsImgs.imgs['摩拉']?`${pluResPath}${itemsImgs.imgs['摩拉']}`:`${itemsImgs.icons['摩拉']}`}}" />{{avatar.mona.weapon}}
+        </div>
+        {{/if}}
+        {{if avatar.exper.weapon}}
+        <div class="cailiao_tips_item">
+          <img class="cailiao_tips_img"
+            src="{{itemsImgs.imgs['精锻用魔矿']?`${pluResPath}${itemsImgs.imgs['精锻用魔矿']}`:`${itemsImgs.icons['精锻用魔矿']}` }}" />{{avatar.exper.weapon}}
+        </div>
+        {{/if}}
+      </div>
+      <div class="cailiao_box">
+        {{each avatar.weapon val}}
+        <div class="cailiao_item">
+          <div class="item-icon star{{val.level}} cailiao_img">
+            <img class="cailiao_item_img"
+              src="{{itemsImgs.imgs[val.name]?`${pluResPath}${itemsImgs.imgs[val.name]}`:`${itemsImgs.icons[val.name]}`}}" />
+          </div>
+          <div class="cailiao_avatar_title">
+            {{val.name}}<br> × {{val.num}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      {{else}}
+      <div class="biye">暂无武器升级消耗！</div>
+      {{/if}}
+      {{/if}}
+    </div>
+    {{/each}}
+  </div>
+  <div class="plugin">{{PluginName}}</div>
+</body>
+
+</html>

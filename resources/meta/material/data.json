@@ -2605,5 +2605,29 @@
     "name": "万相石",
     "type": "specialty",
     "star": 1
+  },
+  "大英雄的经验": {
+    "id": 104003,
+    "name": "大英雄的经验",
+    "type": "other",
+    "star": 4
+  },
+  "精锻用魔矿": {
+    "id": 104013,
+    "name": "精锻用魔矿",
+    "type": "other",
+    "star": 3
+  },
+  "智识之冕": {
+    "id": 104319,
+    "name": "智识之冕",
+    "type": "other",
+    "star": 5
+  },
+  "摩拉": {
+    "id": 202,
+    "name": "摩拉",
+    "type": "other",
+    "star": 3
   }
 }

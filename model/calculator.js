@@ -25,7 +25,7 @@ export default class Calculator extends Base {
   }
 
   async character_count () {
-    this.mysInfo = await MysInfo.init(this.e, 'compute')
+    this.mysInfo = await MysInfo.init(this.e, 'compute', this.game)
     if (!this.mysInfo?.ckInfo?.ck) return false
 
     /** 
@@ -39,7 +39,7 @@ export default class Calculator extends Base {
     this.mysApi = new MysApi({
       ...this.mysInfo.ckInfo,
       uid: this.mysInfo.uid,
-      game: 'gs'
+      game: this.game
     }, { log: false })
 
     if (roles.length > 0) {
@@ -68,12 +68,11 @@ export default class Calculator extends Base {
     return await this.renderImg({
       uid: this.mysInfo.uid,
       ...computes
-    }, { test: true })
+    })
   }
 
-  /** @param {Array} set  */
   async getSet (set, role) {
-    const MaxSkill = '90,10,10,10,90'.split(',').map(Number)
+    const MaxSkill = '90,10,10,10,90'.split(',')
     if (!role && set?.[0]) set = ['', '', '', '', set[0]]
 
     if (_.isEmpty(set)) {

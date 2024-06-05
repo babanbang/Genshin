@@ -1,5 +1,5 @@
 - name: Genshin 面板配置
-  file: Genshin/profile.yaml
+  file: Genshin-profile.yaml
   priority: 100
   view:
     - key: 面板服务选择：0:自动，1Mgg, 2Hutao，3Enka

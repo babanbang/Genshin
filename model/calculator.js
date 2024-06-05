@@ -25,7 +25,7 @@ export default class Calculator extends Base {
   }
 
   async character_count () {
-    this.mysInfo = await MysInfo.init(this.e, 'compute', this.game)
+    this.mysInfo = await MysInfo.init({ e: this.e, apis: 'compute', game: this.game, option: { log: false } })
     if (!this.mysInfo?.ckInfo?.ck) return false
 
     /** 
@@ -36,14 +36,8 @@ export default class Calculator extends Base {
      */
     const { roles, weapons, set } = this.e.calculator
 
-    this.mysApi = new MysApi({
-      ...this.mysInfo.ckInfo,
-      uid: this.mysInfo.uid,
-      game: this.game
-    }, { log: false })
-
     if (roles.length > 0) {
-      this.character = await this.mysInfo.getData(this.mysApi, 'character')
+      this.character = await this.mysInfo.getData('character')
       if (this.character?.retcode !== 0) return false
     }
 
@@ -104,7 +98,7 @@ export default class Calculator extends Base {
       })
       if (char) {
         /** 角色存在获取技能数据 */
-        const detail = await this.mysInfo.getData(this.mysApi, 'detail', { avatar_id: role.id })
+        const detail = await this.mysInfo.getData('detail', { avatar_id: role.id })
         if (detail?.retcode !== 0) return false
 
         skillList = skillList.map(v => {
@@ -170,7 +164,7 @@ export default class Calculator extends Base {
   }
 
   async getSkillId (roleId) {
-    const avatarSkill = await this.mysInfo.getData(this.mysApi, 'avatarSkill', {
+    const avatarSkill = await this.mysInfo.getData('avatarSkill', {
       avatar_id: roleId
     })
     if (avatarSkill?.retcode !== 0) return false
@@ -182,9 +176,8 @@ export default class Calculator extends Base {
   }
 
   async computes (body, avatarData) {
-    const computes = await this.mysInfo.getData(this.mysApi, 'compute', { body })
+    const computes = await this.mysInfo.getData('compute', { body })
     if (computes?.retcode !== 0) return false
-    // const { body, avatarData, computes } = Data.readJSON(`data/${PluginName}/data.json`, 'root')
     const { data } = computes
     const avatars = []
 

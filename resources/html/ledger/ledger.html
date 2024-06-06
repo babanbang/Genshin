@@ -1,0 +1,122 @@
+{{extend defaultLayout}}
+
+{{block 'css'}}
+<link rel="stylesheet" type="text/css" href="{{pluResPath}}html/ledger/ledger.css" />
+<link rel="preload" href="{{res_Path}}script/g2plot.min.js" as="script" />
+{{/block}}
+
+{{block 'main'}}
+<div class="logo"></div>
+<div class="tips">
+  *数据存在1小时左右的延迟，最新记录请稍后查询。<br>
+  *札记仅统计充值途径以外获取的资源。
+</div>
+<div class="uid">UID: {{uid}}</div>
+<div class="ledger-box">
+  <div class="title">
+    <div class="day">{{day}}札记</div>
+    <div class="name">昵称：{{nickname}}</div>
+    <img class="title-card" src="{{pluResPath}}imgs/ledger/{{icon}}.png">
+    <div class="data-box ">
+      <div class="month">
+        <div class="head">当月共获取：</div>
+        <div class="primogems">
+          <div class="icon-ys"></div>
+          <div class="text">原石：<strong>{{month_data.current_primogems}}</strong></div>
+        </div>
+        <div class="primogems">
+          <div class="icon-mola"></div>
+          <div class="text">摩拉：<strong>{{month_data.current_mora}}</strong></div>
+        </div>
+        <div class="last-head">上月共获取：</div>
+      </div>
+      <div class="last-month">
+        <div class="primogems">
+          <div class="icon-ys"></div>
+          <div class="text">原石：<strong>{{month_data.last_primogems}}</strong></div>
+        </div>
+        <div class="primogems">
+          <div class="icon-mola"></div>
+          <div class="text">摩拉：<strong>{{month_data.last_mora}}</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="desc">
+      {{if isnowMonth}}
+      旅行者今日已获得<strong>{{day_data.current_primogems}}</strong>原石，<strong>{{day_data.current_mora}}</strong>摩拉，明天也要好好努力哦！
+      {{else}}
+      原石收入比上月{{@ change.primogems}}，摩拉收入比上月{{@ change.mora}}。唔，相当不错的结果呢！
+      {{/if}}
+    </div>
+  </div>
+  <div class="chart-box">
+    <hr>
+    <div class="head">原石收入组成：</div>
+    <div class="chart-info">
+      <div id="chartContainer"></div>
+      <ul class="tooltip">
+        {{each month_data.group_by val}}
+        <li>
+          <i style="background: {{val.color}}"></i>
+          <span class="action">{{val.action}}</span>
+          <em>{{val.percent}}%</em>
+          <span class="num">{{val.num}}</span>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="nowDay">查询时间：{{nowDay}}</div>
+<script type="text/javascript" src="{{res_Path}}script/g2plot.min.js"></script>
+<script>
+  const { Pie } = G2Plot
+  const data = JSON.parse(`{{@ group_by}}`)
+  const piePlot = new Pie('chartContainer', {
+    renderer: 'svg',
+    animation: false,
+    data: data,
+    appendPadding: 10,
+    angleField: 'num',
+    colorField: 'action',
+    radius: 1,
+    innerRadius: 0.7,
+    color: JSON.parse(`{{@ color}}`),
+    meta: {
+      // num: {
+      //   formatter: (v) => `${v}`,
+      // },
+    },
+    label: {
+      type: 'inner',
+      offset: '-50%',
+      autoRotate: false,
+      style: {
+        textAlign: 'center',
+        fontFamily: 'tttgbnumber',
+        fontSize: 18
+      },
+      formatter: ({ percent }) => {
+        percent = (percent * 100).toFixed(0)
+        return percent > 2 ? `${percent}%` : ''
+      }
+    },
+    statistic: {
+      title: {
+        offsetY: -18,
+        content: '总计'
+      },
+      content: {
+        offsetY: -10,
+        style: {
+          fontFamily: 'tttgbnumber'
+        }
+      }
+    },
+    legend: false
+  })
+  piePlot.render()
+</script>
+
+<div class="qrcode"></div>
+{{/block}}

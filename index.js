@@ -9,5 +9,6 @@ for (const type of ['artifact', 'character', 'material', 'weapon']) {
 
 export * from './Apps/calculator.js'
 export * from './Apps/explore.js'
+export * from './Apps/ledger.js'
 export * from './Apps/profile.js'
 export * from './Apps/role.js'

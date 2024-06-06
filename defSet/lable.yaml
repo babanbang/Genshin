@@ -1,5 +1,5 @@
 #当前版本
-version: 4.6
+version: 4.7
 # 成就
 achievement: 1226
 # 角色数
@@ -13,9 +13,9 @@ luxurious_chest: 268
 # 珍贵宝箱
 precious_chest: 704
 # 精致宝箱
-exquisite_chest: 2320
+exquisite_chest: 2321
 # 普通宝箱
-common_chest: 2997
+common_chest: 2998
 # 传送点
 way_point: 455
 # 秘境

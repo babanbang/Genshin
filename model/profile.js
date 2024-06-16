@@ -14,7 +14,7 @@ export default class Profile extends Base {
     this.e.MysUid = this.e.MysUid || await new MysInfo(this.e).getUid()
     if (!this.e.MysUid) return false
 
-    const player = Player.create(this.e.MysUid, 'gs')
+    const player = Player.create(this.e.MysUid, this.game)
     await player.refreshProfile(this.e)
 
     if (player._updateAvatar.length > 0) {
@@ -39,7 +39,7 @@ export default class Profile extends Base {
     this.e.MysUid = this.e.MysUid || await new MysInfo(this.e).getUid()
     if (!this.e.MysUid) return false
 
-    const player = Player.create(this.e.MysUid, 'gs')
+    const player = Player.create(this.e.MysUid, this.game)
 
     const chars = []
     const profiles = player.getProfiles()
@@ -72,7 +72,7 @@ export default class Profile extends Base {
   }
 
   async detail (profile) {
-    const player = Player.create(this.e.MysUid, 'gs')
+    const player = Player.create(this.e.MysUid, this.game)
 
     const data = await player.getProfileDetail(profile)
 

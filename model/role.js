@@ -8,14 +8,14 @@ export default class Role extends Base {
   constructor (e) {
     super(e, 'gs')
     this.model = 'role/rolelist'
-    this.lable = Cfg.getdefSet('lable', 'gs')
+    this.lable = Cfg.getdefSet('lable', this.game)
   }
 
   async roleList (refreshTalent = false) {
     const res = await MysInfo.get(this.e, 'character')
     if (res?.retcode !== 0) return false
 
-    const player = new Player(this.e.MysUid, 'gs')
+    const player = new Player(this.e.MysUid, this.game)
     player.setBasicData(res.data.role, true)
 
     const list = {
@@ -58,7 +58,7 @@ export default class Role extends Base {
   /** @param {Player} player */
   async skillData (avatars, player = '') {
     logger.mark(`[${this.game}][${this.e.MysUid}]刷新天赋数据`)
-    if (!player) player = new Player(this.e.MysUid, 'gs')
+    if (!player) player = new Player(this.e.MysUid, this.game)
 
     const ids = _.chunk(avatars.map(v => {
       return ['detail', { avatar_id: v.id }]
@@ -82,7 +82,7 @@ export default class Role extends Base {
       if (!avatar) return
 
       const skill = skillList.find(i => i.reqData.avatar_id === v.id)
-      const talents = _.orderBy(skill.data.skill_list, ['id'], ['desc'])
+      const talents = _.orderBy(skill.data.skill_list, ['id'], 'desc')
 
       /** 这样并不是最合适的 */
       for (const { max_level, level_current, name } of talents) {

@@ -7,7 +7,7 @@ export default class Explore extends Base {
   constructor (e) {
     super(e, 'gs')
     this.model = 'explore/explore'
-    this.lable = Cfg.getdefSet('lable', 'gs')
+    this.lable = Cfg.getdefSet('lable', this.game)
 
     this.area = {
       蒙德: 1,
@@ -41,7 +41,7 @@ export default class Explore extends Base {
     if (res?.retcode !== 0) return false
 
     const exploreInfo = { version: this.lable.version }
-    const player = new Player(this.e.MysUid, 'gs')
+    const player = new Player(this.e.MysUid, this.game)
     player.setBasicData(res.data.role, true)
 
     exploreInfo.role = res.data.role
@@ -143,7 +143,6 @@ export default class Explore extends Base {
     }
     exploreInfo.homes = _.sample(res.data.homes)
 
-    Data.writeJSON(`data/html/${this.model}/gs/data.json`, { ...exploreInfo, uid: this.e.MysUid })
     return await this.renderImg({ ...exploreInfo, uid: this.e.MysUid })
   }
 }

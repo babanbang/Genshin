@@ -1,6 +1,6 @@
 import { MysInfo } from '#MysTool/mys'
 import { Character, Material, Meta, Player, Weapon } from '#MysTool/profile'
-import { Base, Data, common } from '#MysTool/utils'
+import { Base, common } from '#MysTool/utils'
 import _ from 'lodash'
 
 export default class Calculator extends Base {
@@ -26,6 +26,7 @@ export default class Calculator extends Base {
       specialty: '区域特产',
       other: '其他'
     }
+    this.elemID = { pyro: 1, anemo: 2, geo: 3, dendro: 4, cryo: 7, electro: 5, hydro: 6 }
   }
 
   /** @type {MysInfo} */
@@ -60,11 +61,11 @@ export default class Calculator extends Base {
       /** 获取设置参数 */
       const setSkill = await this.getSet(set[i] || set[0], ...item)
 
-      const Body = await this.getBody(setSkill, ...item)
-      if (!Body) continue
+      const data = await this.getBody(setSkill, ...item)
+      if (!data) continue
 
-      body.push(Body)
-      avatar.push([item[0], Body])
+      body.push(data.body)
+      avatar.push([data.item[0], data.body])
     }
 
     /** 计算 */
@@ -89,8 +90,7 @@ export default class Calculator extends Base {
     const body = []
     AllChar.data.forEach(char => {
       body.push(this.makeAvatarBody(
-        { id: char.id },
-        char.skill_list.map(id => {
+        char, char.skill_list.map(id => {
           return {
             group_id: id,
             level_current: 1,
@@ -114,7 +114,6 @@ export default class Calculator extends Base {
     const computes = await this.mysInfo.getData('compute', { body })
     if (computes?.retcode !== 0) return false
     const { data } = computes
-    Data.writeJSON('data.json', data, { root: true })
     const materials = _.fromPairs(Object.values(this.MaterialType).map((type) => [type, []]))
     const itemsImgs = { imgs: {}, icons: {} }
 
@@ -147,7 +146,7 @@ export default class Calculator extends Base {
       itemsImgs,
       uid: this.mysInfo.uid,
       info: player.getData('name,level,face'),
-    }, { test: true })
+    })
   }
 
   async getSet (set, role) {
@@ -174,6 +173,10 @@ export default class Calculator extends Base {
 
     /** 角色技能 */
     let char = this.character?.data?.avatars?.find?.(item => item.id === role.id)
+    if (!char && [10000005, 10000007, 20000000].some(id => id == role.id)) {
+      char = this.character?.data?.avatars?.find?.(item => [10000005, 10000007, 20000000].some(id => id == item.id))
+      if (char) role = Character.get({ ...role, id: char.id }, this.game)
+    }
     if (role) {
       let skillList = Object.values(role.detail.talent).map(item => {
         return {
@@ -181,7 +184,7 @@ export default class Calculator extends Base {
           level_current: 1,
         }
       })
-      if (char) {
+      if (char?.element?.toLowerCase?.() == role.elem) {
         /** 角色存在获取技能数据 */
         const detail = await this.mysInfo.getData('detail', { avatar_id: role.id })
         if (detail?.retcode !== 0) return false
@@ -189,16 +192,9 @@ export default class Calculator extends Base {
         skillList = skillList.map(v => {
           return detail.data.skill_list.find((item) => Number(item.group_id) === Number(v.group_id))
         })
-      } else {
-        char = {
-          level: 1,
-          name: role.name,
-          icon: role.face,
-          rarity: role.star
-        }
       }
 
-      body = this.makeAvatarBody(char, skillList, setSkill, char)
+      body = this.makeAvatarBody(role, skillList, setSkill, char)
     }
 
     if (this.mysInfo.hoyolab) {
@@ -219,14 +215,14 @@ export default class Calculator extends Base {
       body.weapon = this.makeWeaponBody(w, min[4], max[4])
     }
 
-    return body
+    return { body, item: [role, weapon] }
   }
 
   makeAvatarBody (role, skillList, setSkill, char = {}) {
     const { min, max } = setSkill
-    return {
+    const body = {
       avatar_id: Number(role.id),
-      avatar_level_current: min[0] > 0 ? min[0] : char.level,
+      avatar_level_current: min[0] > 0 ? min[0] : (char.level || 1),
       avatar_level_target: max[0],
       skill_list: [
         {
@@ -246,6 +242,10 @@ export default class Calculator extends Base {
         }
       ]
     }
+    if ([10000005, 10000007, 20000000].some(id => id == role.id)) {
+      body.element_attr_id = this.elemID[role.elem] || 2
+    }
+    return body
   }
 
   makeWeaponBody (weapon, min, max) {

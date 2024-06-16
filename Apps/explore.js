@@ -1,5 +1,5 @@
 import { plugin } from '#Karin'
-import { MysUtil } from '#Mys.api'
+import { MysUtil } from '#MysTool/mys'
 import Explore from '../model/explore.js'
 
 const reg = MysUtil.reg.gs

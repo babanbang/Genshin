@@ -1,5 +1,5 @@
-import { Meta } from '#Mys.profile'
-import { Data } from '#Mys.tool'
+import { Meta } from '#MysTool/profile'
+import { Data } from '#MysTool/utils'
 import _ from 'lodash'
 import { setAbbr, setAlias } from './alias.js'
 import { usefulAttr } from './artis-mark.js'
@@ -10,7 +10,7 @@ const setMeta = Meta.create('gs', 'artiSet')
 const artiMeta = Meta.create('gs', 'arti')
 
 const setIds = {}
-_.forEach(Data.readJSON('data.json', import.meta.url), (ds) => {
+_.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
   const artiSet = {
     name: ds.name,
     effect: ds.effect,

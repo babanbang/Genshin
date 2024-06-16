@@ -1,5 +1,5 @@
-import { Meta } from '#Mys.profile'
-import { Data } from '#Mys.tool'
+import { Meta } from '#MysTool/profile'
+import { Data } from '#MysTool/utils'
 import _ from 'lodash'
 import { abbr, alias } from './alias.js'
 import { descFix } from './desc.js'
@@ -31,21 +31,25 @@ const attr = function (key, start, _step) {
 
 for (const type in weaponType) {
   // calc
-  const typeCalc = (await Data.importDefault(`${type}/calc.js`, Path)).module
+  const typeCalc = (await Data.importDefault(`${type}/calc.js`, { Path })).module
   _.assign(weaponBuffs, typeCalc(step, attr))
 
   // data
-  _.forEach(Data.readJSON(`${type}/data.json`, Path), (ds) => {
+  _.forEach(Data.readJSON(`${type}/data.json`, { Path }), (ds) => {
     data[ds.id] = {
       id: ds.id,
       name: ds.name,
       type,
-      star: ds.star
+      star: ds.star,
+      eta: ds.eta,
+      isRelease: !ds.mid && !ds.eta
     }
   })
 }
 
 const meta = Meta.create('gs', 'weapon')
+
+meta.addData([{ id: 'allweapons', data: Data.readJSON(`release.json`, { Path }) }])
 meta.addData(data)
 meta.addAlias(alias)
 meta.addAbbr(abbr)

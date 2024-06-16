@@ -1,5 +1,5 @@
 import { plugin } from '#Karin'
-import { MysUtil } from '#Mys.api'
+import { MysUtil } from '#MysTool/mys'
 import Role from '../model/role.js'
 
 const reg = MysUtil.reg.gs

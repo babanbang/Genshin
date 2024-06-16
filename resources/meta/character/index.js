@@ -1,12 +1,14 @@
-import { Meta, CharCfg } from '#Mys.profile'
-import { Data } from '#Mys.tool'
+import { Meta, CharCfg } from '#MysTool/profile'
+import { Data } from '#MysTool/utils'
 import _ from 'lodash'
 import { alias } from './alias.js'
 import { extraChars, wifeCfg } from './extra.js'
 
+const Path = import.meta.url
 const meta = Meta.create('gs', 'char')
 
-meta.addData(Data.readJSON('data.json', import.meta.url))
+meta.addData([{ id: 'allchars', data: Data.readJSON(`release.json`, { Path }) }])
+meta.addData(Data.readJSON('data.json', { Path }))
 meta.addAlias(alias)
 
 // 添加自定义角色

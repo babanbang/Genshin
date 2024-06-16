@@ -1,8 +1,6 @@
 import { plugin } from '#Karin'
-import { MysUtil } from '#Mys.api'
 import Calculator from '../model/calculator.js'
 
-const reg = MysUtil.reg.gs
 export class gs_calculator extends plugin {
   constructor () {
     super({
@@ -10,21 +8,26 @@ export class gs_calculator extends plugin {
       dsc: '角色养成材料计算器',
       event: 'message',
       priority: 200,
-      rule: [
+      handler: [
         {
-          reg: new RegExp(`^${reg}养成计算`, 'i'),
+          key: 'mys.gs.calculator.help',
+          fnc: 'help'
+        },
+        {
+          key: 'mys.gs.calculator',
           fnc: 'count'
         }
       ]
     })
   }
 
+  help () {
+    return new Calculator(this.e).help()
+  }
+
   /** 养成计算 */
-  async count () {
-    if (!this.e.calculator) {
-      return new Calculator(this.e).help()
-    }
-    const img = await new Calculator(this.e).character_count()
+  async count ({ calculator }) {
+    const img = await new Calculator(this.e).character_count(calculator)
     if (!img) return
 
     this.reply(img)

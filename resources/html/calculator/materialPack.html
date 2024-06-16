@@ -1,0 +1,30 @@
+{{extend defaultLayout}}
+
+{{block 'css'}}
+<link rel="stylesheet" type="text/css" href="{{pluResPath}}html/calculator/materialPack.css" />
+{{/block}}
+
+{{block 'main'}}
+<div class="data_box_repeat"></div>
+<div class="head_box">
+  <img class="role_img" src='{{info.face||`${pluResPath}meta/character/common/imgs/face.png`}}'>
+  <div class="role_name">{{info.name}}<span>Lv.{{info.level}}</span></div>
+  <div class="role_uid">UID: {{uid}}</div>
+  <div class="logo"></div>
+</div>
+<div class="info_box">
+  {{each materials material type}}
+  <div class="role_separate_line">{{type}}</div>
+  <div class="type_box">
+    {{each material val}}
+    <div class="material">
+      <img class="item-icon star{{val.level}}"
+        src="{{itemsImgs.imgs[val.name]?`${pluResPath}${itemsImgs.imgs[val.name]}`:`${itemsImgs.icons[val.name]}`}}" />
+      <span>{{val.name}}</span>
+      <div class="num">{{val.num}}</div>
+    </div>
+    {{/each}}
+  </div>
+  {{/each}}
+</div>
+{{/block}}

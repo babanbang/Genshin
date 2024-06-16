@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import { Format } from '#Mys.profile'
+import { Format } from '#MysTool/profile'
 
 export const mainAttr = {
   3: 'atk,def,hp,mastery,recharge'.split(','),

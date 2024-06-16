@@ -1,5 +1,5 @@
-import { Meta } from '#Mys.profile'
-import { Data } from '#Mys.tool'
+import { Meta } from '#MysTool/profile'
+import { Data } from '#MysTool/utils'
 import _ from 'lodash'
 import { abbr } from './abbr.js'
 import dailyData from './daily.js'
@@ -9,7 +9,7 @@ const abbr2 = {}
 
 const citys = ['蒙德', '璃月', '稻妻', '须弥', '枫丹']
 
-_.forEach(Data.readJSON('data.json', import.meta.url), (ds) => {
+_.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
   let { type, name } = ds
   let tmp = {
     name,

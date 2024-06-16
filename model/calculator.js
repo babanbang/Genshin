@@ -1,6 +1,6 @@
-import { Base, common, Data, PluginName } from '#Mys.tool'
-import { MysInfo, MysApi } from '#Mys.api'
-import { Material, Weapon, Character } from '#Mys.profile'
+import { MysInfo } from '#MysTool/mys'
+import { Character, Material, Meta, Player, Weapon } from '#MysTool/profile'
+import { Base, Data, common } from '#MysTool/utils'
 import _ from 'lodash'
 
 export default class Calculator extends Base {
@@ -15,6 +15,17 @@ export default class Calculator extends Base {
       '示例5：#gs刻晴 七七养成81 9 9 9 90|90 8 8 9 90\n参数为角色、普攻、战技、终结技、武器等级（可以使用|分割多个角色的等级也可只使用同一等级）',
       '请在角色名、武器名及各等级间使用,，.或空格分割。\n多角色武器养成自行参考上述示例，武器请跟在对应角色后一人最多一把！'
     ]
+    this.MaterialType = {
+      weekly: '周本掉落',
+      boss: '角色培养素材',
+      gem: '角色突破素材',
+      talent: '角色天赋素材',
+      weapon: '武器突破素材',
+      monster: '精英敌人掉落',
+      normal: '普通敌人掉落',
+      specialty: '区域特产',
+      other: '其他'
+    }
   }
 
   /** @type {MysInfo} */
@@ -24,24 +35,25 @@ export default class Calculator extends Base {
     this.e.reply(common.makeForward(this.tips))
   }
 
-  async character_count () {
+  /**角色养成计算 */
+  async character_count (calculator) {
     this.mysInfo = await MysInfo.init({ e: this.e, apis: 'compute', game: this.game, option: { log: false } })
     if (!this.mysInfo?.ckInfo?.ck) return false
 
     /** 
      * @type {{
-     * role:import('#Mys.profile').Character[]
-     * weapon:import('#Mys.profile').Weapon[]
+     * role:import('#MysTool/profile').Character[]
+     * weapon:import('#MysTool/profile').Weapon[]
      * }}
      */
-    const { roles, weapons, set } = this.e.calculator
+    const { roles, weapons, set } = calculator
 
     if (roles.length > 0) {
       this.character = await this.mysInfo.getData('character')
       if (this.character?.retcode !== 0) return false
     }
 
-    const body = { items: [] }
+    const body = []
     const avatar = []
     for (const i in roles.length > 0 ? roles : weapons) {
       const item = roles.length > 0 ? roles[i] : weapons[i]
@@ -51,7 +63,7 @@ export default class Calculator extends Base {
       const Body = await this.getBody(setSkill, ...item)
       if (!Body) continue
 
-      body.items.push(Body)
+      body.push(Body)
       avatar.push([item[0], Body])
     }
 
@@ -63,6 +75,79 @@ export default class Calculator extends Base {
       uid: this.mysInfo.uid,
       ...computes
     })
+  }
+
+  /** 背包材料 */
+  async getMaterialPack () {
+    this.model = 'calculator/materialPack'
+    this.mysInfo = await MysInfo.init({ e: this.e, apis: 'compute', game: this.game, option: { log: false } })
+    if (!this.mysInfo?.ckInfo?.ck) return false
+
+    const AllChar = Meta.getData(this.game, 'char', 'allchars')
+    const AllWeapon = Meta.getData(this.game, 'weapon', 'allweapons')
+
+    const body = []
+    AllChar.data.forEach(char => {
+      body.push(this.makeAvatarBody(
+        { id: char.id },
+        char.skill_list.map(id => {
+          return {
+            group_id: id,
+            level_current: 1,
+          }
+        }),
+        { min: [1], max: [90, 10, 10, 10] }
+      ))
+    })
+    _.forEach(AllWeapon.data, (item) => {
+      body.push({
+        weapon: this.makeWeaponBody(item, 1, item.star < 3 ? 70 : 90)
+      })
+    })
+
+    if (this.mysInfo.hoyolab) {
+      body.forEach(item => {
+        item.lang = 'zh-cn'
+      })
+    }
+
+    const computes = await this.mysInfo.getData('compute', { body })
+    if (computes?.retcode !== 0) return false
+    const { data } = computes
+    Data.writeJSON('data.json', data, { root: true })
+    const materials = _.fromPairs(Object.values(this.MaterialType).map((type) => [type, []]))
+    const itemsImgs = { imgs: {}, icons: {} }
+
+    data.overall_consume.forEach(item => {
+      const { name, icon } = item
+
+      if (Number(item.num) - Number(item.lack_num) > 0) {
+        const material = Material.get(name, this.game)
+        if (!material) {
+          logger.info(`找不到材料图片:${logger.red(name)}，请联系开发者添加！`)
+          itemsImgs.icons[name] = icon
+        } else {
+          itemsImgs.imgs[name] = material.icon
+          materials[this.MaterialType[material.type]].push({
+            name: item.name,
+            level: item.level,
+            num: Number(item.num) - Number(item.lack_num)
+          })
+        }
+      }
+    })
+
+    _.forEach(materials, (items) => {
+      items = _.sortBy(items, ['id']).reverse()
+    })
+
+    const player = Player.create(this.mysInfo.uid, this.game)
+    return await this.renderImg({
+      materials,
+      itemsImgs,
+      uid: this.mysInfo.uid,
+      info: player.getData('name,level,face'),
+    }, { test: true })
   }
 
   async getSet (set, role) {
@@ -113,32 +198,10 @@ export default class Calculator extends Base {
         }
       }
 
-      /** 拼接计算参数 */
-      body = {
-        avatar_id: Number(role.id),
-        avatar_level_current: min[0] > 0 ? min[0] : char.level,
-        avatar_level_target: max[0],
-        skill_list: [
-          {
-            id: Number(skillList[0].group_id),
-            level_current: min[1] > 0 ? min[1] : skillList[0].level_current,
-            level_target: max[1]
-          },
-          {
-            id: Number(skillList[1].group_id),
-            level_current: min[2] > 0 ? min[2] : skillList[1].level_current,
-            level_target: max[2]
-          },
-          {
-            id: Number(skillList[2].group_id),
-            level_current: min[3] > 0 ? min[3] : skillList[2].level_current,
-            level_target: max[3]
-          }
-        ]
-      }
+      body = this.makeAvatarBody(char, skillList, setSkill, char)
     }
 
-    if (this.mysApi.hoyolab) {
+    if (this.mysInfo.hoyolab) {
       body.lang = 'zh-cn'
     }
 
@@ -153,26 +216,44 @@ export default class Calculator extends Base {
         max[4] = Math.min(max[4], 70)
       }
 
-      body.weapon = {
-        id: w.id,
-        level_current: min[4] > 0 ? min[4] : w.level,
-        level_target: max[4]
-      }
+      body.weapon = this.makeWeaponBody(w, min[4], max[4])
     }
 
     return body
   }
 
-  async getSkillId (roleId) {
-    const avatarSkill = await this.mysInfo.getData('avatarSkill', {
-      avatar_id: roleId
-    })
-    if (avatarSkill?.retcode !== 0) return false
-    avatarSkill.data.list.forEach((item) => {
-      item.level_current = 1
-    })
+  makeAvatarBody (role, skillList, setSkill, char = {}) {
+    const { min, max } = setSkill
+    return {
+      avatar_id: Number(role.id),
+      avatar_level_current: min[0] > 0 ? min[0] : char.level,
+      avatar_level_target: max[0],
+      skill_list: [
+        {
+          id: Number(skillList[0].group_id),
+          level_current: min[1] > 0 ? min[1] : skillList[0].level_current,
+          level_target: max[1]
+        },
+        {
+          id: Number(skillList[1].group_id),
+          level_current: min[2] > 0 ? min[2] : skillList[1].level_current,
+          level_target: max[2]
+        },
+        {
+          id: Number(skillList[2].group_id),
+          level_current: min[3] > 0 ? min[3] : skillList[2].level_current,
+          level_target: max[3]
+        }
+      ]
+    }
+  }
 
-    return avatarSkill.data.list
+  makeWeaponBody (weapon, min, max) {
+    return {
+      id: Number(weapon.id),
+      level_current: min > 0 ? min : weapon.level,
+      level_target: max
+    }
   }
 
   async computes (body, avatarData) {
@@ -190,8 +271,7 @@ export default class Calculator extends Base {
         name: val.name,
         level: val.level,
         num: val.num,
-        lack_num: 0 - Number(val.lack_num),
-        icon: val.icon
+        lack_num: 0 - Number(val.lack_num)
       }
       if (tem.lack_num > 0) {
         tem.lack_num = '<p style="color:green">+' + tem.lack_num + '</p>'
@@ -216,13 +296,15 @@ export default class Calculator extends Base {
     data.items.forEach((item, idx) => {
       const [role1, body] = avatarData[idx]
       const role = Character.get(role1._id, 'gs')
+
       const avatar = {
         name: role?.name,
         star: role?.star,
         level: [body.avatar_level_current, body.avatar_level_target],
         mona: {},
         exper: {},
-        skillList: body.skill_list
+        skillList: body.skill_list,
+        skills: {}
       }
       if (role?.getImgs) {
         avatar.imgs = role.getImgs()
@@ -261,10 +343,8 @@ export default class Calculator extends Base {
         avatar[key] = _.sortBy(avatar[key], ['level', '_num']).reverse()
       }
 
+      const talent = _.keyBy(Object.values(role.detail.talent), 'id')
       if (item.skills_consume?.length > 0) {
-        avatar.skills = {}
-        const talent = _.keyBy(Object.values(role.detail.talent), 'id')
-
         item.skills_consume.forEach((val, i) => {
           const info = {
             ...val.skill_info,
@@ -283,6 +363,9 @@ export default class Calculator extends Base {
           avatar.skills[info.id] = { info, list: _.sortBy(list, ['level', '_num']).reverse() }
         })
       }
+      avatar.skillList.forEach(val => {
+        val.info = { name: talent[val.id].name }
+      })
       avatar.calendar = this.calendar(item.calendar)
       avatars.push(avatar)
     })
@@ -306,7 +389,7 @@ export default class Calculator extends Base {
     if (!this.itemsImgs) this.itemsImgs = { imgs: {}, icons: {} }
 
     if (!this.itemsImgs.imgs[name] && !this.itemsImgs.icons[name]) {
-      const material = Material.get(name, 'gs')
+      const material = Material.get(name, this.game)
       if (!material) {
         logger.info(`找不到材料图片:${logger.red(name)}，请联系开发者添加！`)
         this.itemsImgs.icons[name] = icon

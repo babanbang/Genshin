@@ -1,5 +1,5 @@
 import { plugin } from '#Karin'
-import { MysUtil } from '#Mys.api'
+import { MysUtil } from '#MysTool/mys'
 import Profile from '../model/profile.js'
 
 const reg = MysUtil.reg.gs
@@ -18,9 +18,11 @@ export class gs_profile extends plugin {
         {
           reg: new RegExp(`^${reg}?面板(列表)?\\s*((18|[1-9])[0-9]{8})?$`, 'i'),
           fnc: 'List'
-        },
+        }
+      ],
+      handler: [
         {
-          reg: /^#gs([^#gs]+)\s*(详细|详情|面板|面版|圣遗物|伤害([1-9]+\d*)?)\s*((18|[1-9])[0-9]{8})*(.*[换变改].*)?$/,
+          key: 'mys.gs.profile',
           fnc: 'Detail'
         }
       ]
@@ -44,8 +46,8 @@ export class gs_profile extends plugin {
   }
 
   /** 角色面板 */
-  async Detail () {
-    const img = await new Profile(this.e).detail()
+  async Detail ({ profile }) {
+    const img = await new Profile(this.e).detail(profile)
     if (!img) return
 
     this.reply(img)

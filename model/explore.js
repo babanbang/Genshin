@@ -1,6 +1,6 @@
-import { Base, Cfg, Data } from '#Mys.tool'
-import { MysInfo } from '#Mys.api'
-import { Player } from '#Mys.profile'
+import { Base, Cfg, Data } from '#MysTool/utils'
+import { MysInfo } from '#MysTool/mys'
+import { Player } from '#MysTool/profile'
 import _ from 'lodash'
 
 export default class Explore extends Base {

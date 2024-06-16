@@ -1,6 +1,6 @@
 import { common } from '#Karin'
-import { MysApi, MysInfo, MysUtil } from '#Mys.api'
-import { Base, Data } from '#Mys.tool'
+import { MysApi, MysInfo, MysUtil } from '#MysTool/mys'
+import { Base, Data } from '#MysTool/utils'
 import _ from 'lodash'
 import moment from 'moment'
 
@@ -31,7 +31,7 @@ export default class Ledger extends Base {
     this.isnowMonth = MysUtil.checkMonth(year, month, 0)
     if (!this.mysInfo.ckInfo.ck || !this.isnowMonth) {
       const dataPath = Data.gamePath(this.game) + 'LedgerData/' + this.mysInfo.uid + '.json'
-      ledgerInfo = Data.readJSON(dataPath, 'root')?.[year]?.[month]
+      ledgerInfo = Data.readJSON(dataPath, { root: true })?.[year]?.[month]
       if (!ledgerInfo && !MysUtil.checkMonth(year, month)) {
         this.e.reply(`本地无${year}年${month}月数据！`)
         return false
@@ -153,7 +153,7 @@ export default class Ledger extends Base {
     if (!uid) return false
 
     const dataPath = Data.gamePath(this.game) + 'LedgerData/' + uid + '.json'
-    const ledgerData = Data.readJSON(dataPath, 'root')
+    const ledgerData = Data.readJSON(dataPath, { root: true }) || {}
 
     // 获取前三个月
     for (const month of this.monthArr) {

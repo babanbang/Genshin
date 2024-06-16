@@ -1,4 +1,4 @@
-import { Format } from '#Mys.profile'
+import { Format } from '#MysTool/profile'
 export const details = [{
   title: 'E伤害',
   dmg: ({ talent }, dmg) => dmg(talent.e['技能伤害'], 'e')

@@ -1,6 +1,6 @@
-import { Base, Cfg } from '#Mys.tool'
-import { MysInfo } from '#Mys.api'
-import { Player } from '#Mys.profile'
+import { Base, Cfg } from '#MysTool/utils'
+import { MysInfo } from '#MysTool/mys'
+import { Player } from '#MysTool/profile'
 import { common } from '#Karin'
 import _ from 'lodash'
 

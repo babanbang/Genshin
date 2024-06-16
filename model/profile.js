@@ -1,6 +1,6 @@
-import { Base } from '#Mys.tool'
-import { Player, Character } from '#Mys.profile'
-import { MysInfo } from '#Mys.api'
+import { Base } from '#MysTool/utils'
+import { Player, Character } from '#MysTool/profile'
+import { MysInfo } from '#MysTool/mys'
 import _ from 'lodash'
 
 export default class Profile extends Base {
@@ -44,7 +44,7 @@ export default class Profile extends Base {
     const chars = []
     const profiles = player.getProfiles()
     _.forEach(profiles,
-      /** @param {import('#Mys.profile').Avatar} profile */
+      /** @param {import('#MysTool/profile').Avatar} profile */
       (profile) => {
         const char = profile.char
         const imgs = char.getImgs(profile.costume)
@@ -71,10 +71,10 @@ export default class Profile extends Base {
     })
   }
 
-  async detail () {
+  async detail (profile) {
     const player = Player.create(this.e.MysUid, 'gs')
 
-    const data = await player.getProfileDetail(this.e._profile)
+    const data = await player.getProfileDetail(profile)
 
     const keys = ['hp', 'atk', 'def', 'mastery', 'cpct', 'cdmg', 'recharge', 'dmg', 'heal']
     const actual = keys.map(k => Number(data.attr[k]?.replace(/%|,/g, '') || 0))

@@ -170,14 +170,12 @@ body {
   z-index: 1;
 }
 
-.material {
+.material-box {
   float: left;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
   width: 80px;
-  background-color: rgb(221, 200, 173);
-  border-radius: 3px;
   margin-left: 10px;
   margin-bottom: 10px;
   display: -webkit-box;
@@ -201,14 +199,26 @@ body {
   white-space: nowrap;
 }
 
-.material::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 15px;
-  width: 80px;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.443)
+.material {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 3px;
+  background-color: rgb(221, 200, 173);
 }
 
 .material img {

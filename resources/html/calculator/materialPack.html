@@ -20,11 +20,13 @@
   <div class="role_separate_line">{{type}}</div>
   <div class="type_box">
     {{each material val}}
-    <div class="material">
-      <img class="item-icon star{{val.level}}"
-        src="{{itemsImgs.imgs[val.name]?`${pluResPath}${itemsImgs.imgs[val.name]}`:`${itemsImgs.icons[val.name]}`}}" />
+    <div class="material-box">
+      <div class="material">
+        <img class="item-icon star{{val.level}}"
+          src="{{itemsImgs.imgs[val.name]?`${pluResPath}${itemsImgs.imgs[val.name]}`:`${itemsImgs.icons[val.name]}`}}" />
+        <div class="material-num">{{val.num}}</div>
+      </div>
       <div class="material-name">{{val.name}}</div>
-      <div class="material-num">{{val.num}}</div>
     </div>
     {{/each}}
   </div>

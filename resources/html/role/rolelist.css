@@ -46,7 +46,7 @@ body {
   right: 40px;
   font-size: 16px;
   color: rgb(234 198 31);
-  background-color: rgb(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 5px;
   border-radius: 8px;
 }
@@ -137,19 +137,10 @@ body {
 }
 
 .avatars {
-  display: -webkit-flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-justify-content: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background-color: rgb(39, 38, 36, 0.8);
-  padding: 10px;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(39, 38, 36, 0.8);
+  padding: 18px;
   font-size: 10px;
 }
 
@@ -166,6 +157,9 @@ body {
   min-width: 100px;
   background-color: rgba(243, 229, 201, 0.97);
   border-radius: 10px;
+  float: left;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .avatar {

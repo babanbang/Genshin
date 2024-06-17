@@ -37,6 +37,7 @@ export class gs_GachaLog extends plugin {
 
     this.reply(img)
   }
+
   async upLog ({ params }) {
     const img = await new GachaLog(this.e).upLog(params)
     if (!img) return

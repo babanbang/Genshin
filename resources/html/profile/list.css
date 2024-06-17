@@ -16,17 +16,13 @@ body,
 }
 
 .char-list {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   padding: 5px 10px 0px 10px;
 }
 
 .char-item {
+  float: left;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   margin: 5px 0;
   width: 75px;
   position: relative;
@@ -34,22 +30,34 @@ body,
 
 .char-item .name {
   margin-top: 5px;
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   font-size: 14px;
   color: #fff;
-  text-align: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   text-shadow: 0 0 1px #000;
   white-space: nowrap;
 }
 
 .char-item .name .cons {
   padding: 1px 4px;
-  font-size: 12px;
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
+  font-size: 10px;
   margin: -2px 0 0 1px;
   vertical-align: middle;
   opacity: 0.9;
+}
+
+.char-item .name .cons.-wk {
+  margin: -6px 0 0 1px;
 }
 
 .char-item.new-char .name:before {

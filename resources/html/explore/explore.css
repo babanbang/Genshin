@@ -111,34 +111,25 @@ body {
 
 .explore-box>* {
   margin: 5px 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .explore {
   width: 380px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
 }
 
 .explore .item1 {
+  float: left;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   margin-top: 5px;
+  width: 60px;
+  margin-left: 17px;
+  margin-right: 17px;
+  position: relative;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  width: 60px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
@@ -148,9 +139,10 @@ body {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-left: 17px;
-  margin-right: 17px;
-  position: relative;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .explore .item1 p {
@@ -188,10 +180,16 @@ body {
 }
 
 .explore .item2 {
+  float: left;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   width: 70px;
   height: 40px;
   background-color: rgba(38, 38, 34, 0.9);
   border-radius: 4px;
+  margin-top: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -205,9 +203,10 @@ body {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-top: 5px;
-  margin-left: 3px;
-  margin-right: 3px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .explore .item2 p {
@@ -237,6 +236,15 @@ body {
   border-radius: 10px;
   margin-top: -30px;
   position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .title {
@@ -313,17 +321,12 @@ body {
   padding-left: 10px;
   position: relative;
   font-size: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .world .item {
-  margin: 0 4px 5px;
+  float: left;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -332,6 +335,7 @@ body {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  margin: 0 4px 5px;
   width: 180px;
   height: 77px;
   padding: 3px 4px;

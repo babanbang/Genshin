@@ -94,7 +94,7 @@ export default class Role extends Base {
     })
 
     // const sendMsg = [msgs.join('\n')]
-    const img = await this.renderImg({ uid: this.uid, gachaData: Object.values(data) })
+    return await this.renderImg({ uid: this.uid, gachaData: Object.values(data) })
     // if (img) sendMsg.push(img)
 
     // return Common.makeForward(sendMsg)

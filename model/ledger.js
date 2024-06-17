@@ -46,7 +46,7 @@ export default class Ledger extends Base {
       ledgerInfo = res.data
     }
 
-    return this.renderImg(this.dealData(ledgerInfo))
+    return this.renderImg(this.dealData(ledgerInfo), { nowk: true })
   }
 
   async ledgerTask (manual) {

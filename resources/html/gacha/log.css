@@ -25,20 +25,7 @@ body {
 
 .info_box {
   width: 480px;
-  margin-right: 15px;
-  margin-left: 15px;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  margin: 15px 15px 0 15px;
 }
 
 .logo {
@@ -62,7 +49,7 @@ body {
 }
 
 .head_box {
-  font-family: tttgbnumber;
+  font-family: "tttgbnumber";
   position: relative;
   height: 110px;
   color: black;
@@ -73,28 +60,28 @@ body {
   text-align: center;
   font-size: 70px;
   font-weight: bold;
-  color: #ffffffcd;
+  color: rgba(255, 255, 255, 0.799);
   width: 110px;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   border-radius: 10px 10px 30px 10px;
-  text-shadow: 2px 2px 2px #0000004f;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.277);
 }
 
 .head_box.head_good::before {
-  background-color: #e94545e3;
+  background-color: rgba(238, 59, 59, 0.8);
   content: "欧";
 }
 
 .head_box.head_normal::before {
-  background: #6939b7;
+  background: rgb(105, 57, 183);
   content: "平";
 }
 
 .head_box.head_bad::before {
-  background: #9d3333;
+  background: rgb(102, 231, 212);
   content: "非";
 }
 
@@ -138,8 +125,7 @@ body {
 
 .data_box {
   border-radius: 15px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 20px 0px 5px 10px;
   background: #fff;
   -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.15);
@@ -181,10 +167,6 @@ body {
   margin-top: 3px;
 }
 
-.data_box {
-  margin-bottom: 10px;
-}
-
 .info_box_border {
   border-radius: 15px;
   margin-bottom: 20px;
@@ -195,42 +177,39 @@ body {
 }
 
 .card_list {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
+  width: 100%;
+  overflow: hidden;
 }
 
-.card_list .item-icon {
-  margin: 0px 8px 10px 0px;
+.card_list>* {
   border-radius: 7px;
+}
+
+.card_list .role_box {
+  margin: 0px 8px 10px 0px;
   -webkit-box-shadow: 0 2px 6px 0 rgba(132, 93, 90, 0.3);
   box-shadow: 0 2px 6px 0 rgba(132, 93, 90, 0.3);
   height: 88px;
   width: 70px;
   position: relative;
-  overflow: hidden;
   background-size: cover;
   background-repeat: no-repeat;
+  float: left;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.item-icon .role_img {
+.role_box .role_img {
   width: 70px;
   height: 70px;
   display: inline-block;
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 7px 7px 0 0;
 }
 
-.card_list .item-icon .num {
+.card_list .role_box .num {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -244,8 +223,8 @@ body {
   font-family: "tttgbnumber";
 }
 
-.card_list .item-icon .name,
-.card_list .item-icon .num_name {
+.card_list .role_box .name,
+.card_list .role_box .num_name {
   position: absolute;
   top: 70.4px;
   left: 0px;
@@ -257,7 +236,7 @@ body {
   line-height: 18px;
 }
 
-.card_list .item-icon .num_name {
+.card_list .role_box .num_name {
   font-family: "tttgbnumber";
   font-size: 13px;
   font-weight: bold;
@@ -276,6 +255,20 @@ body {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  /* border-radius: 0 0 7px 7px; */
+  overflow: hidden;
+}
+
+.card_list .role_box .num_name div:first-child {
+  border-radius: 0 0 0 7px;
+}
+
+.card_list .role_box .num_name div:last-child {
+  border-radius: 0 0 7px 0;
+}
+
+.card_list .role_box .num_name div:only-child {
+  border-radius: 0 0 7px 7px;
 }
 
 .card_list .item-icon .num_name>* {

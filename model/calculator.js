@@ -16,6 +16,7 @@ export default class Calculator extends Base {
       '请在角色名、武器名及各等级间使用,，.或空格分割。\n多角色武器养成自行参考上述示例，武器请跟在对应角色后一人最多一把！'
     ]
     this.MaterialType = {
+      other: '特殊材料',
       weekly: '周本掉落',
       boss: '角色培养素材',
       gem: '角色突破素材',
@@ -23,8 +24,7 @@ export default class Calculator extends Base {
       weapon: '武器突破素材',
       monster: '精英敌人掉落',
       normal: '普通敌人掉落',
-      specialty: '区域特产',
-      other: '其他'
+      specialty: '区域特产'
     }
     this.elemID = { pyro: 1, anemo: 2, geo: 3, dendro: 4, cryo: 7, electro: 5, hydro: 6 }
   }

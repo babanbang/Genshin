@@ -15,7 +15,7 @@
       {{each log.line val}}
       <div class="data_line">
         {{each val item}}
-        <div class="data_line_item">
+        <div class="data_line_item" style="width: {{350/val.length}}px;">
           <div class="num">
             {{@ item.num}}
             <span class="unit">{{item.unit}}</span>
@@ -34,7 +34,7 @@
     </div>
     <div class="card_list">
       {{each log.fiveLog val}}
-      <div class="{{val.isNull?'isNull':''}} item-icon star5">
+      <div class="{{val.isNull?'isNull':''}} role_box">
         {{ if val.isUp }}
         <span class="minimum">UP</span>
         {{/if}}
@@ -46,7 +46,7 @@
           {{/each}}
         </div>
         {{else}}
-        <span class="role_img" style="background-image: url({{pluResPath}}{{val.icon}})"></span>
+        <img class="role_img item-icon star5" src="{{pluResPath}}{{val.icon}}"></span>
         <div class="num_name">
           {{each val.nums num}}
           <div class="{{num<=10?'gold': (num<log.max*0.5 ? 'good' : (num<log.max*0.83) ? 'normal' : 'bad' )}}"

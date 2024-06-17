@@ -35,10 +35,6 @@
             <p>{{v.num}}{{if v.extra}}<span>/{{v.extra}}</span>{{/if}}</p>
             <p>{{v.lable}}</p>
           </div>
-          {{if useBrowser==='-wk'&&(idx+1)%5===0}}
-        </div>
-        <div class="explore">
-          {{/if}}
           {{/each}}
         </div>
       </div>
@@ -63,7 +59,7 @@
       </div>
       <div class="world">
         {{each world val idx}}
-        <div class="item">
+        <div class="item {{useBrowser}}">
           <img class="icon" src="{{pluResPath}}imgs/other/{{val.name}}.png" />
           <div class="content">
             {{each val.line line}}
@@ -71,10 +67,6 @@
             {{/each}}
           </div>
         </div>
-        {{if useBrowser==='-wk'&&(idx+1)%2===0}}
-      </div>
-      <div class="world">
-        {{/if}}
         {{/each}}
       </div>
       {{if homes?.icon}}

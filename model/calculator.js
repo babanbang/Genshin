@@ -111,9 +111,9 @@ export default class Calculator extends Base {
       })
     }
 
-    const computes = await this.mysInfo.getData('compute', { body })
+    const computes = await this.mysInfo.getData('compute', { body, needTime: true, cacheCd: 3600 })
     if (computes?.retcode !== 0) return false
-    const { data } = computes
+    const { data, resDataTime = '' } = computes
     const materials = _.fromPairs(Object.values(this.MaterialType).map((type) => [type, []]))
     const itemsImgs = { imgs: {}, icons: {} }
 
@@ -144,6 +144,7 @@ export default class Calculator extends Base {
     return await this.renderImg({
       materials,
       itemsImgs,
+      resDataTime,
       uid: this.mysInfo.uid,
       info: player.getData('name,level,face'),
     })

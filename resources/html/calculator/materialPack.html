@@ -6,6 +6,7 @@
 
 {{block 'main'}}
 <div class="data_box_repeat"></div>
+<div class="tips">*背包数据缓存一小时，上次更新时间：<strong>{{resDataTime}}</strong></div>
 <div class="head_box">
   <img class="role_img" src='{{info.face||`${pluResPath}meta/character/common/imgs/face.png`}}'>
   <div class="role_info">
@@ -22,8 +23,8 @@
     <div class="material">
       <img class="item-icon star{{val.level}}"
         src="{{itemsImgs.imgs[val.name]?`${pluResPath}${itemsImgs.imgs[val.name]}`:`${itemsImgs.icons[val.name]}`}}" />
-      <span>{{val.name}}</span>
-      <div class="num">{{val.num}}</div>
+      <div class="material-name">{{val.name}}</div>
+      <div class="material-num">{{val.num}}</div>
     </div>
     {{/each}}
   </div>

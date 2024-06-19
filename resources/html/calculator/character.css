@@ -1,6 +1,6 @@
 @font-face {
   font-family: "tttgbnumber";
-  src: url("../../../../../resources/fonts/tttgbnumber.woff");
+  src: url("../../../../../../resources/fonts/tttgbnumber.woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -101,7 +101,7 @@ body {
   top: 0;
   left: 0;
   border-radius: 5px;
-  background-image: url('../../../../../resources/imgs/other/up.1b26ff0c.png');
+  background-image: url('../../../../../../resources/imgs/other/up.1b26ff0c.png');
   background-size: 100%;
   background-repeat: no-repeat;
   border: 1px solid #d9d3c7;
@@ -120,7 +120,7 @@ body {
 .data_box_repeat::before {
   top: 200px;
   height: 100%;
-  background-image: url('../../../../../resources/imgs/other/up.1b26ff0c.png');
+  background-image: url('../../../../../../resources/imgs/other/up.1b26ff0c.png');
   background-size: 100% 1000%;
   background-position: bottom;
   background-repeat: repeat-y;
@@ -130,7 +130,7 @@ body {
 .data_box_repeat::after {
   top: 0;
   height: 100%;
-  background-image: url('../../../../../resources/imgs/other/up.1b26ff0c.png');
+  background-image: url('../../../../../../resources/imgs/other/up.1b26ff0c.png');
   background-size: 100%;
   background-repeat: no-repeat;
   -webkit-transform: scaleY(-1);

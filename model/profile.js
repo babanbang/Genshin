@@ -64,7 +64,7 @@ export default class Profile extends Base {
     return await this.renderImg({
       uid: player.uid,
       elem: 'hydro',
-      avatars: _.sortBy(chars, ['isNew', 'star', 'level', 'id']),
+      avatars: _.sortBy(chars, ['isNew', 'star', 'id', 'level']),
       updateTime: player.getUpdateTime(),
       hasNew: _.isObject(newChar) && !_.isEmpty(newChar),
       servName: player.getProfileServName()

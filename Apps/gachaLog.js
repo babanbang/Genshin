@@ -13,9 +13,17 @@ export class gs_GachaLog extends plugin {
       priority: 200,
       rule: [
         {
-          reg: new RegExp(`${reg}?抽卡记录$`, 'i'),
+          reg: new RegExp(`^${reg}?(抽卡|抽奖|角色|武器|集录|常驻|up|新手|全部)+池*(记录|祈愿|分析)$`, 'i'),
           fnc: "getLog"
         },
+        {
+          reg: new RegExp(`^${reg}?(更新|刷新)抽卡(记录|祈愿|分析)$`, 'i'),
+          fnc: 'upLogBysk'
+        },
+        // {
+        //   reg: new RegExp(`^${reg}?(强制)?导出抽卡(记录|祈愿|分析)$`, 'i'),
+        //   fnc: 'exportLog'
+        // },
       ],
       handler: [
         {
@@ -30,18 +38,32 @@ export class gs_GachaLog extends plugin {
     Data.createDir(Data.gamePath('gs') + 'GachaData/', { root: true })
   }
 
-
   async getLog () {
-    const img = await new GachaLog(this.e).upLog({})
+    const img = await new GachaLog(this.e).getLog()
     if (!img) return
 
     this.reply(img)
   }
 
-  async upLog ({ params }) {
-    const img = await new GachaLog(this.e).upLog(params)
-    if (!img) return
+  async upLogBysk () {
+    const msg = await new GachaLog(this.e).upLogBysk()
+    if (!msg) return
 
-    this.reply(img)
+    this.replyForward(msg)
+  }
+
+  async upLog ({ params }) {
+    const msg = await new GachaLog(this.e).upLog(params)
+    if (!msg) return
+
+    this.replyForward(msg)
+  }
+
+  async exportLog () {
+    if (this.e.isGroup && !this.e.msg.includes("强制")) {
+      return this.reply("建议私聊导出，若你确认要在此导出，请发送【#gs强制导出抽卡记录】", { at: true })
+    }
+
+    return await new GachaLog(this.e).exportJson()
   }
 }

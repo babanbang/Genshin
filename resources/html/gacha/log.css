@@ -1,31 +1,13 @@
 body {
   position: absolute;
-  width: 540px;
 }
 
 .container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
   padding: 5px 15px 25px 15px;
   background-color: #f5f6fb;
   height: 100%;
   width: 100%;
-}
-
-.info_box {
-  width: 480px;
-  margin: 15px 15px 0 15px;
+  float: left;
 }
 
 .logo {
@@ -76,7 +58,7 @@ body {
 }
 
 .head_box.head_normal::before {
-  background: rgb(105, 57, 183);
+  background: rgb(113, 69, 184);
   content: "平";
 }
 
@@ -124,6 +106,11 @@ body {
 }
 
 .data_box {
+  float: left;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 480px;
+  margin: 15px 15px 0 15px;
   border-radius: 15px;
   margin-bottom: 10px;
   padding: 20px 0px 5px 10px;

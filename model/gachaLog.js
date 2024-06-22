@@ -1,8 +1,9 @@
-import { common } from '#Karin'
-import { MysApi } from '#MysTool/mys'
+import { MysInfo, MysUtil } from '#MysTool/mys'
 import { Character, Weapon } from '#MysTool/profile'
-import { Base, common as Common, Data, Cfg } from '#MysTool/utils'
+import { Base, Cfg, Data, PluginName, common } from '#MysTool/utils'
 import _ from 'lodash'
+import moment from 'moment'
+import { PoolDetail, mixPoolDetail } from '../resources/gachaPool/pool.js'
 
 const pool = [
   { type: 301, typeName: "角色" },
@@ -11,21 +12,12 @@ const pool = [
   { type: 200, typeName: "常驻" },
   { type: 100, typeName: "新手" },
 ]
-const UP = {}
 
 export default class Role extends Base {
   constructor (e) {
     super(e, 'gs')
     this.model = 'gacha/log'
-  }
-
-  initPool () {
-    if (!_.isEmpty(UP)) return
-
-    for (const item of pool) {
-      if ([200, 100].includes(Number(item.type))) continue
-      UP[item.type] = Cfg.readYaml(`resources/gachaPool/${item.type}.yaml`, this.game)
-    }
+    this.mysInfo = new MysInfo(e, this.game)
   }
 
   GachaPath (type) {
@@ -47,45 +39,107 @@ export default class Role extends Base {
     return ""
   }
 
+  async checkPermission (user_id) {
+    const { uid, type } = await MysInfo.getMainUid(this.e, this.game)
+    const GachaUser = Data.readJSON(this.GachaUserPath, { root: true, def: { master: [], ban: [] } })
+    if (['ck', 'sk', 'all'].includes(type)) {
+      return uid
+    }
+
+    if (GachaUser.master.some?.(item => item == user_id)) {
+      return uid
+    }
+
+    return false
+  }
+
+  async getLog (p = false) {
+    if (!p) {
+      this.uid = await this.checkPermission(this.e.user_id)
+      if (!this.uid) {
+        this.e.reply(`请先更新抽卡记录或绑定ck/sk后再尝试查询UID:${uid}的抽卡记录！`)
+        return false
+      }
+    }
+
+    const pools = p || this.getPools(this.e.msg)
+
+    const gachaData = []
+    pools.forEach(({ type, typeName }) => {
+      const { list } = this.readJson(type)
+      if (list.length > 0) {
+        gachaData.push({ ...this.analyse(list, type), type, typeName })
+      }
+    })
+    if (gachaData.length === 0) {
+      this.e.reply(`UID：${this.uid}暂无抽卡记录，请先更新抽卡记录后查询！`)
+      return false
+    }
+
+    return await this.renderImg({ uid: this.uid, gachaData })
+  }
+
+  async upLogBysk () {
+    this.mysInfo = await MysInfo.init({ e: this.e, game: this.game, UidType: 'sk' })
+    if (!this.mysInfo?.ckInfo?.sk) {
+      return false
+    }
+
+    const authkeyrow = await this.mysInfo.getData('authKey', {
+      auth_appid: 'webview_gacha',
+      cacheCd: 3600
+    })
+
+    if (!authkeyrow?.data?.authkey) {
+      this.e.reply(`uid:${this.mysInfo.uid},authkey获取失败：` + (authkeyrow?.message?.includes?.("登录失效") ? "请重新绑定stoken" : authkeyrow?.message))
+      return false
+    }
+
+    return await this.upLog({
+      uid: this.mysInfo.uid,
+      authkey: encodeURIComponent(authkeyrow.data.authkey),
+      region: MysUtil.getRegion(this.mysInfo.uid, this.game)
+    })
+  }
+
   async upLog (params) {
-    // const msgs = []
-    // this.uid = params.uid
+    const msgs = []
+    this.uid = params.uid
 
-    // const gacha = {}
-    // this.mysApi = new MysApi({ uid: this.uid, server: params.region, game: this.game }, { log: false })
-    // for (const { type, typeName } of pool) {
-    //   this.type = type
-    //   this.typeName = typeName
-    //   const { list, ids } = this.readJson()
-    //   const { data = [], err = '' } = await this.getAllLog(params.authkey, ids)
+    this.mysInfo.isTask = true
+    this.mysInfo.setMysApi({ uid: this.uid, server: params.region }, { log: false })
 
-    //   if (err) {
-    //     msgs.push(err)
-    //   } else {
-    //     /** 数据合并 */
-    //     let num = data.length
-    //     if (num > 0) {
-    //       gacha[type] = data.concat(list)
-    //     }
-    //     msgs.push(`[${this.typeName}]记录获取成功，更新${num}条`)
-    //   }
-    // }
-    // msgs.push(`\n抽卡记录更新完成，您还可回复\n【#gs全部记录】统计全部抽卡数据\n【#gs武器记录】统计武器池数据\n【#gs角色统计】按卡池统计数据\n【#gs导出记录】导出记录数据`)
+    const gacha = {}
+    for (const { type, typeName } of pool) {
+      this.type = type
+      this.typeName = typeName
+      const { list, ids } = this.readJson(type)
+      const { data = [], err = '', frequently = false, list: List = '' } = await this.getAllLog(params.authkey, ids)
 
-    // if (!this.uid) {
-    //   this.e.reply('抽卡记录暂无数据，请等待有数据后再尝试更新！')
-    //   return false
-    // }
+      if (err) {
+        msgs.push(err)
+      } else if (!frequently) {
+        /** 数据合并 */
+        let num = data.length
+        if (num > 0) {
+          gacha[type] = data.concat(List || list)
+        }
+        msgs.push(`[${this.typeName}]记录获取成功，更新${num}条`)
+      }
+    }
+    msgs.push(`\n抽卡记录更新完成，您还可回复\n【#gs全部记录】统计全部抽卡数据\n【#gs武器记录】统计武器池数据\n【#gs角色统计】按卡池统计数据\n【#gs导出记录】导出记录数据`)
 
-    // const user = await Data.readJSON(this.GachaUserPath, { root: true }) || { master: [], ban: [] }
-    // if (!user.master.some(item => item == this.e.user_id)) {
-    //   user.master.push(this.e.user_id)
-    //   _.pull(user.ban, this.e.user_id)
-    //   Data.writeJSON(this.GachaUserPath, user, { root: true })
-    // }
+    if (!this.uid) {
+      this.e.reply('抽卡记录暂无数据，请等待有数据后再尝试更新！')
+      return false
+    }
 
-    this.uid = 109750261
-    const gacha = await Data.readJSON(Data.gamePath(this.game) + `GachaData/data.json`, { root: true })
+    const user = await Data.readJSON(this.GachaUserPath, { root: true, def: { master: [], ban: [] } })
+    if (!user.master.some(item => item == this.e.user_id)) {
+      user.master.push(String(this.e.user_id))
+      _.pull(user.ban, String(this.e.user_id))
+      Data.writeJSON(this.GachaUserPath, user, { root: true })
+    }
 
     const data = {}
     _.forEach(gacha, (val, key) => {
@@ -93,19 +147,89 @@ export default class Role extends Base {
       data[key] = { ...this.analyse(val, key), ...pool.find(item => item.type == key) }
     })
 
-    // const sendMsg = [msgs.join('\n')]
-    return await this.renderImg({ uid: this.uid, gachaData: Object.values(data) })
-    // if (img) sendMsg.push(img)
+    const sendMsg = [msgs.join('\n')]
+    const img = await this.getLog(pool)
+    if (img) sendMsg.push(img)
 
-    // return Common.makeForward(sendMsg)
+    return common.makeForward(sendMsg)
+  }
+
+  async exportJson () {
+    this.uid = await this.checkPermission(this.e.user_id)
+    if (!this.uid) {
+      this.e.reply(`请先更新抽卡记录或绑定ck/sk后再尝试导出UID:${uid}的抽卡记录！`)
+      return false
+    }
+
+    const list = []
+    const tmpId = {}
+    const cacheIds = {}
+    pool.forEach(({ type, typeName }) => {
+      const gacha = this.readJson(type).list.reverse()
+      res[type] = gacha
+      gacha.forEach(v => {
+        if (!v.item_id) {
+          if (!cacheIds[v.name]) cacheIds[v.name] = Character.get(v.name, this.game)?.id
+          if (cacheIds[v.name]) v.item_id = String(cacheIds[v.name])
+        }
+
+        if (v.gacha_type == 301 || v.gacha_type == 400) {
+          v.uigf_gacha_type = '301'
+        } else {
+          v.uigf_gacha_type = v.gacha_type
+        }
+
+        let id = v.id
+        if (!id) {
+          id = moment(v.time).format('x') + '000000'
+          v.id = id
+        } else {
+          if (id.length == 13) {
+            v.id = `${id}000000`
+          }
+        }
+
+        if (tmpId[id]) {
+          let newId = `${id}00000${tmpId[id].length}`
+          tmpId[id].push(newId)
+          v.id = newId
+        } else {
+          tmpId[id] = [id]
+        }
+
+        list.push(v)
+      })
+    })
+
+    const uigfData = {
+      info: {
+        uid: this.uid,
+        lang: list[0].lang,
+        export_time: moment().format('YYYY-MM-DD HH:mm:ss'),
+        export_timestamp: moment().format('X'),
+        export_app: PluginName,
+        export_app_version: Cfg.package.version,
+        uigf_version: 'v2.3'
+      },
+      list: _.orderBy(list, ['id', 'asc'])
+    }
+
+    const save = `temp/${PluginName}/${Data.gamePath(this.game)}GachaData/${this.uid}.json`
+    const savePath = Data.writeJSON(save, uigfData, { root: true })
+
+    logger.mark(`${this.e.logFnc} 导出成功${this.uid}.json`)
+    this.e.reply(`导出成功：${this.uid}.json，共${list.length}条 \n请接收文件`)
+
+    Data.delFile(save, { root: true })
   }
 
   async getAllLog (authkey, ids = '', page = 1, endId = 0) {
-    const res = await this.mysApi.getData('gacha', {
+    const res = await this.mysInfo.getData('gacha', {
       gacha_type: this.type, page, end_id: endId, authkey,
     })
 
     if (res?.retcode != 0) {
+      if (res?.retcode == -110) return { frequently: true }
       return { err: `获取${this.typeName}记录失败` }
     }
 
@@ -114,7 +238,12 @@ export default class Role extends Base {
       return {}
     }
 
-    this.uid = res.data.list[0].uid
+    /** 获取到uid后重新查询本地记录 */
+    let list = ''
+    if (!this.uid && ids.size === 0) {
+      this.uid = res.data.list[0].uid;
+      ({ list, ids } = this.readJson(this.type))
+    }
 
     let data = []
     for (let val of res.data.list) {
@@ -134,18 +263,17 @@ export default class Role extends Base {
     const ret = await this.getAllLog(authkey, ids, page, endId)
     data = data.concat(ret.data || [])
 
-    return { data, err: ret.err }
+    return { data, err: ret.err, list }
   }
 
-  readJson () {
+  readJson (type) {
     const ids = new Map()
     if (!this.uid) return { list: [], ids }
 
-    const logJson = []
-    logJson.push(...(Data.readJSON(this.GachaPath, { root: true }) || []))
-    for (let val of logJson) {
+    const logJson = Data.readJSON(this.GachaPath(type), { root: true, def: [] })
+    logJson.forEach(val => {
       if (val.id) ids.set(String(val.id), val.id)
-    }
+    })
 
     return { list: logJson, ids }
   }
@@ -342,22 +470,65 @@ export default class Role extends Base {
       lastTime: gacha[0]?.time.substring(0, 16),
       fiveLog,
       fiveAvg,
-      line
+      line,
+      max: type == 302 ? 80 : 90
     }
   }
 
   checkIsUp (role, type) {
-    this.initPool()
-
     if ([200, 100].includes(Number(type))) return false
-    let logTime = new Date(role.time).getTime()
+    const logTime = new Date(role.time).getTime()
 
-    return UP[type].some(item => {
-      if (!item.five?.includes?.(role.name)) return false
+    if (type == 500) {
+      return mixPoolDetail.some(item => {
+        if (
+          !item.char5.includes(role.name) &&
+          !item.weapon5.includes(role.name)
+        ) return false
 
-      let start = new Date(item.from).getTime()
-      let end = new Date(item.to).getTime()
-      return logTime >= start && logTime <= end
+        let start = new Date(item.from).getTime()
+        let end = new Date(item.to).getTime()
+        return logTime >= start && logTime <= end
+      })
+    } else {
+      return PoolDetail.some(item => {
+        if (
+          !item.char5.includes(role.name) &&
+          !item.weapon5.includes(role.name)
+        ) return false
+
+        let start = new Date(item.from).getTime()
+        let end = new Date(item.to).getTime()
+        return logTime >= start && logTime <= end
+      })
+    }
+  }
+
+  getPools (msg = '') {
+    if (/全部/g.test(msg)) return pool
+
+    const types = msg.match(/up|抽卡|角色|抽奖|常驻|武器|集录|新手/g) || ['角色']
+
+    const pools = types.map(type => {
+      switch (type) {
+        case "up":
+        case "抽卡":
+        case "角色":
+        case "抽奖":
+          return { type: 301, typeName: "角色" }
+        case "常驻":
+          return { type: 200, typeName: "常驻" }
+        case "武器":
+          return { type: 302, typeName: "武器" }
+        case "集录":
+          return { type: 500, typeName: "集录" }
+        case "新手":
+          return { type: 100, typeName: "新手" }
+      }
+      return { type: 301, typeName: "角色" }
     })
+
+    const orderPool = _.keyBy(pool, 'type')
+    return _.sortBy(_.uniqBy(pools, 'type'), item => orderPool[item.type].type)
   }
 }

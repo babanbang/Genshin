@@ -33,7 +33,7 @@ export default class Calculator extends Base {
   mysInfo
 
   help () {
-    this.e.reply(common.makeForward(this.tips))
+    this.e.replyForward(common.makeForward(this.tips))
   }
 
   /**角色养成计算 */

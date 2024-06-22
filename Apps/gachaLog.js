@@ -20,10 +20,10 @@ export class gs_GachaLog extends plugin {
           reg: new RegExp(`^${reg}?(更新|刷新)抽卡(记录|祈愿|分析)$`, 'i'),
           fnc: 'upLogBysk'
         },
-        // {
-        //   reg: new RegExp(`^${reg}?(强制)?导出抽卡(记录|祈愿|分析)$`, 'i'),
-        //   fnc: 'exportLog'
-        // },
+        {
+          reg: new RegExp(`^${reg}?(强制)?导出抽卡(记录|祈愿|分析)$`, 'i'),
+          fnc: 'exportLog'
+        },
       ],
       handler: [
         {

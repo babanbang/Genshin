@@ -166,7 +166,6 @@ export default class Role extends Base {
     const cacheIds = {}
     pool.forEach(({ type, typeName }) => {
       const gacha = this.readJson(type).list.reverse()
-      res[type] = gacha
       gacha.forEach(v => {
         if (!v.item_id) {
           if (!cacheIds[v.name]) cacheIds[v.name] = Character.get(v.name, this.game)?.id
@@ -218,7 +217,15 @@ export default class Role extends Base {
     const savePath = Data.writeJSON(save, uigfData, { root: true })
 
     logger.mark(`${this.e.logFnc} 导出成功${this.uid}.json`)
-    this.e.reply(`导出成功：${this.uid}.json，共${list.length}条 \n请接收文件`)
+    this.e.reply(`导出成功：${this.uid}.json，共${list.length}条`)
+
+    try {
+      if (this.e.isGroup) {
+        await this.e.bot.UploadGroupFile(this.e.group_id, savePath, `${this.uid}.json`)
+      } else {
+        await this.e.bot.UploadPrivateFile(this.e.user_id, savePath, `${this.uid}.json`)
+      }
+    } catch (err) { }
 
     Data.delFile(save, { root: true })
   }

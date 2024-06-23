@@ -143,6 +143,6 @@ export default class Explore extends Base {
     }
     exploreInfo.homes = _.sample(res.data.homes)
 
-    return await this.renderImg({ ...exploreInfo, uid: this.e.MysUid })
+    return await this.renderImg(exploreInfo)
   }
 }

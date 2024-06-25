@@ -2,7 +2,7 @@ import { Cfg, getDir } from '#MysTool/utils'
 import './model/mys/ApiMap.js'
 
 const dir = getDir(import.meta.url)
-Cfg.initCfg('/lib/components', dir.name + '/', 'gs')
+Cfg.initCfg('/lib/components', dir.name + '/', 'gs', '原神')
 
 for (const type of ['artifact', 'character', 'material', 'weapon']) {
   await import(`file://${dir.path}/resources/meta/${type}/index.js`)

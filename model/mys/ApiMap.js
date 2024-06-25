@@ -39,17 +39,17 @@ ApiTool.setApiMap('gs', function (data) {
   return {
     /** 首页宝箱 */
     index: {
-      url: `${MysTool.os_bbs_api}game_record/app/genshin/api/index`,
+      url: `${MysTool.os_record_api}game_record/app/genshin/api/index`,
       query: `role_id=${this.uid}&server=${this.server}`
     },
     /** 角色详情 */
     character: {
-      url: `${MysTool.os_bbs_api}game_record/app/genshin/api/character`,
+      url: `${MysTool.os_record_api}game_record/app/genshin/api/character`,
       body: { role_id: this.uid, server: this.server }
     },
     /** 深渊 */
     spiralAbyss: {
-      url: `${MysTool.os_bbs_api}game_record/app/genshin/api/spiralAbyss`,
+      url: `${MysTool.os_record_api}game_record/app/genshin/api/spiralAbyss`,
       query: `role_id=${this.uid}&schedule_type=${data.schedule_type || 1}&server=${this.server}`
     },
     /** 详情 */

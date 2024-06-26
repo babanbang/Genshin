@@ -24,8 +24,8 @@ export default class Role extends Base {
     return Data.gamePath(this.game) + `GachaData/${this.uid}/${type}.json`
   }
 
-  get GachaUserPath () {
-    return Data.gamePath(this.game) + `GachaData/${this.uid}/user.json`
+  GachaUserPath (uid = '') {
+    return Data.gamePath(this.game) + `GachaData/${uid || this.uid}/user.json`
   }
 
   getIcon (name, type = "role") {
@@ -41,11 +41,11 @@ export default class Role extends Base {
 
   async checkPermission (user_id) {
     const { uid, type } = await MysInfo.getMainUid(this.e, this.game)
-    const GachaUser = Data.readJSON(this.GachaUserPath, { root: true, def: { master: [], ban: [] } })
     if (['ck', 'sk', 'all'].includes(type)) {
       return uid
     }
 
+    const GachaUser = Data.readJSON(this.GachaUserPath(uid), { root: true, def: { master: [], ban: [] } })
     if (GachaUser.master.some?.(item => item == user_id)) {
       return uid
     }
@@ -114,7 +114,7 @@ export default class Role extends Base {
       this.type = type
       this.typeName = typeName
       const { list, ids } = this.readJson(type)
-      const { data = [], err = '', frequently = false, list: List = '' } = await this.getAllLog(params.authkey, ids)
+      const { data = [], err = '', frequently = false, List = '' } = await this.getAllLog(params.authkey, ids)
 
       if (err) {
         msgs.push(err)
@@ -134,11 +134,11 @@ export default class Role extends Base {
       return false
     }
 
-    const user = await Data.readJSON(this.GachaUserPath, { root: true, def: { master: [], ban: [] } })
+    const user = await Data.readJSON(this.GachaUserPath(), { root: true, def: { master: [], ban: [] } })
     if (!user.master.some(item => item == this.e.user_id)) {
       user.master.push(String(this.e.user_id))
       _.pull(user.ban, String(this.e.user_id))
-      Data.writeJSON(this.GachaUserPath, user, { root: true })
+      Data.writeJSON(this.GachaUserPath(), user, { root: true })
     }
 
     const data = {}
@@ -237,6 +237,7 @@ export default class Role extends Base {
 
     if (res?.retcode != 0) {
       if (res?.retcode == -110) return { frequently: true }
+      logger.error(`[UID:${this.uid}] 获取${this.typeName}记录失败`)
       return { err: `获取${this.typeName}记录失败` }
     }
 
@@ -246,10 +247,9 @@ export default class Role extends Base {
     }
 
     /** 获取到uid后重新查询本地记录 */
-    let list = ''
+    let List = ''
     if (!this.uid && ids.size === 0) {
-      this.uid = res.data.list[0].uid;
-      ({ list, ids } = this.readJson(this.type))
+      ({ List, ids } = this.readJson(this.type, res.data.list[0].uid))
     }
 
     let data = []
@@ -270,10 +270,12 @@ export default class Role extends Base {
     const ret = await this.getAllLog(authkey, ids, page, endId)
     data = data.concat(ret.data || [])
 
-    return { data, err: ret.err, list }
+    return { data, err: ret.err, List }
   }
 
-  readJson (type) {
+  readJson (type, uid = '') {
+    if (uid) this.uid = uid
+
     const ids = new Map()
     if (!this.uid) return { list: [], ids }
 

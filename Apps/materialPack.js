@@ -21,8 +21,7 @@ export class gs_MaterialPack extends plugin {
 
   async materialPack () {
     const img = await new Calculator(this.e).getMaterialPack()
-    if (!img) return
-
-    this.reply(img)
+    if (img) this.reply(img)
+    return true
   }
 }

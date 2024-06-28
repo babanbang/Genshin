@@ -32,24 +32,21 @@ export class gs_profile extends plugin {
   /** 更新角色面板 */
   async Refresh () {
     const img = await new Profile(this.e).refresh()
-    if (!img) return
-
-    this.reply(img)
+    if (img) this.reply(img)
+    return true
   }
 
   /** 角色面板列表 */
   async List () {
     const img = await new Profile(this.e).list()
-    if (!img) return
-
-    this.reply(img)
+    if (img) this.reply(img)
+    return true
   }
 
   /** 角色面板 */
   async Detail ({ profile }) {
     const img = await new Profile(this.e).detail(profile)
-    if (!img) return
-
-    this.reply(img)
+    if (img) this.reply(img)
+    return true
   }
 }

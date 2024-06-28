@@ -28,8 +28,7 @@ export class gs_calculator extends plugin {
   /** 养成计算 */
   async count ({ calculator }) {
     const img = await new Calculator(this.e).character_count(calculator)
-    if (!img) return
-
-    this.reply(img)
+    if (img) this.reply(img)
+    return true
   }
 }

@@ -26,9 +26,8 @@ export class gs_role extends plugin {
   /** 角色列表 */
   async roleList ({ refreshTalent = false }) {
     const img = await new Role(this.e).roleList(refreshTalent)
-    if (!img) return
-
-    this.reply(img)
+    if (img) this.reply(img)
+    return true
   }
 
   async refreshTalent () {

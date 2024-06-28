@@ -26,8 +26,7 @@ export class gs_ledger extends plugin {
   /** #sr开拓月历 */
   async ledger () {
     const img = await new Ledger(this.e).get()
-    if (!img) return
-
-    this.reply(img)
+    if (img) this.reply(img)
+    return true
   }
 }

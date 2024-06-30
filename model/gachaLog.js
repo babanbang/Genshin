@@ -213,8 +213,8 @@ export default class Role extends Base {
       list: _.orderBy(list, ['id', 'asc'])
     }
 
-    const save = `temp/${PluginName}/${Data.gamePath(this.game)}GachaData/${this.uid}.json`
-    const savePath = Data.writeJSON(save, uigfData, { root: true })
+    const save = `${Data.gamePath(this.game)}GachaData/${this.uid}.json`
+    const savePath = Data.writeJSON(save, uigfData, { temp: true })
 
     logger.mark(`${this.e.logFnc} 导出成功${this.uid}.json`)
     this.e.reply(`导出成功：${this.uid}.json，共${list.length}条`)
@@ -227,7 +227,7 @@ export default class Role extends Base {
       }
     } catch (err) { }
 
-    Data.delFile(save, { root: true })
+    Data.delFile(save, { temp: true })
   }
 
   async getAllLog (authkey, ids = '', page = 1, endId = 0) {

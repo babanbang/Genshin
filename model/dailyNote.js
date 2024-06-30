@@ -25,15 +25,15 @@ export default class DailyNote extends Base {
 
   async getNoteImgs () {
     const ImgList = []
-    const mysUsers = (await MysInfo.getMysUsers(this.e, this.game)).filter(mysUser => !mysUser.ck && !mysUser.sk)
+    const mysUsers = (await MysInfo.getMysUsers(this.e)).filter(mysUser => !mysUser.ck && !mysUser.sk)
 
     for (const mysUser of mysUsers) {
-      const mys = mysUser.getCkData()
+      const mys = mysUser.getLtuidData()
       const uids = mysUser.getUids(this.game)
 
       for (const uid of uids) {
         let data = {}
-        mysInfo.setMysApi({
+        this.mysInfo.setMysApi({
           uid, ...mys
         })
         if (mys.sk) {
@@ -46,6 +46,12 @@ export default class DailyNote extends Base {
   }
 
   async getWidgetData () {
+
+  }
+
+  async getUserData () {
+    const Roles = await this.mysInfo.getData('getUserGameRolesByStoken')
+
 
   }
 }

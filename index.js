@@ -1,11 +1,13 @@
 import { MysUtil } from '#MysTool/mys'
-import { Cfg, getDir } from '#MysTool/utils'
+import { Cfg, getDir, PluginName } from '#MysTool/utils'
 import './model/mys/ApiMap.js'
 
 MysUtil.addGames('gs', '原神')
 
 const dir = getDir(import.meta.url)
 Cfg.initCfg('/lib/components', dir.name + '/', 'gs')
+
+logger.info(`${PluginName}-${dir.name}初始化~`)
 
 for (const type of ['artifact', 'character', 'material', 'weapon']) {
   await import(`file://${dir.path}/resources/meta/${type}/index.js`)

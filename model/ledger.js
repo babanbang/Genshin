@@ -1,7 +1,7 @@
-import { common } from '#Karin'
 import { MysApi, MysInfo, MysUtil } from '#MysTool/mys'
 import { Base, Data } from '#MysTool/utils'
-import _ from 'lodash'
+import { common } from 'node-karin'
+import lodash from 'lodash'
 import moment from 'moment'
 
 const reg = MysUtil.reg.gs
@@ -130,7 +130,7 @@ export default class Ledger extends Base {
     return {
       uid: this.mysInfo.uid,
       day: `${this.year}年${this.month}月`,
-      icon: _.random(0, 60),
+      icon: lodash.random(0, 60),
       nowDay: moment(new Date()).format('YYYY年MM月DD日 HH:mm:ss'),
       ...ledgerInfo,
       isnowMonth: this.isnowMonth

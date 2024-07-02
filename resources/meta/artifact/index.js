@@ -1,6 +1,6 @@
 import { Meta } from '#MysTool/profile'
 import { Data } from '#MysTool/utils'
-import _ from 'lodash'
+import lodash from 'lodash'
 import { setAbbr, setAlias } from './alias.js'
 import { usefulAttr } from './artis-mark.js'
 import calc from './calc.js'
@@ -10,7 +10,7 @@ const setMeta = Meta.create('gs', 'artiSet')
 const artiMeta = Meta.create('gs', 'arti')
 
 const setIds = {}
-_.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
+lodash.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
   const artiSet = {
     name: ds.name,
     effect: ds.effect,
@@ -18,7 +18,7 @@ _.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
   }
   setMeta.addDataItem(ds.name, artiSet)
 
-  _.forEach(ds.idxs, (as, idx) => {
+  lodash.forEach(ds.idxs, (as, idx) => {
     if (as.name) {
       artiSet.idxs[idx] = as.name
       artiMeta.addDataItem(as.name, {

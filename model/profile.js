@@ -1,7 +1,7 @@
-import { Base } from '#MysTool/utils'
-import { Player, Character } from '#MysTool/profile'
 import { MysInfo } from '#MysTool/mys'
-import _ from 'lodash'
+import { Character, Player } from '#MysTool/profile'
+import { Base } from '#MysTool/utils'
+import lodash from 'lodash'
 
 export default class Profile extends Base {
   constructor (e) {
@@ -19,13 +19,13 @@ export default class Profile extends Base {
 
     if (player._updateAvatar.length > 0) {
       const ret = {}
-      _.forEach(player._updateAvatar, (id) => {
+      lodash.forEach(player._updateAvatar, (id) => {
         let char = Character.get(id)
         if (char) {
           ret[char.name] = true
         }
       })
-      if (!_.isEmpty(ret)) {
+      if (!lodash.isEmpty(ret)) {
         return await this.list(ret)
       }
     }
@@ -43,7 +43,7 @@ export default class Profile extends Base {
 
     const chars = []
     const profiles = player.getProfiles()
-    _.forEach(profiles,
+    lodash.forEach(profiles,
       /** @param {import('#MysTool/profile').Avatar} profile */
       (profile) => {
         const char = profile.char
@@ -56,7 +56,7 @@ export default class Profile extends Base {
           isNew: newChar?.[char.name]
         })
       })
-    if (_.isEmpty(chars)) {
+    if (lodash.isEmpty(chars)) {
       this.e._isReplyed || this.e.reply('请先更新角色面板数据~')
       return false
     }
@@ -64,15 +64,15 @@ export default class Profile extends Base {
     return await this.renderImg({
       uid: player.uid,
       elem: 'hydro',
-      avatars: _.sortBy(chars, ['isNew', 'star', 'id', 'level']),
+      avatars: lodash.sortBy(chars, ['isNew', 'star', 'id', 'level']),
       updateTime: player.getUpdateTime(),
-      hasNew: _.isObject(newChar) && !_.isEmpty(newChar),
+      hasNew: lodash.isObject(newChar) && !lodash.isEmpty(newChar),
       servName: player.getProfileServName()
     })
   }
 
-  async detail (profile) {
-    const player = Player.create(this.e.MysUid, this.game)
+  async detail (uid, profile) {
+    const player = Player.create(uid, this.game)
 
     const data = await player.getProfileDetail(profile)
 

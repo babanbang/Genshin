@@ -21,13 +21,3 @@ git clone --depth=1 https://github.com/babanbang/Genshin.git ./lib/components/Ge
 ```bash
 git clone --depth=1 https://gitee.com/bbaban/Genshin.git ./lib/components/Genshin
 ```
-
-#### 如何使用
-修改karin-plugin-MysTool/config/config/set.yaml
-> (若无此文件请先启动Karin或手动复制karin-plugin-MysTool/config/defSet/set.yaml)
-```yaml
-plugins:
-# 添加以下内容
-  - Genshin
-```
----

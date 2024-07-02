@@ -1,5 +1,6 @@
-import { Base, common } from "#MysTool/utils";
-import { MysInfo } from "#MysTool/mys";
+import { MysInfo } from "#MysTool/mys"
+import { Base } from "#MysTool/utils"
+import { common } from "node-karin"
 
 export default class DailyNote extends Base {
   constructor (e) {

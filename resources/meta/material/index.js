@@ -1,6 +1,6 @@
 import { Meta } from '#MysTool/profile'
 import { Data } from '#MysTool/utils'
-import _ from 'lodash'
+import lodash from 'lodash'
 import { abbr } from './abbr.js'
 import dailyData from './daily.js'
 
@@ -9,7 +9,7 @@ const abbr2 = {}
 
 const citys = ['蒙德', '璃月', '稻妻', '须弥', '枫丹']
 
-_.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
+lodash.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
   let { type, name } = ds
   let tmp = {
     name,
@@ -20,7 +20,7 @@ _.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
   if (type === 'talent' || type === 'weapon') {
     tmp.abbr = (ds.type === 'talent' ? Data.regRet(/「(.+)」/, name, 1) : name.slice(0, 4)) || name
     abbr2[name] = tmp.abbr
-    _.forEach(dailyData[type], (weekData, week) => {
+    lodash.forEach(dailyData[type], (weekData, week) => {
       let cid = weekData.indexOf(tmp.abbr)
       if (cid !== -1) {
         tmp.week = week * 1
@@ -33,7 +33,7 @@ _.forEach(Data.readJSON('data.json', { Path: import.meta.url }), (ds) => {
 
   if (ds.items) {
     tmp.items = {}
-    _.forEach(ds.items, (item) => {
+    lodash.forEach(ds.items, (item) => {
       tmp.items[item.star] = item.name
       ret[item.name] = {
         name: item.name,

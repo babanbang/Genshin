@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import lodash from 'lodash'
 import { Format } from '#MysTool/profile'
 
 export const mainAttr = {
@@ -53,7 +53,7 @@ export const attrPct = {
 }
 
 let anMap = {}
-_.forEach(attrMap, (attr, key) => {
+lodash.forEach(attrMap, (attr, key) => {
   anMap[attr.title] = key
   if (attrPct[key]) {
     // 设置value

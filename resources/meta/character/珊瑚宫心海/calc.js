@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import lodash from 'lodash'
 
 export const details = [{
   check: ({ cons }) => cons < 2,
@@ -28,7 +28,7 @@ export const details = [{
   title: '开Q普攻三段总伤',
   dmg: ({ attr, talent, cons, calc }, dmg) => {
     let ret = { dmg: 0, avg: 0 }
-    _.forEach('一二三'.split(''), (num) => {
+    lodash.forEach('一二三'.split(''), (num) => {
       let dmgRet = dmg(talent.a[`${num}段伤害`], 'a')
       ret.dmg += dmgRet.dmg
       ret.avg += dmgRet.avg

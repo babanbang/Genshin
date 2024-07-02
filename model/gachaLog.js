@@ -1,8 +1,9 @@
 import { MysInfo, MysUtil } from '#MysTool/mys'
 import { Character, Weapon } from '#MysTool/profile'
-import { Base, Cfg, Data, PluginName, common } from '#MysTool/utils'
-import _ from 'lodash'
+import { Base, Cfg, Data, PluginName } from '#MysTool/utils'
+import lodash from 'lodash'
 import moment from 'moment'
+import { common } from 'node-karin'
 import { PoolDetail, mixPoolDetail } from '../resources/gachaPool/pool.js'
 
 const pool = [
@@ -137,12 +138,12 @@ export default class Role extends Base {
     const user = await Data.readJSON(this.GachaUserPath(), { root: true, def: { master: [], ban: [] } })
     if (!user.master.some(item => item == this.e.user_id)) {
       user.master.push(String(this.e.user_id))
-      _.pull(user.ban, String(this.e.user_id))
+      lodash.pull(user.ban, String(this.e.user_id))
       Data.writeJSON(this.GachaUserPath(), user, { root: true })
     }
 
     const data = {}
-    _.forEach(gacha, (val, key) => {
+    lodash.forEach(gacha, (val, key) => {
       Data.writeJSON(this.GachaPath(key), val, { root: true })
       data[key] = { ...this.analyse(val, key), ...pool.find(item => item.type == key) }
     })
@@ -210,7 +211,7 @@ export default class Role extends Base {
         export_app_version: Cfg.package.version,
         uigf_version: 'v2.3'
       },
-      list: _.orderBy(list, ['id', 'asc'])
+      list: lodash.orderBy(list, ['id', 'asc'])
     }
 
     const save = `${Data.gamePath(this.game)}GachaData/${this.uid}.json`
@@ -537,7 +538,7 @@ export default class Role extends Base {
       return { type: 301, typeName: "角色" }
     })
 
-    const orderPool = _.keyBy(pool, 'type')
-    return _.sortBy(_.uniqBy(pools, 'type'), item => orderPool[item.type].type)
+    const orderPool = lodash.keyBy(pool, 'type')
+    return lodash.sortBy(lodash.uniqBy(pools, 'type'), item => orderPool[item.type].type)
   }
 }

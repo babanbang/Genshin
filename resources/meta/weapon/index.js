@@ -1,6 +1,6 @@
 import { Meta } from '#MysTool/profile'
 import { Data } from '#MysTool/utils'
-import _ from 'lodash'
+import lodash from 'lodash'
 import { abbr, alias } from './alias.js'
 import { descFix } from './desc.js'
 import { weaponSet, weaponType } from './extra.js'
@@ -32,10 +32,10 @@ const attr = function (key, start, _step) {
 for (const type in weaponType) {
   // calc
   const typeCalc = (await Data.importDefault(`${type}/calc.js`, { Path })).module
-  _.assign(weaponBuffs, typeCalc(step, attr))
+  lodash.assign(weaponBuffs, typeCalc(step, attr))
 
   // data
-  _.forEach(Data.readJSON(`${type}/data.json`, { Path }), (ds) => {
+  lodash.forEach(Data.readJSON(`${type}/data.json`, { Path }), (ds) => {
     data[ds.id] = {
       id: ds.id,
       name: ds.name,

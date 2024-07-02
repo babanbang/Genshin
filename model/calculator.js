@@ -1,7 +1,8 @@
 import { MysInfo } from '#MysTool/mys'
 import { Character, Material, Meta, Player, Weapon } from '#MysTool/profile'
-import { Base, common } from '#MysTool/utils'
-import _ from 'lodash'
+import { Base } from '#MysTool/utils'
+import { common } from 'node-karin'
+import lodash from 'lodash'
 
 export default class Calculator extends Base {
   constructor (e) {
@@ -34,6 +35,7 @@ export default class Calculator extends Base {
 
   help () {
     this.e.replyForward(common.makeForward(this.tips))
+    return true
   }
 
   /**角色养成计算 */
@@ -99,7 +101,7 @@ export default class Calculator extends Base {
         { min: [1], max: [90, 10, 10, 10] }
       ))
     })
-    _.forEach(AllWeapon.data, (item) => {
+    lodash.forEach(AllWeapon.data, (item) => {
       body.push({
         weapon: this.makeWeaponBody(item, 1, item.star < 3 ? 70 : 90)
       })
@@ -114,7 +116,7 @@ export default class Calculator extends Base {
     const computes = await this.mysInfo.getData('compute', { body, needTime: true, cacheCd: 3600 })
     if (computes?.retcode !== 0) return false
     const { data, resDataTime = '' } = computes
-    const materials = _.fromPairs(Object.values(this.MaterialType).map((type) => [type, []]))
+    const materials = lodash.fromPairs(Object.values(this.MaterialType).map((type) => [type, []]))
     const itemsImgs = { imgs: {}, icons: {} }
 
     data.overall_consume.forEach(item => {
@@ -136,8 +138,8 @@ export default class Calculator extends Base {
       }
     })
 
-    _.forEach(materials, (items) => {
-      items = _.sortBy(items, ['id']).reverse()
+    lodash.forEach(materials, (items) => {
+      items = lodash.sortBy(items, ['id']).reverse()
     })
 
     const player = Player.create(this.mysInfo.uid, this.game)
@@ -154,7 +156,7 @@ export default class Calculator extends Base {
     const MaxSkill = '90,10,10,10,90'.split(',')
     if (!role && set?.[0]) set = ['', '', '', '', set[0]]
 
-    if (_.isEmpty(set)) {
+    if (lodash.isEmpty(set)) {
       return { min: [-1, -1, -1, -1, -1], max: MaxSkill }
     } else {
       const min = [...MaxSkill]
@@ -284,7 +286,7 @@ export default class Calculator extends Base {
       return tem
     })
 
-    const available = _.sortBy(data.available_material.map(val => {
+    const available = lodash.sortBy(data.available_material.map(val => {
       this.checkImg(val)
       return {
         name: val.name,
@@ -341,10 +343,10 @@ export default class Calculator extends Base {
           }
         })
 
-        avatar[key] = _.sortBy(avatar[key], ['level', '_num']).reverse()
+        avatar[key] = lodash.sortBy(avatar[key], ['level', '_num']).reverse()
       }
 
-      const talent = _.keyBy(Object.values(role.detail.talent), 'id')
+      const talent = lodash.keyBy(Object.values(role.detail.talent), 'id')
       if (item.skills_consume?.length > 0) {
         item.skills_consume.forEach((val, i) => {
           const info = {
@@ -361,7 +363,7 @@ export default class Calculator extends Base {
               num: formart(v.num)
             })
           })
-          avatar.skills[info.id] = { info, list: _.sortBy(list, ['level', '_num']).reverse() }
+          avatar.skills[info.id] = { info, list: lodash.sortBy(list, ['level', '_num']).reverse() }
         })
       }
       avatar.skillList.forEach(val => {

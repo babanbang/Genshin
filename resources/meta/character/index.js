@@ -1,6 +1,6 @@
 import { Meta, CharCfg } from '#MysTool/profile'
 import { Data } from '#MysTool/utils'
-import _ from 'lodash'
+import lodash from 'lodash'
 import { alias } from './alias.js'
 import { extraChars, wifeCfg } from './extra.js'
 
@@ -13,7 +13,7 @@ meta.addAlias(alias)
 
 // 添加自定义角色
 // eslint-disable-next-line no-unused-vars
-_.forEach(extraChars, (alias, char) => {
+lodash.forEach(extraChars, (alias, char) => {
   meta.addDataItem(char, {
     id: char,
     name: char
@@ -24,7 +24,7 @@ meta.addAlias(extraChars)
 
 // 添加老婆设置
 const wifeData = {}
-_.forEach(wifeCfg, (txt, type) => {
+lodash.forEach(wifeCfg, (txt, type) => {
   wifeData[type] = wifeData[type] || {}
   Data.eachStr(txt, (name) => {
     let id = meta.getId(name)

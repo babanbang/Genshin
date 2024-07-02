@@ -1,28 +1,14 @@
-import { plugin } from '#Karin'
+import karin from 'node-Karin'
 import { MysUtil } from '#MysTool/mys'
 import Explore from '../model/explore.js'
 
 const reg = MysUtil.reg.gs
-export class gs_explore extends plugin {
-  constructor () {
-    super({
-      name: '原神探索查询',
-      dsc: '原神探索信息查询',
-      event: 'message',
-      priority: 200,
-      rule: [
-        {
-          reg: new RegExp(`^${reg}?(查询)?(体力|树脂)$`, 'i'),
-          fnc: 'Explore'
-        }
-      ]
-    })
-  }
-
-  /** 探险 */
-  async Explore () {
-    const img = await new Explore(this.e).get()
-    if (img) this.reply(img)
+export const explore = karin.command(
+  new RegExp(`^${reg}?(宝箱|成就|尘歌壶|家园|声望|(探险|探索)(度)?)((18|[1-9])[0-9]{8})*$`, 'i'),
+  async (e) => {
+    const img = await new Explore(e).get()
+    if (img) e.reply(img)
     return true
-  }
-}
+  },
+  { name: '原神探索查询', priority: 200 }
+)

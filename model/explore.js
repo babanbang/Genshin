@@ -1,7 +1,7 @@
-import { Base, Cfg, Data } from '#MysTool/utils'
 import { MysInfo } from '#MysTool/mys'
 import { Player } from '#MysTool/profile'
-import _ from 'lodash'
+import { Base, Cfg } from '#MysTool/utils'
+import  lodash  from 'lodash'
 
 export default class Explore extends Base {
   constructor (e) {
@@ -29,11 +29,11 @@ export default class Explore extends Base {
     }
 
     this.all_chest = 0
-    _.forEach(this.lable, (v, i) => {
+    lodash.forEach(this.lable, (v, i) => {
       if (i.includes('_chest')) this.all_chest += v
     })
 
-    this.areaName = _.invert(this.area)
+    this.areaName = lodash.invert(this.area)
   }
 
   async get () {
@@ -52,10 +52,10 @@ export default class Explore extends Base {
 
     const stats = res.data.stats
     let all_chest = 0
-    _.forEach(stats, (v, i) => {
+    lodash.forEach(stats, (v, i) => {
       if (i.includes('_chest') && typeof v === 'number') all_chest += v
     })
-    const percentage = _.round((all_chest / this.all_chest) * 100, 1)
+    const percentage = lodash.round((all_chest / this.all_chest) * 100, 1)
 
     exploreInfo.explores = {
       line: [
@@ -86,7 +86,7 @@ export default class Explore extends Base {
     for (let val of res.data.world_explorations) {
       if ([7, 11, 12, 13].includes(val.id)) continue
 
-      val.name = this.areaName[val.id] ? this.areaName[val.id] : _.truncate(val.name, { length: 6 })
+      val.name = this.areaName[val.id] ? this.areaName[val.id] : lodash.truncate(val.name, { length: 6 })
 
       const tmp = {
         name: val.name,
@@ -108,7 +108,7 @@ export default class Explore extends Base {
         let oidArr = [7]
         if (val.id == 10) oidArr = [13, 12, 11]
         for (let oid of oidArr) {
-          const underground = _.find(res.data.world_explorations, function (o) {
+          const underground = lodash.find(res.data.world_explorations, function (o) {
             return o.id == oid
           })
           if (underground) {
@@ -141,7 +141,7 @@ export default class Explore extends Base {
 
       exploreInfo.world.push(tmp)
     }
-    exploreInfo.homes = _.sample(res.data.homes)
+    exploreInfo.homes = lodash.sample(res.data.homes)
 
     return await this.renderImg(exploreInfo)
   }

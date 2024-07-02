@@ -45,6 +45,7 @@ export default class Combat extends Base {
       if (char) {
         avatar.icon = char.face
         avatar.elem = char.elem
+        delete avatar.image
       } else {
         avatar.elem = avatar.element.toLowerCase()
       }

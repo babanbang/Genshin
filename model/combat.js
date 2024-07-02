@@ -58,7 +58,7 @@ export default class Combat extends Base {
     return await this.renderImg({
       role: player.getData('name,level,face'),
       detail, stat, schedule
-    })
+    }, { nowk: true })
   }
 
   dealTime (time) {

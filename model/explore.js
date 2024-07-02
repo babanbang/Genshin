@@ -1,7 +1,7 @@
 import { MysInfo } from '#MysTool/mys'
 import { Player } from '#MysTool/profile'
 import { Base, Cfg } from '#MysTool/utils'
-import  lodash  from 'lodash'
+import lodash from 'lodash'
 
 export default class Explore extends Base {
   constructor (e) {
@@ -37,7 +37,7 @@ export default class Explore extends Base {
   }
 
   async get () {
-    const res = await MysInfo.get(this.e, 'index')
+    const res = await MysInfo.get(this.e, 'index', { UidType: 'ck' })
     if (res?.retcode !== 0) return false
 
     const exploreInfo = { version: this.lable.version }

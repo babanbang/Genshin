@@ -18,6 +18,13 @@ export default class Role extends Base {
     const player = new Player(this.e.MysUid, this.game)
     player.setBasicData(res.data.role, true)
 
+    if (this.e.selfUid && (!player.name || !player.level || !player.face)) {
+      const ret = await MysInfo.get(this.e, 'index', { UidType: 'ck' })
+      if (res?.retcode === 0) {
+        player.setBasicData(ret.data.role, true)
+      }
+    }
+
     const list = {
       avatars: res.data.avatars
     }

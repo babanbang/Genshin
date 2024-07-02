@@ -24,7 +24,7 @@ export default class Ledger extends Base {
     const { year, month } = this.getMonth()
     if (!this.month) return false
 
-    this.mysInfo = await MysInfo.init({ e: this.e, apis: 'ledger', game: this.game })
+    this.mysInfo = await MysInfo.init({ e: this.e, apis: 'ledger', game: this.game, UidType: 'ck' })
     if (!this.mysInfo?.uid) return false
 
     let ledgerInfo

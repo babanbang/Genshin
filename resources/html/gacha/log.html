@@ -2,11 +2,19 @@
 
 {{block 'css'}}
 <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/gacha/log.css" />
+{{if gachaData.length>1}}
 <style>
   body {
-    width: {{gachaData.length>1?1080:540}}px;
+    width: 1080px;
   }
 </style>
+{{else}}
+<style>
+  body {
+    width: 540px;
+  }
+</style>
+{{/if}}
 {{/block}}
 
 {{block 'main'}}

@@ -31,6 +31,10 @@ ApiTool.setApiMap('gs', function (data) {
       url: `${MysTool.hk4_gacha_api}gacha_info/api/getGachaLog`,
       query: `authkey_ver=1&lang=zh-cn&authkey=${data.authkey}&gacha_type=${data.gacha_type}&page=${data.page}&size=20&end_id=${data.end_id}&game_biz=${this.game_biz}`,
       HeaderType: 'noHeader'
+    },
+    combat: {
+      url: `${MysTool.record_api}game_record/app/genshin/api/role_combat`,
+      query: `need_detail=${data.detail}&role_id=${this.uid}&server=${this.server}`
     }
   }
 }, 'mys')
@@ -66,6 +70,10 @@ ApiTool.setApiMap('gs', function (data) {
       url: `${MysTool.os_hk4_api}gacha_info/api/getGachaLog`,
       query: `authkey_ver=1&lang=zh-cn&authkey=${data.authkey}&gacha_type=${data.gacha_type}&page=${data.page}&size=20&end_id=${data.end_id}&game_biz=${this.game_biz}`,
       HeaderType: 'noHeader'
+    },
+    combat: {
+      url: `${MysTool.record_api}game_record/app/genshin/api/role_combat`,
+      query: `need_detail=${data.detail}&role_id=${this.uid}&server=${this.server}`
     }
   }
 }, 'hoyolab')

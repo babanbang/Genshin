@@ -96,6 +96,8 @@ export default class Role extends Base {
       return false
     }
 
+    this.e.reply(`正在更新UID:${this.mysInfo.uid}的抽卡记录，请稍后...`)
+
     return await this.upLog({
       uid: this.mysInfo.uid,
       authkey: encodeURIComponent(authkeyrow.data.authkey),

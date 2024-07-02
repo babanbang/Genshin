@@ -17,7 +17,7 @@ export default class DailyNote extends Base {
     sendMsg.push(...await this.getNoteImgs())
 
     if (sendMsg.length > 2) {
-      this.e.replyForward(common.makeForward(sendMsg))
+      this.e.bot.sendForwardMessage(this.e.contact, common.makeForward(sendMsg))
     } else {
       _reply(sendMsg)
     }

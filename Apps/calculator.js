@@ -4,7 +4,7 @@ import Calculator from '../model/calculator.js'
 
 export const calculator_help = karin.handler(
   'mys.gs.calculator.help',
-  (e) => new Calculator(e).help(),
+  ({ e }) => new Calculator(e).help(),
   { name: '原神养成计算帮助', priority: 200 }
 )
 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="shortcut icon" href="#" />
+  <title>体力</title>
+  <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/dailyNote/note.css"/>
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="header">
+      <img class="logo" src="{{pluResPath}}html/dailyNote/images/原神.png">
+      <h1>UID: {{uid}}</h1>
+      <p class="date">{{dayMb2}}</p>
+       <img class="logos" src="{{pluResPath}}html/dailyNote/images/米游社.png">
+      <p style="color: {{if !has_signed}}#DE4848{{/if}}">
+        今日签到福利{{if has_signed}}已{{else}}尚未{{/if}}领取
+      </p>
+    </div>
+    <div class="resin">
+      <img class="icon icon-树脂" src="{{pluResPath}}html/dailyNote/images/树脂.png">
+      <p>原粹树脂</p>
+      <div class="num"><strong
+          style="color: {{if resinMaxTime}}#F39000{{else}}#71B755{{/if}};">{{current_resin}}</strong>/{{max_resin}}
+      </div>
+      <div class="status">
+        {{if resinMaxTimeMb2}}
+        <div class="status-title">预计恢复时间</div>
+        <div class="status-date">
+          {{resinMaxTimeMb2Day}}<span class="time"> {{resinMaxTimeMb2}}</span>
+        </div>
+        {{else}}
+        <div class="status-whole">已全部恢复</div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="list">
+      <div class="item">
+        <img class="icon icon-宝钱" src="{{pluResPath}}html/dailyNote/images/宝钱.png">
+        <div class="title">洞天财瓮<span>{{current_home_coin}}<span1 style="font-size:16px"> /{{max_home_coin}}</span1></span></div>
+      </div>
+      <div class="img-line"></div>
+      <div class="item">
+        <img class="icon icon-委托" src="{{pluResPath}}html/dailyNote/images/委托.png">
+        <div class="title">每日委托
+          {{if is_extra_task_reward_received}}
+          <span>已全部领取</span>
+          {{/if}}
+          {{if !is_extra_task_reward_received}}
+          <span {{if !is_extra_task_reward_received}} style="color: #DE4848"{{/if}}>{{finished_task_num}}<span1 style="font-size:16px"> /{{total_task_num}}</span1></span>
+          {{/if}}
+        </div>
+      </div>
+      <div class="img-line"></div>
+      <div class="item">
+        <img class="icon icon-派遣" src="{{pluResPath}}html/dailyNote/images/派遣.png">
+        <div class="title">探索派遣<span>{{current_expedition_num}}<span1 style="font-size:16px"> /{{max_expedition_num}}</span1></span></div>
+      </div>
+      <div class="role">
+        <div class="icon icon-star1"></div>
+        <div class="icon icon-star2"></div>
+        {{if expeditions.length < 1}}<p>尚未进行探索派遣</p>{{/if}}
+          {{each expeditions val}}
+          <div class="avatar">
+            <img class="status"
+              src="{{if val.status == 'Ongoing'}}{{pluResPath}}html/dailyNote/images/ing.png{{else}}{{pluResPath}}html/dailyNote/images/ok.png{{/if}}">
+            <img class="icon" src="{{val.avatar_side_icon}}" style="z-index=2;">
+            {{if val.status !== 'Ongoing'}}<img class="ok" src="{{pluResPath}}html/dailyNote/images/完成.png"
+              style="z-index=3;">{{/if}}
+          </div>
+          {{/each}}
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

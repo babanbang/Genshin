@@ -35,6 +35,14 @@ ApiTool.setApiMap('gs', function (data) {
     combat: {
       url: `${MysTool.record_api}game_record/app/genshin/api/role_combat`,
       query: `need_detail=${data.detail}&role_id=${this.uid}&server=${this.server}`
+    },
+    dailyNote: {
+      url: `${MysTool.record_api}game_record/app/genshin/api/dailyNote`,
+      query: `role_id=${this.uid}&server=${this.server}`
+    },
+    widget: {
+      url: `${MysTool.record_api}game_record/genshin/aapi/widget/v2`,
+      HeaderType: 'Action'
     }
   }
 }, 'mys')
@@ -74,7 +82,11 @@ ApiTool.setApiMap('gs', function (data) {
     combat: {
       url: `${MysTool.record_api}game_record/app/genshin/api/role_combat`,
       query: `need_detail=${data.detail}&role_id=${this.uid}&server=${this.server}`
-    }
+    },
+    dailyNote: {
+      url: `${MysTool.os_record_api}game_record/genshin/api/dailyNote`,
+      query: `role_id=${this.uid}&server=${this.server}`
+    },
   }
 }, 'hoyolab')
 

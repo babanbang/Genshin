@@ -88,8 +88,9 @@ export default class Role extends Base {
 
     const authkeyrow = await this.mysInfo.getData('authKey', {
       auth_appid: 'webview_gacha',
-      cacheCd: 3600
-    })
+      cacheCd: 3600,
+      option: { nolog: true }
+    }, false)
 
     if (!authkeyrow?.data?.authkey) {
       this.e.reply(`uid:${this.mysInfo.uid},authkey获取失败：` + (authkeyrow?.message?.includes?.("登录失效") ? "请重新绑定stoken" : authkeyrow?.message))

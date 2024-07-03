@@ -1,4 +1,4 @@
-import karin from 'node-Karin'
+import karin from 'node-karin'
 import GachaLog from '../model/gachaLog.js'
 import { MysUtil } from '#MysTool/mys'
 

@@ -1,4 +1,4 @@
-import karin from 'node-Karin'
+import karin from 'node-karin'
 import { MysUtil } from '#MysTool/mys'
 import Role from '../model/role.js'
 

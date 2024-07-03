@@ -21,3 +21,18 @@ git clone --depth=1 https://github.com/babanbang/Genshin.git ./lib/components/Ge
 ```bash
 git clone --depth=1 https://gitee.com/bbaban/Genshin.git ./lib/components/Genshin
 ```
+
+---
+
+#### 已完成功能
+
+- [x] 前瞻兑换码
+- [x] 探索查询
+- [x] 角色列表查询
+- [x] 幻想真镜剧诗查询
+- [x] 体力查询
+- [x] 游戏背包素材查询
+- [x] 旅行者札记查询
+- [x] 角色养成计算查询
+- [x] 角色面板更新、查询
+- [x] 祈愿记录更新、查询、导出

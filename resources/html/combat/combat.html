@@ -17,8 +17,10 @@
 </div>
 
 <div class="paneal_box">
-  <div class="paneal-title">{{difficulty[stat.difficulty_id]}}模式<span
-      class="heraldry h{{stat.heraldry}}">{{stat.start_time}}</span></div>
+  <div class="paneal-title">{{difficulty[stat.difficulty_id]}}模式
+    <span class="heraldry h{{stat.heraldry}}">{{stat.start_time}}</span>
+  </div>
+  <div class="paneal_time">统计周期：{{schedule.start}}-{{schedule.end}}</div>
   <div class="paneal">
     <div class="paneal_txt">
       最佳记录<strong>第{{stat.max_round_id}}幕</strong>

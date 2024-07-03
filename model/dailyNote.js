@@ -156,15 +156,6 @@ export default class DailyNote extends Base {
       ImgData.resinMaxTime = resinMaxTime
     }
 
-    /** 派遣 */
-    data.expeditions.forEach(val => {
-      if (String(val.status) === 'Finished') {
-        val.percentage = 100
-      } else {
-        val.percentage = 50
-      }
-    })
-
     if (widget && data.expeditions?.length >= 1) {
       let remainedTime = lodash(data.expeditions).map('remained_time').min()
 

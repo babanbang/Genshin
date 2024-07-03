@@ -18,7 +18,7 @@ export const dailyNoteAll = karin.handler(
 
 // export const Task = karin.task(
 //   '原神体力推送任务',
-//   Cfg.getConfig('cron', 'sign').dailyNoteTask || '0 * * * * ?',
+//   Cfg.getConfig('cron', 'gs').dailyNoteTask || '0 * * * * ?',
 //   () => {
 //     new DailyNote().dailyNoteTask()
 //     return true

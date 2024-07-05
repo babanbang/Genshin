@@ -29,7 +29,7 @@ ApiTool.setApiMap('gs', function (data) {
     },
     /** 祈愿记录 */
     gacha: {
-      url: `${MysTool.hk4_gacha_api}gacha_info/api/getGachaLog`,
+      url: `${MysTool.hk4e_gacha_api}gacha_info/api/getGachaLog`,
       query: `authkey_ver=1&lang=zh-cn&authkey=${data.authkey}&gacha_type=${data.gacha_type}&page=${data.page}&size=20&end_id=${data.end_id}&game_biz=${this.game_biz}`,
       HeaderType: 'noHeader'
     },
@@ -54,15 +54,15 @@ ApiTool.setApiMap('gs', function (data) {
 ApiTool.setApiMap('gs', function (data) {
   return {
     index: {
-      url: `${MysTool.os_record_api}game_record/app/genshin/api/index`,
+      url: `${MysTool.os_record_api}game_record/genshin/api/index`,
       query: `role_id=${this.uid}&server=${this.server}`
     },
     character: {
-      url: `${MysTool.os_record_api}game_record/app/genshin/api/character`,
+      url: `${MysTool.os_record_api}game_record/genshin/api/character`,
       body: { role_id: this.uid, server: this.server }
     },
     spiralAbyss: {
-      url: `${MysTool.os_record_api}game_record/app/genshin/api/spiralAbyss`,
+      url: `${MysTool.os_record_api}game_record/genshin/api/spiralAbyss`,
       query: `role_id=${this.uid}&schedule_type=${data.schedule_type || 1}&server=${this.server}`
     },
     detail: {
@@ -79,7 +79,7 @@ ApiTool.setApiMap('gs', function (data) {
       HeaderType: 'noHeader'
     },
     combat: {
-      url: `${MysTool.record_api}game_record/app/genshin/api/role_combat`,
+      url: `${MysTool.record_api}game_record/genshin/api/role_combat`,
       query: `need_detail=${data.detail}&role_id=${this.uid}&server=${this.server}`
     },
     dailyNote: {

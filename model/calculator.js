@@ -298,7 +298,7 @@ export default class Calculator extends Base {
     const talentKey = ['a', 'e', 'q']
     data.items.forEach((item, idx) => {
       const [role1, body] = avatarData[idx]
-      const role = Character.get(role1._id, 'gs')
+      const role = Character.get(role1._id, this.game)
 
       const avatar = {
         name: role?.name,

@@ -29,7 +29,7 @@ export default class Combat extends Base {
 
     detail.rounds_data.forEach(round => {
       round.avatars.forEach(avatar => {
-        const char = Character.get(avatar)
+        const char = Character.get(avatar, this.game)
         if (char) {
           avatar.icon = char.face
           avatar.elem = char.elem
@@ -41,7 +41,7 @@ export default class Combat extends Base {
     })
 
     detail.backup_avatars.forEach(avatar => {
-      const char = Character.get(avatar)
+      const char = Character.get(avatar, this.game)
       if (char) {
         avatar.icon = char.face
         avatar.elem = char.elem

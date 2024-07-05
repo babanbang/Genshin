@@ -20,7 +20,7 @@ export default class Profile extends Base {
     if (player._updateAvatar.length > 0) {
       const ret = {}
       lodash.forEach(player._updateAvatar, (id) => {
-        let char = Character.get(id)
+        let char = Character.get(id, this.game)
         if (char) {
           ret[char.name] = true
         }

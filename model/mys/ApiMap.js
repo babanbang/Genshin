@@ -100,16 +100,6 @@ ApiTool.setApiMap('gs', function (data) {
     avatarSkill: {
       url: `${MysTool.web_api}event/e20200928calculate/v1/avatarSkill/list`,
       query: `avatar_id=${data.avatar_id}`
-    },
-    authKey: {
-      url: `${MysTool.web_api}binding/api/genAuthKey`,
-      body: {
-        'auth_appid': data.auth_appid ?? 'webview_gacha',
-        'game_biz': 'hk4e_cn',
-        'game_uid': this.uid * 1,
-        'region': this.server,
-      },
-      HeaderType: 'authKey'
     }
   }
 }, 'other')

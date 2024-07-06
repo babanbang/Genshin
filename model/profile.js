@@ -12,7 +12,10 @@ export default class Profile extends Base {
   async refresh () {
     this.model = 'profile/list'
     this.e.MysUid = this.e.MysUid || await new MysInfo(this.e).getUid()
-    if (!this.e.MysUid) return false
+    if (!this.e.MysUid) {
+      this.e.reply('请先绑定原神UID~')
+      return false
+    }
 
     const player = Player.create(this.e.MysUid, this.game)
     await player.refreshProfile(this.e)
@@ -37,7 +40,10 @@ export default class Profile extends Base {
   async list (newChar = {}) {
     this.model = 'profile/list'
     this.e.MysUid = this.e.MysUid || await new MysInfo(this.e).getUid()
-    if (!this.e.MysUid) return false
+    if (!this.e.MysUid) {
+      this.e.reply('请先绑定原神UID~')
+      return false
+    }
 
     const player = Player.create(this.e.MysUid, this.game)
 

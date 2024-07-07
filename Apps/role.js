@@ -12,7 +12,7 @@ async function roleList (e, refreshTalent = false) {
 }
 
 export const role_List = karin.command(
-  new RegExp(`^${reg}?(角色|查询|查询角色|角色查询)((18|[1-9])[0-9]{8})*$|^${reg}?uid(\\+|\\s)*(18|[1-9])[0-9]{8}$|^#(18|[1-9])[0-9]{8}`, 'i'),
+  new RegExp(`^${reg}?(角色|查询角色|角色查询)((18|[1-9])[0-9]{8})*$`, 'i'),
   async (e) => await roleList(e),
   { name: '原神角色信息查询', priority: 200 }
 )

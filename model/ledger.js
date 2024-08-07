@@ -15,7 +15,7 @@ export default class Ledger extends Base {
     this.nowMonth = new Date().getMonth() + 1
     this.monthArr = [11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].splice(this.nowMonth - 1, 3)
 
-    this.color = ['#73a9c6', '#d56565', '#70b2b4', '#bd9a5a', '#739970', '#7a6da7', '#597ea0']
+    this.color = ['#73a9c6', '#d56565', '#70b2b4', '#bd9a5a', '#739970', '#7a6da7', '#597ea0', '#AFEEEE']
   }
   /** @type {MysInfo} */
   mysInfo

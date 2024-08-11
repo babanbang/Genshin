@@ -12,7 +12,7 @@ export const dailyNote = karin.command(
 
 export const dailyNoteAll = karin.handler(
   'mys.gs.dailyNote',
-  async (e) => await new DailyNote(e).getNoteImgs(this.e.user_id),
+  async (e) => await new DailyNote(e).getNoteImgs(e.user_id),
   { priority: 200 }
 )
 

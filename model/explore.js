@@ -25,7 +25,8 @@ export default class Explore extends Base {
       '沉玉谷·南陵': 12,
       // eslint-disable-next-line quote-props
       '沉玉谷·上谷': 13,
-      旧日之海: 14
+      旧日之海: 14,
+      纳塔: 15
     }
 
     this.all_chest = 0

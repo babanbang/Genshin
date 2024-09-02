@@ -25,7 +25,8 @@ export default class Explore extends Base {
       '沉玉谷·南陵': 12,
       // eslint-disable-next-line quote-props
       '沉玉谷·上谷': 13,
-      旧日之海: 14
+      旧日之海: 14,
+      纳塔: 15
     }
 
     this.all_chest = 0
@@ -65,20 +66,22 @@ export default class Explore extends Base {
         { lable: '宝箱获取率', num: percentage + '%' }
       ],
       other: [
-        { lable: '成就达成数', num: stats.achievement_number, extra: this.lable.achievement },
         { lable: '获得角色数', num: stats.avatar_number, extra: this.lable.avatar },
+        { lable: '满好感角色数', num: stats.full_fetter_avatar_num, extra: this.lable.avatar },
+        { lable: '成就达成数', num: stats.achievement_number, extra: this.lable.achievement },
         { lable: '解锁秘境', num: stats.domain_number, extra: this.lable.domain },
-        { lable: '水神瞳', num: stats.hydroculus_number, extra: this.lable.hydroculus },
+        { lable: '火神瞳', num: stats.pyroculus_number, extra: this.lable.pyroculus },
         { lable: '风神瞳', num: stats.anemoculus_number, extra: this.lable.anemoculus },
         { lable: '岩神瞳', num: stats.geoculus_number, extra: this.lable.geoculus },
         { lable: '雷神瞳', num: stats.electroculus_number, extra: this.lable.electroculus },
         { lable: '草神瞳', num: stats.dendroculus_number, extra: this.lable.dendroculus },
-        { lable: '总宝箱', num: all_chest, extra: this.all_chest },
+        { lable: '水神瞳', num: stats.hydroculus_number, extra: this.lable.hydroculus },
         { lable: '华丽宝箱', num: stats.luxurious_chest_number, extra: this.lable.luxurious_chest },
         { lable: '珍贵宝箱', num: stats.precious_chest_number, extra: this.lable.precious_chest },
         { lable: '精致宝箱', num: stats.exquisite_chest_number, extra: this.lable.exquisite_chest },
         { lable: '普通宝箱', num: stats.common_chest_number, extra: this.lable.common_chest },
-        { lable: '奇馈宝箱', num: stats.magic_chest_number, extra: this.lable.magic_chest }
+        { lable: '奇馈宝箱', num: stats.magic_chest_number, extra: this.lable.magic_chest },
+        { lable: '总宝箱', num: all_chest, extra: this.all_chest }
       ]
     }
 

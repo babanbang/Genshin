@@ -1,9 +1,9 @@
 # 当前版本
-version: 4.8
+version: 5.0
 # 成就
-achievement: 1226
+achievement: 1358
 # 角色数
-avatar: 85
+avatar: 86
 # 等级
 level: 60
 # 奇馈宝箱
@@ -30,3 +30,5 @@ electroculus: 181
 dendroculus: 271
 # 水神瞳
 hydroculus: 271
+# 火神瞳
+pyroculus: 108

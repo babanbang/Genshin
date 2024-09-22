@@ -1,0 +1,48 @@
+import { GsWeaponType } from "karin-plugin-mystool"
+import { WeaponMapType } from "@/types"
+
+export const BowMap: WeaponMapType = {
+	type: GsWeaponType.bow,
+	list: [
+		{ id: 15101, rarity: 1, name: "猎弓" },
+		{ id: 15201, rarity: 2, name: "历练的猎弓" },
+		{ id: 15301, rarity: 3, name: "鸦羽弓" },
+		{ id: 15302, rarity: 3, name: "神射手之誓" },
+		{ id: 15303, rarity: 3, name: "反曲弓" },
+		{ id: 15304, rarity: 3, name: "弹弓" },
+		{ id: 15305, rarity: 3, name: "信使" },
+		{ id: 15306, rarity: 3, name: "黑檀弓" },
+		{ id: 15401, rarity: 4, name: "西风猎弓" },
+		{ id: 15402, rarity: 4, name: "绝弦" },
+		{ id: 15403, rarity: 4, name: "祭礼弓" },
+		{ id: 15404, rarity: 4, name: "宗室长弓" },
+		{ id: 15405, rarity: 4, name: "弓藏" },
+		{ id: 15406, rarity: 4, name: "试作澹月" },
+		{ id: 15407, rarity: 4, name: "钢轮弓" },
+		{ id: 15408, rarity: 4, name: "黑岩战弓" },
+		{ id: 15409, rarity: 4, name: "苍翠猎弓" },
+		{ id: 15410, rarity: 4, name: "暗巷猎手" },
+		{ id: 15411, rarity: 4, name: "落霞" },
+		{ id: 15412, rarity: 4, name: "幽夜华尔兹" },
+		{ id: 15413, rarity: 4, name: "风花之颂" },
+		{ id: 15414, rarity: 4, name: "破魔之弓" },
+		{ id: 15415, rarity: 4, name: "掠食者" },
+		{ id: 15416, rarity: 4, name: "曚云之月" },
+		{ id: 15417, rarity: 4, name: "王下近侍" },
+		{ id: 15418, rarity: 4, name: "竭泽" },
+		{ id: 15419, rarity: 4, name: "鹮穿之喙" },
+		{ id: 15424, rarity: 4, name: "烈阳之嗣" },
+		{ id: 15425, rarity: 4, name: "静谧之曲" },
+		{ id: 15426, rarity: 4, name: "筑云" },
+		{ id: 15427, rarity: 4, name: "测距规" },
+		{ id: 15501, rarity: 5, name: "天空之翼" },
+		{ id: 15502, rarity: 5, name: "阿莫斯之弓" },
+		{ id: 15503, rarity: 5, name: "终末嗟叹之诗" },
+		{ id: 15507, rarity: 5, name: "冬极白星" },
+		{ id: 15508, rarity: 5, name: "若水" },
+		{ id: 15509, rarity: 5, name: "飞雷之弦振" },
+		{ id: 15511, rarity: 5, name: "猎人之径" },
+		{ id: 15512, rarity: 5, name: "最初的大魔术" },
+		{ id: 15513, rarity: 5, name: "白雨心弦" }
+	]
+}

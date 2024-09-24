@@ -35,6 +35,7 @@ export const BowMap: WeaponMapType = {
 		{ id: 15425, rarity: 4, name: "静谧之曲" },
 		{ id: 15426, rarity: 4, name: "筑云" },
 		{ id: 15427, rarity: 4, name: "测距规" },
+		{ id: 15431, rarity: 4, name: "碎链" },
 		{ id: 15501, rarity: 5, name: "天空之翼" },
 		{ id: 15502, rarity: 5, name: "阿莫斯之弓" },
 		{ id: 15503, rarity: 5, name: "终末嗟叹之诗" },

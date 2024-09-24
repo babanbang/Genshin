@@ -31,6 +31,8 @@ export const CatalystMap: WeaponMapType = {
 		{ id: 14424, rarity: 4, name: "遗祀玉珑" },
 		{ id: 14425, rarity: 4, name: "纯水流华" },
 		{ id: 14426, rarity: 4, name: "无垠蔚蓝之歌" },
+		{ id: 14427, rarity: 4, name: "苍纹角杯" },
+		{ id: 14431, rarity: 4, name: "木棉之环" },
 		{ id: 14501, rarity: 5, name: "天空之卷" },
 		{ id: 14502, rarity: 5, name: "四风原典" },
 		{ id: 14504, rarity: 5, name: "尘世之锁" },
@@ -41,6 +43,7 @@ export const CatalystMap: WeaponMapType = {
 		{ id: 14512, rarity: 5, name: "图莱杜拉的回忆" },
 		{ id: 14513, rarity: 5, name: "金流监督" },
 		{ id: 14514, rarity: 5, name: "万世流涌大典" },
-		{ id: 14515, rarity: 5, name: "鹤鸣余音" }
+		{ id: 14515, rarity: 5, name: "鹤鸣余音" },
+		{ id: 14516, rarity: 5, name: "冲浪时光" }
 	]
 }

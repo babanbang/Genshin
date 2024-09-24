@@ -17,22 +17,24 @@ type attrParams = {
 	}
 }
 
+type weaponParams = { id: number, affix: number }
+
 export interface CalcRuleDetailDmgParams {
-	ds: { talent: talentParams, calc: calcFunc, attr: attrParams, weapon: { id: number, affix: number }, cons: number },
+	ds: { talent: talentParams, calc: calcFunc, attr: attrParams, weapon: weaponParams, cons: number },
 	Func: {
 		heal: (ds: number) => CalcRuleDetailFuncRet
 		shield: (ds: number) => CalcRuleDetailFuncRet
 		reaction: (type: DmgTypes) => CalcRuleDetailFuncRet
-		dmg: (ds: number, talent: GsTalentType | [GsTalentType, number], type?: DmgTypes) => CalcRuleDetailFuncRet
-		basic: (ds: number, talent?: GsTalentType | [GsTalentType, number], type?: DmgTypes) => CalcRuleDetailFuncRet
-		dynamic: (ds: number, talent: GsTalentType | [GsTalentType, number], ds2: { dynamicPhy?: number, dynamicCpct?: number, dynamicDmg?: number }, type?: DmgTypes) => CalcRuleDetailFuncRet
+		dmg: (ds: number, talent: GsTalentType | [GsTalentType, number | 'nightsoul'], type?: DmgTypes) => CalcRuleDetailFuncRet
+		basic: (ds: number, talent?: GsTalentType | [GsTalentType, number | 'nightsoul'], type?: DmgTypes) => CalcRuleDetailFuncRet
+		dynamic: (ds: number, talent: GsTalentType | [GsTalentType, number | 'nightsoul'], ds2: { dynamicPhy?: number, dynamicCpct?: number, dynamicDmg?: number }, type?: DmgTypes) => CalcRuleDetailFuncRet
 	}
 }
 
 interface CalcRuleDetail {
 	title: string
 	/** 满足条件才计算 */
-	check?: (ds: { cons: number, calc: calcFunc, attr: attrParams }) => boolean
+	check?: (ds: { cons: number, calc: calcFunc, attr: attrParams, weapon: weaponParams }) => boolean
 	params?: { [key: string]: number | boolean }
 	dmg: (ds: CalcRuleDetailDmgParams['ds'], Func: CalcRuleDetailDmgParams['Func']) => CalcRuleDetailFuncRet
 }
@@ -53,9 +55,9 @@ interface CalcRuleBuff {
 }
 
 export interface CharCalcRuleType {
-	details: (CalcRuleDetail | ((ds: { cons: number, weapon: { id: number, affix: number } }) => CalcRuleDetail))[]
+	details: (CalcRuleDetail | ((ds: { cons: number, weapon: weaponParams }) => CalcRuleDetail))[]
 	buffs: (CalcRuleBuff | ((ds: { cons: number }) => CalcRuleBuff))[]
-	defParams?: (ds: { weapon: { id: number, affix: number } }) => { [key: string]: number | boolean }
+	defParams?: (ds: { weapon: weaponParams }) => { [key: string]: number | boolean }
 	mainAttr: AttrKeys[]
 	defDmgIdx: number
 	createdBy?: string

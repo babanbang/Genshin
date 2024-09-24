@@ -6,6 +6,9 @@ export const enum MaterialType {
 	normal = 'normal',
 	/** 天赋材料 */
 	talent = 'talent',
+	/** 武器材料 */
+	weapon = 'weapon',
 	/** 周本材料 */
-	weekly = 'weekly'
+	weekly = 'weekly',
+	monster = 'monster'
 }

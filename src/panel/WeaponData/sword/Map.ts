@@ -38,6 +38,7 @@ export const SwordMap: WeaponMapType = {
 		{ id: 11426, rarity: 4, name: "灰河渡手" },
 		{ id: 11427, rarity: 4, name: "船坞长剑" },
 		{ id: 11428, rarity: 4, name: "水仙十字之剑" },
+		{ id: 11431, rarity: 4, name: "息燧之笛" },
 		{ id: 11501, rarity: 5, name: "风鹰剑" },
 		{ id: 11502, rarity: 5, name: "天空之刃" },
 		{ id: 11503, rarity: 5, name: "苍古自由之誓" },

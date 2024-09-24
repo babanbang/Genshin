@@ -1394,6 +1394,70 @@ export const charList: CharBaseInfo<GameList.Gs>[] = [
 		])
 	},
 	{
+		id: 10000099,
+		name: "艾梅莉埃",
+		rarity: 5,
+		elem: GsElement.dendro,
+		weapon: GsWeaponType.polearm,
+		talentId: new Map([
+			[10991, GsTalentType.a],
+			[10992, GsTalentType.e],
+			[10995, GsTalentType.q]
+		]),
+		talentCons: new Map([
+			[GsTalentType.e, [3, 3]],
+			[GsTalentType.q, [5, 3]]
+		])
+	},
+	{
+		id: 10000100,
+		name: "卡齐娜",
+		rarity: 4,
+		elem: GsElement.geo,
+		weapon: GsWeaponType.polearm,
+		talentId: new Map([
+			[11001, GsTalentType.a],
+			[11002, GsTalentType.e],
+			[11005, GsTalentType.q]
+		]),
+		talentCons: new Map([
+			[GsTalentType.e, [3, 3]],
+			[GsTalentType.q, [5, 3]]
+		])
+	},
+	{
+		id: 10000101,
+		name: "基尼奇",
+		rarity: 5,
+		elem: GsElement.dendro,
+		weapon: GsWeaponType.claymore,
+		talentId: new Map([
+			[11011, GsTalentType.a],
+			[11012, GsTalentType.e],
+			[11015, GsTalentType.q]
+		]),
+		talentCons: new Map([
+			[GsTalentType.e, [3, 3]],
+			[GsTalentType.q, [5, 3]]
+		])
+	},
+	{
+		id: 10000102,
+		name: "玛拉妮",
+		rarity: 5,
+		elem: GsElement.dendro,
+		weapon: GsWeaponType.polearm,
+		talentId: new Map([
+			[30000, GsTalentType.a],
+			[30002, GsTalentType.e],
+			[30007, GsTalentType.q]
+		]),
+		talentCons: new Map([
+			[GsTalentType.e, [3, 3]],
+			[GsTalentType.q, [5, 3]]
+		])
+	},
+	{
 		id: 20000000,
 		name: "旅行者",
 		rarity: 5,

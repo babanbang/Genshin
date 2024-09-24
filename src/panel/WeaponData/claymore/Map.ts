@@ -33,12 +33,14 @@ export const ClaymoreMap: WeaponMapType = {
 		{ id: 12425, rarity: 4, name: "浪影阔剑" },
 		{ id: 12426, rarity: 4, name: "「究极霸王超级魔剑」" },
 		{ id: 12427, rarity: 4, name: "便携动力锯" },
+		{ id: 12431, rarity: 4, name: "撼地者" },
 		{ id: 12501, rarity: 5, name: "天空之傲" },
 		{ id: 12502, rarity: 5, name: "狼的末路" },
 		{ id: 12503, rarity: 5, name: "松籁响起之时" },
 		{ id: 12504, rarity: 5, name: "无工之剑" },
 		{ id: 12510, rarity: 5, name: "赤角石溃杵" },
 		{ id: 12511, rarity: 5, name: "苇海信标" },
-		{ id: 12512, rarity: 5, name: "裁断" }
+		{ id: 12512, rarity: 5, name: "裁断" },
+		{ id: 12513, rarity: 5, name: "山王长牙" }
 	]
 }

@@ -2,6 +2,7 @@ import { WeaponBuffFunc } from "@/types"
 import { GsElement } from "karin-plugin-mystool"
 
 export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
+	/** 冷刃 */
 	11301: [{
 		check: ({ elem }) => [GsElement.hydro, GsElement.cryo].some(e => e === elem),
 		title: '对处于水或冰元素影响的敌人伤害提高[dmg]%',
@@ -10,12 +11,14 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			phy: step(12)
 		}
 	}],
+	/** 黎明神剑 */
 	11302: [{
 		title: '生命值高于90%时，暴击率提升[cpct]%',
 		refine: {
 			cpct: step(14)
 		}
 	}],
+	/** 暗铁剑 */
 	11304: [{
 		check: ({ elem }) => elem === GsElement.electro,
 		title: '触发雷元素相关反应后攻击力提高[atkPct]%',
@@ -23,12 +26,14 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			atkPct: step(20)
 		}
 	}],
+	/** 飞天御剑 */
 	11306: [{
 		title: '施放元素爆发后，提高[atkPct]%的攻击力',
 		refine: {
 			atkPct: step(12)
 		}
 	}],
+	/** 宗室长剑 */
 	11404: [{
 		title: '3层Buff下，暴击率提高[cpct]%',
 		buffCount: 3,
@@ -36,6 +41,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			cpct: step(8)
 		}
 	}],
+	/** 匣里龙吟 */
 	11405: [{
 		check: ({ elem }) => [GsElement.pyro, GsElement.electro].some(e => e === elem),
 		title: '对处于火元素或雷元素影响下的敌人，造成的伤害提高[dmg]%',
@@ -44,6 +50,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			phy: step(20, 4)
 		}
 	}],
+	/** 试作斩岩 */
 	11406: [{
 		title: '满Buff提高攻击力及防御力[atkPct]%',
 		buffCount: 4,
@@ -52,6 +59,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			defPct: step(4)
 		}
 	}],
+	/** 铁蜂刺 */
 	11407: [{
 		title: '满Buff伤害提高[dmg]%',
 		buffCount: 2,
@@ -60,6 +68,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			phy: step(6)
 		}
 	}],
+	/** 黑岩长剑 */
 	11408: [{
 		title: '满Buff攻击力提高[atkPct]%',
 		buffCount: 3,
@@ -67,6 +76,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			atkPct: step(12)
 		}
 	}],
+	/** 黑剑 */
 	11409: [{
 		title: '普攻与重击的造成的伤害提升[aDmg]%',
 		refine: {
@@ -74,6 +84,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			a2Dmg: step(20)
 		}
 	}],
+	/** 暗巷闪光 */
 	11410: [{
 		title: '角色造成的伤害提升[dmg]%',
 		refine: {
@@ -81,12 +92,14 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			phy: step(12)
 		}
 	}],
+	/** 降临之剑 */
 	11412: [{
 		title: '旅行者攻击力提高[atkPlus]',
 		data: {
 			atkPlus: 66
 		}
 	}],
+	/** 腐殖之剑 */
 	11413: [{
 		title: '元素战技的伤害增加[eDmg]%，暴击率提高[eCpct]%',
 		refine: {
@@ -94,6 +107,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			eCpct: step(6)
 		}
 	}],
+	/** 辰砂之纺锤 */
 	11415: [{
 		title: '元素战技造成的伤害值提高[ePlus]',
 		sort: 9,
@@ -101,18 +115,21 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			ePlus: ({ attr, calc, refine }) => calc(attr.def) * step(40)[refine] / 100
 		}
 	}],
+	/** 笼钓瓶一心 */
 	11416: [{
 		title: '触发效果时攻击力提升[atkPct]%',
 		refine: {
 			atkPct: step(15)
 		}
 	}],
+	/** 原木刀 */
 	11417: [{
 		title: '拾取种识之叶的角色元素精通提升[mastery]',
 		refine: {
 			mastery: step(60)
 		}
 	}],
+	/** 西福斯的月光 */
 	11418: [{
 		title: '基于元素精通，提升[recharge]%元素充能效率',
 		sort: 6,
@@ -120,6 +137,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			recharge: ({ attr, calc, refine }) => calc(attr.mastery) * step(0.036)[refine]
 		}
 	}],
+	/** 狼牙 */
 	11424: [{
 		title: '元素战技与元素爆发造成的伤害提升[eDmg]%',
 		refine: {
@@ -132,7 +150,8 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			eCpct: step(8),
 			qCpct: step(8)
 		}
-	}],
+		}],
+	/** 海渊终曲 */
 	11425: [{
 		title: '释放元素战技攻击力提升[atkPct]%，生命之契提升[atkPlus]点攻击力',
 		sort: 9,
@@ -143,6 +162,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			atkPct: step(12)
 		}
 	}],
+	/** 灰河渡手 */
 	11426: [{
 		title: '元素战技暴击率提升[eCpct]%；此外，施放元素战技后的5秒内，元素充能效率提升[rechargePlus]%',
 		refine: {
@@ -150,24 +170,35 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			rechargePlus: [16, 20, 24, 28, 32]
 		}
 	}],
+	/** 船坞长剑 */
 	11427: [{
 		title: '满层提高[mastery]点元素精通',
 		refine: {
 			mastery: step(40 * 3)
 		}
 	}],
+	/** 息燧之笛 */
+	11431: [{
+		title: "施放元素战技时，防御力提升[defPct]%",
+		refine: {
+			defPct: step(16)
+		}
+	}],
+	/** 风鹰剑 */
 	11501: [staticStep('atkPct', 20), {
 		title: '攻击力提高[_atkPct]%',
 		refine: {
 			_atkPct: step(20)
 		}
 	}],
+	/** 天空之刃 */
 	11502: [staticStep('cpct', 4), {
 		title: '暴击提高[_cpct]%',
 		refine: {
 			_cpct: step(4)
 		}
 	}],
+	/** 苍古自由之誓 */
 	11503: [{
 		title: '造成的伤害提高[dmg]%',
 		refine: {
@@ -181,7 +212,8 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			a3Dmg: step(16),
 			atkPct: step(20)
 		}
-	}],
+		}],
+	/** 斫峰之刃 */
 	11504: [{
 		title: '护盾强效提升[shield]%',
 		refine: {
@@ -193,7 +225,8 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 		refine: {
 			atkPct: step(4)
 		}
-	}],
+		}],
+	/** 磐岩结绿 */
 	11505: [staticStep('hpPct', 20), {
 		title: '基于生命值上限提高攻击力[atkPlus]',
 		sort: 9,
@@ -201,6 +234,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			atkPlus: ({ attr, calc, refine }) => calc(attr.hp) * step(1.2)[refine] / 100
 		}
 	}],
+	/** 雾切之回光 */
 	11509: [{
 		title: '元素伤害加成[dmg]%',
 		refine: {
@@ -211,7 +245,8 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 		refine: {
 			dmg: step(28)
 		}
-	}],
+		}],
+	/** 波乱月白经津 */
 	11510: [{
 		title: '元素伤害加成[dmg]%',
 		refine: {
@@ -223,7 +258,8 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 		refine: {
 			aDmg: step(20)
 		}
-	}],
+		}],
+	/** 圣显之钥 */
 	11511: [staticStep('hpPct', 20), {
 		title: '基于生命提升元素精通，满层提升[mastery]',
 		sort: 5,
@@ -231,6 +267,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			mastery: ({ attr, calc, refine }) => step(0.36 + 0.2)[refine] * calc(attr.hp) / 100
 		}
 	}],
+	/** 裁叶萃光 */
 	11512: [staticStep('cpct', 4), {
 		title: '普攻与元素战技造成的伤害值提高[aPlus]',
 		sort: 9,
@@ -239,6 +276,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			ePlus: ({ attr, calc, refine }) => calc(attr.mastery) * step(120)[refine] / 100
 		}
 	}],
+	/** 静水流涌之辉 */
 	11513: [{
 		title: '生命值变化时，3层Buff战技伤害提高[eDmg]%',
 		refine: {
@@ -249,7 +287,8 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 		refine: {
 			hpPct: step(14 * 2)
 		}
-	}],
+		}],
+	/** 有乐御簾切 */
 	11514: [staticStep('defPct', 20), {
 		title: '附近的角色在场上造成岩元素伤害后，普通攻击伤害提升[aDmg]%，元素战伤害提升[eDmg]%；',
 		refine: {
@@ -257,6 +296,7 @@ export const SwordBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			eDmg: step(24 * 2)
 		}
 	}],
+	/** 赦罪 */
 	11515: [staticStep('cdmg', 20), {
 		title: '生命之契的数值增加时，装备者造成的伤害提升[dmg]%',
 		refine: {

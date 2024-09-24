@@ -27,6 +27,7 @@ export const PolearmMap: WeaponMapType = {
 		{ id: 13425, rarity: 4, name: "公义的酬报" },
 		{ id: 13426, rarity: 4, name: "沙中伟贤的对答" },
 		{ id: 13427, rarity: 4, name: "勘探钻机" },
+		{ id: 13431, rarity: 4, name: "虹的行迹" },
 		{ id: 13501, rarity: 5, name: "护摩之杖" },
 		{ id: 13502, rarity: 5, name: "天空之脊" },
 		{ id: 13504, rarity: 5, name: "贯虹之槊" },

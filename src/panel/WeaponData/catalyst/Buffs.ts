@@ -139,6 +139,14 @@ export const CatalystBuffs: WeaponBuffFunc = (step, staticStep) => ({
 			a2Dmg: step(6 * 3)
 		}
 	}],
+	/** 木棉之环 */
+	14431: [{
+		title: '施放元素战技时，基于生命值提升普攻造成的伤害[aDmg]%',
+		sort: 9,
+		data: {
+			aDmg: ({ attr, calc, refine }) => Math.min(Math.floor(calc(attr.hp) / 1000) * step(0.6, 0.1)[refine], step(16)[refine])
+		}
+	}],
 	/** 天空之卷 */
 	14501: [{
 		title: '元素伤害加成提升[dmg]%',
@@ -222,6 +230,13 @@ export const CatalystBuffs: WeaponBuffFunc = (step, staticStep) => ({
 		title: '下落攻击命中敌人后，下落攻击造成的伤害提高[a3Dmg]%',
 		refine: {
 			a3Dmg: step(28, 13)
+		}
+	}],
+	/** 冲浪时光 */
+	14516: [staticStep('hpPct', 20), {
+		title: '施放元素战技后，普通攻击造成的伤害提升[dmg]%',
+		refine: {
+			dmg: step(12 * 4)
 		}
 	}]
 })

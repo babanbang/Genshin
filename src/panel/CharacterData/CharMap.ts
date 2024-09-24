@@ -20,9 +20,13 @@ charList.forEach(char => {
 			AllMeta.push(
 				async () => {
 					if (char.id === 20000000) {
-						TravelerMetaDataMap.set(char.elem, (await Data.importModule(`lib/panel/CharacterData/CharList/${id}/meta.js`, GamePathType.gs, karinPath.node, { module: 'metaData' })).module)
+						TravelerMetaDataMap.set(char.elem,
+							(await Data.importModule(`lib/panel/CharacterData/CharList/${id}/meta.js`, GamePathType.gs, karinPath.node, { module: 'metaData' })).module
+						)
 					} else {
-						CharMetaDataMap.set(char.id, (await Data.importModule(`lib/panel/CharacterData/CharList/${id}/meta.js`, GamePathType.gs, karinPath.node, { module: 'metaData' })).module)
+						CharMetaDataMap.set(char.id,
+							(await Data.importModule(`lib/panel/CharacterData/CharList/${id}/meta.js`, GamePathType.gs, karinPath.node, { module: 'metaData' })).module
+						)
 					}
 					return true
 				}

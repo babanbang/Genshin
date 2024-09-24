@@ -1,20 +1,20 @@
 import { BaseWeapon, GameList, WeaponBaseInfo, Data, GamePathType, karinPath } from "karin-plugin-mystool";
 import { AvatarWeapon, WeaponDetailInfo, AttrDetailKeys } from '@/types'
-import { WeaponMap } from "./WeaponData";
+import { WeaponMap, getWeaponMetaData } from "./WeaponData";
 
 export class Weapon extends BaseWeapon<GameList.Gs>{
-	detailInfo?: WeaponDetailInfo
+	#detailInfo!: WeaponDetailInfo
 	constructor(Info: WeaponBaseInfo<GameList.Gs>) {
 		super(GameList.Gs, Info)
 	}
 
 	get detail() {
-		if (this.detailInfo) {
-			return this.detailInfo
+		if (this.#detailInfo) {
+			return this.#detailInfo
 		}
-		this.detailInfo = Data.readJSON(`resources/metaData/weapon/${this.type}/${this.id}/data.json`, GamePathType[this.game], karinPath.node)
 
-		return this.detailInfo!
+		this.#detailInfo = getWeaponMetaData(this.id)!
+		return this.#detailInfo
 	}
 
 	static Create(ds: { id?: number, name?: string }) {
@@ -50,14 +50,14 @@ export class Weapon extends BaseWeapon<GameList.Gs>{
 		const lvRight = String(lv.right) as AttrDetailKeys
 		const { atk, bonusData, bonusKey } = this.detail.attr
 
-		const valueLeft = atk[lv.left + '+' as AttrDetailKeys] || atk[lvLeft]
-		const bonusLeft = bonusData[lv.left + '+' as AttrDetailKeys] || bonusData[lvLeft]
+		const valueLeft = atk.get(lv.left + '+' as AttrDetailKeys) || atk.get(lvLeft)!
+		const bonusLeft = bonusData.get(lv.left + '+' as AttrDetailKeys) || bonusData.get(lvLeft)!
 
 		const stepCount = Math.ceil((lv.right - lv.left) / 5)
-		const valueStep = (bonusData[lvRight] - bonusLeft) / stepCount
+		const valueStep = (bonusData.get(lvRight)! - bonusLeft) / stepCount
 
 		return {
-			atkBase: valueLeft + ((atk[lvRight] - valueLeft) * (level - lv.left) / (lv.right - lv.left)),
+			atkBase: valueLeft + ((atk.get(lvRight)! - valueLeft) * (level - lv.left) / (lv.right - lv.left)),
 			attr: {
 				key: bonusKey,
 				value: bonusLeft + (stepCount - Math.ceil((lv.right - level) / 5)) * valueStep

@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 迪卢克 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "晨曦的暗面",
 		allegiance: "晨曦酒庄",
 		birth: "4-30",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [201601],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 12981,
 		[AttrKeys.atk]: 334.85,
 		[AttrKeys.def]: 783.93
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cpct,
 		value: 19.2
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "燃愿玛瑙",
 		[MaterialType.boss]: "常燃火种",
 		[MaterialType.specialty]: "小灯草",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「抗争」的哲学",
 		[MaterialType.weekly]: "东风之翎"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 1631,
 			name: "普通攻击·淬炼之剑",
@@ -492,8 +492,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				89.7,
 				97,
 				104.3,
@@ -509,8 +509,8 @@ export const meta: CharDetailInfo  = {
 				225.38,
 				242.25,
 				260.65
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				87.63,
 				94.77,
 				101.9,
@@ -526,8 +526,8 @@ export const meta: CharDetailInfo  = {
 				220.2,
 				236.67,
 				254.65
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				98.81,
 				106.86,
 				114.9,
@@ -543,8 +543,8 @@ export const meta: CharDetailInfo  = {
 				248.29,
 				266.87,
 				287.14
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				133.99,
 				144.89,
 				155.8,
@@ -560,8 +560,8 @@ export const meta: CharDetailInfo  = {
 				336.67,
 				361.86,
 				389.34
-			]],
-			["重击循环伤害", [
+			],
+			"重击循环伤害": [
 				68.8,
 				74.4,
 				80,
@@ -577,8 +577,8 @@ export const meta: CharDetailInfo  = {
 				172.87,
 				185.81,
 				199.92
-			]],
-			["重击终结伤害", [
+			],
+			"重击终结伤害": [
 				124.7,
 				134.85,
 				145,
@@ -594,8 +594,8 @@ export const meta: CharDetailInfo  = {
 				313.33,
 				336.78,
 				362.35
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				89.51,
 				96.79,
 				104.08,
@@ -611,8 +611,8 @@ export const meta: CharDetailInfo  = {
 				214.4,
 				226.89,
 				239.37
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[178.97, 223.55],
 				[193.54, 241.74],
 				[208.11, 259.94],
@@ -628,8 +628,8 @@ export const meta: CharDetailInfo  = {
 				[428.7, 535.47],
 				[453.68, 566.66],
 				[478.65, 597.86]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[178.97, 223.55],
 				[193.54, 241.74],
 				[208.11, 259.94],
@@ -645,10 +645,10 @@ export const meta: CharDetailInfo  = {
 				[428.7, 535.47],
 				[453.68, 566.66],
 				[478.65, 597.86]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["一段伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"一段伤害": [
 				94.4,
 				101.48,
 				108.56,
@@ -664,8 +664,8 @@ export const meta: CharDetailInfo  = {
 				200.6,
 				212.4,
 				224.2
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				97.6,
 				104.92,
 				112.24,
@@ -681,8 +681,8 @@ export const meta: CharDetailInfo  = {
 				207.4,
 				219.6,
 				231.8
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				128.8,
 				138.46,
 				148.12,
@@ -698,10 +698,10 @@ export const meta: CharDetailInfo  = {
 				273.7,
 				289.8,
 				305.9
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["斩击伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"斩击伤害": [
 				204,
 				219.3,
 				234.6,
@@ -717,8 +717,8 @@ export const meta: CharDetailInfo  = {
 				433.5,
 				459,
 				484.5
-			]],
-			["持续伤害", [
+			],
+			"持续伤害": [
 				60,
 				64.5,
 				69,
@@ -734,8 +734,8 @@ export const meta: CharDetailInfo  = {
 				127.5,
 				135,
 				142.5
-			]],
-			["爆裂伤害", [
+			],
+			"爆裂伤害": [
 				204,
 				219.3,
 				234.6,
@@ -751,8 +751,8 @@ export const meta: CharDetailInfo  = {
 				433.5,
 				459,
 				484.5
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -817,7 +817,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

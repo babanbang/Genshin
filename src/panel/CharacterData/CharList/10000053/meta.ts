@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 早柚 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "忍里之貉",
 		allegiance: "终末番",
 		birth: "10-19",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 11854,
 		[AttrKeys.atk]: 244.26,
 		[AttrKeys.def]: 744.63
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.mastery,
 		value: 96
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "自在松石",
 		[MaterialType.boss]: "魔偶机心",
 		[MaterialType.specialty]: "晶化骨髓",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「天光」的哲学",
 		[MaterialType.weekly]: "鎏金之鳞"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 5331,
 			name: "普通攻击·忍刀·终末番",
@@ -589,8 +589,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				72.24,
 				78.12,
 				84,
@@ -606,8 +606,8 @@ export const meta: CharDetailInfo  = {
 				181.52,
 				195.1,
 				209.92
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				71.38,
 				77.19,
 				83,
@@ -623,8 +623,8 @@ export const meta: CharDetailInfo  = {
 				179.35,
 				192.78,
 				207.42
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				86.86,
 				93.94,
 				101,
@@ -640,8 +640,8 @@ export const meta: CharDetailInfo  = {
 				218.26,
 				234.58,
 				252.4
-			]],
-			["三段伤害2", [
+			],
+			"三段伤害2": [
 				[43.43, 43.43],
 				[46.97, 46.97],
 				[50.5, 50.5],
@@ -657,8 +657,8 @@ export const meta: CharDetailInfo  = {
 				[109.13, 109.13],
 				[117.29, 117.29],
 				[126.2, 126.2]
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				98.13,
 				106.11,
 				114.1,
@@ -674,8 +674,8 @@ export const meta: CharDetailInfo  = {
 				246.56,
 				265.01,
 				285.14
-			]],
-			["重击循环伤害", [
+			],
+			"重击循环伤害": [
 				62.55,
 				67.64,
 				72.73,
@@ -691,8 +691,8 @@ export const meta: CharDetailInfo  = {
 				157.16,
 				168.92,
 				181.75
-			]],
-			["重击终结伤害", [
+			],
+			"重击终结伤害": [
 				113.09,
 				122.29,
 				131.5,
@@ -708,8 +708,8 @@ export const meta: CharDetailInfo  = {
 				284.16,
 				305.42,
 				328.62
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				74.59,
 				80.66,
 				86.73,
@@ -725,8 +725,8 @@ export const meta: CharDetailInfo  = {
 				178.66,
 				189.07,
 				199.48
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -742,8 +742,8 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -759,10 +759,10 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["风风轮伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"风风轮伤害": [
 				36,
 				38.7,
 				41.4,
@@ -778,8 +778,8 @@ export const meta: CharDetailInfo  = {
 				76.5,
 				81,
 				85.5
-			]],
-			["风风轮舞踢点按伤害", [
+			],
+			"风风轮舞踢点按伤害": [
 				158.4,
 				170.28,
 				182.16,
@@ -795,8 +795,8 @@ export const meta: CharDetailInfo  = {
 				336.6,
 				356.4,
 				376.2
-			]],
-			["风风轮舞踢长按伤害", [
+			],
+			"风风轮舞踢长按伤害": [
 				217.6,
 				233.92,
 				250.24,
@@ -812,8 +812,8 @@ export const meta: CharDetailInfo  = {
 				462.4,
 				489.6,
 				516.8
-			]],
-			["风风轮附带元素伤害", [
+			],
+			"风风轮附带元素伤害": [
 				16.8,
 				18.06,
 				19.32,
@@ -829,8 +829,8 @@ export const meta: CharDetailInfo  = {
 				35.7,
 				37.8,
 				39.9
-			]],
-			["风风轮舞踢长按附带元素伤害", [
+			],
+			"风风轮舞踢长按附带元素伤害": [
 				76.16,
 				81.87,
 				87.58,
@@ -846,10 +846,10 @@ export const meta: CharDetailInfo  = {
 				161.84,
 				171.36,
 				180.88
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能发动伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能发动伤害": [
 				116.8,
 				125.56,
 				134.32,
@@ -865,8 +865,8 @@ export const meta: CharDetailInfo  = {
 				248.2,
 				262.8,
 				277.4
-			]],
-			["技能发动治疗量", [
+			],
+			"技能发动治疗量": [
 				669.5,
 				734.1500000000001,
 				803.61,
@@ -882,8 +882,8 @@ export const meta: CharDetailInfo  = {
 				1783.6599999999999,
 				1910.67,
 				2042.48
-			]],
-			["技能发动治疗量2", [
+			],
+			"技能发动治疗量2": [
 				[92.16, 577.34],
 				[99.07, 635.08],
 				[105.98, 697.63],
@@ -899,8 +899,8 @@ export const meta: CharDetailInfo  = {
 				[195.84, 1587.82],
 				[207.36, 1703.31],
 				[218.88, 1823.6]
-			]],
-			["不倒貉貉伤害", [
+			],
+			"不倒貉貉伤害": [
 				52,
 				55.9,
 				59.8,
@@ -916,8 +916,8 @@ export const meta: CharDetailInfo  = {
 				110.5,
 				117,
 				123.5
-			]],
-			["不倒貉貉治疗量", [
+			],
+			"不倒貉貉治疗量": [
 				580.23,
 				636.26,
 				696.47,
@@ -933,8 +933,8 @@ export const meta: CharDetailInfo  = {
 				1545.84,
 				1655.91,
 				1770.15
-			]],
-			["不倒貉貉治疗量2", [
+			],
+			"不倒貉貉治疗量2": [
 				[79.87, 500.36],
 				[85.86, 550.4],
 				[91.85, 604.62],
@@ -950,8 +950,8 @@ export const meta: CharDetailInfo  = {
 				[169.73, 1376.11],
 				[179.71, 1476.2],
 				[189.7, 1580.45]
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -1022,7 +1022,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

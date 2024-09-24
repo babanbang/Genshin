@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 瑶瑶 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "仙蕊玲珑",
 		allegiance: "歌尘浪市真君洞天",
 		birth: "3-6",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 12289,
 		[AttrKeys.atk]: 212.4,
 		[AttrKeys.def]: 750.77
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.hp + "Pct",
 		value: 24
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "生长碧翡",
 		[MaterialType.boss]: "灭诤草蔓",
 		[MaterialType.specialty]: "绝云椒椒",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「勤劳」的哲学",
 		[MaterialType.weekly]: "空行的虚铃"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 7731,
 			name: "普通攻击·颠扑连环枪",
@@ -503,8 +503,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				51,
 				55.15,
 				59.3,
@@ -520,8 +520,8 @@ export const meta: CharDetailInfo  = {
 				122.17,
 				129.28,
 				136.4
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				47.44,
 				51.3,
 				55.17,
@@ -537,8 +537,8 @@ export const meta: CharDetailInfo  = {
 				113.64,
 				120.26,
 				126.88
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				64.33,
 				69.56,
 				74.80000000000001,
@@ -554,8 +554,8 @@ export const meta: CharDetailInfo  = {
 				154.07999999999998,
 				163.05,
 				172.03
-			]],
-			["三段伤害2", [
+			],
+			"三段伤害2": [
 				[31.38, 32.95],
 				[33.93, 35.63],
 				[36.49, 38.31],
@@ -571,8 +571,8 @@ export const meta: CharDetailInfo  = {
 				[75.16, 78.92],
 				[79.54, 83.51],
 				[83.92, 88.11]
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				77.93,
 				84.27,
 				90.62,
@@ -588,8 +588,8 @@ export const meta: CharDetailInfo  = {
 				186.67,
 				197.55,
 				208.42
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				112.66,
 				121.83,
 				131,
@@ -605,8 +605,8 @@ export const meta: CharDetailInfo  = {
 				269.86,
 				285.58,
 				301.3
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				63.93,
 				69.14,
 				74.34,
@@ -622,8 +622,8 @@ export const meta: CharDetailInfo  = {
 				153.14,
 				162.06,
 				170.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -639,8 +639,8 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -656,10 +656,10 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["白玉萝卜伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"白玉萝卜伤害": [
 				29.92,
 				32.16,
 				34.41,
@@ -675,8 +675,8 @@ export const meta: CharDetailInfo  = {
 				63.58,
 				67.32,
 				71.06
-			]],
-			["白玉萝卜治疗量", [
+			],
+			"白玉萝卜治疗量": [
 				166.79000000000002,
 				183.43,
 				201.45,
@@ -692,8 +692,8 @@ export const meta: CharDetailInfo  = {
 				457.65,
 				490.89,
 				525.5
-			]],
-			["白玉萝卜治疗量2", [
+			],
+			"白玉萝卜治疗量2": [
 				[1.71, 165.08],
 				[1.84, 181.59],
 				[1.97, 199.48],
@@ -709,10 +709,10 @@ export const meta: CharDetailInfo  = {
 				[3.64, 454.01],
 				[3.86, 487.03],
 				[4.07, 521.43]
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				114.56,
 				123.15,
 				131.74,
@@ -728,8 +728,8 @@ export const meta: CharDetailInfo  = {
 				243.44,
 				257.76,
 				272.08
-			]],
-			["桂子仙机白玉萝卜伤害", [
+			],
+			"桂子仙机白玉萝卜伤害": [
 				72.16,
 				77.57,
 				82.98,
@@ -745,8 +745,8 @@ export const meta: CharDetailInfo  = {
 				153.34,
 				162.36,
 				171.38
-			]],
-			["桂子仙机白玉萝卜治疗量", [
+			],
+			"桂子仙机白玉萝卜治疗量": [
 				196.23000000000002,
 				215.80999999999997,
 				237,
@@ -762,8 +762,8 @@ export const meta: CharDetailInfo  = {
 				538.42,
 				577.52,
 				618.24
-			]],
-			["桂子仙机白玉萝卜治疗量2", [
+			],
+			"桂子仙机白玉萝卜治疗量2": [
 				[2.02, 194.21],
 				[2.17, 213.64],
 				[2.32, 234.68],
@@ -779,8 +779,8 @@ export const meta: CharDetailInfo  = {
 				[4.29, 534.13],
 				[4.54, 572.98],
 				[4.79, 613.45]
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -846,7 +846,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

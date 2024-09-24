@@ -1,14 +1,20 @@
-details = [{
-  title: 'E单次伤害',
-  dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.e].get('技能伤害'], GsTalentType.e)
-}, {
-  title: 'Q爆发伤害',
-    dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.q].get('爆发伤害'], GsTalentType.q)
-}, {
-  title: 'Q每跳伤害',
-    dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.q].get('跃动伤害'], GsTalentType.q)
-}]
+import { AttrKeys, CharCalcRuleType } from "@/types"
+import { GsTalentType } from "karin-plugin-mystool"
+import { metaData } from "./meta"
 
-mainAttr = 'atk,cpct,cdmg'
-
-buffs = []
+/** 柯莱 */
+export const CharCalcRule: CharCalcRuleType = {
+	details: [{
+		title: 'E单次伤害',
+		dmg: ({ talent: { e } }, { dmg }) => dmg(metaData.talentData.e["技能伤害"][e.level], GsTalentType.e)
+	}, {
+		title: 'Q爆发伤害',
+		dmg: ({ talent: { q } }, { dmg }) => dmg(metaData.talentData.q["爆发伤害"][q.level], GsTalentType.q)
+	}, {
+		title: 'Q每跳伤害',
+		dmg: ({ talent: { q } }, { dmg }) => dmg(metaData.talentData.q["跃动伤害"][q.level], GsTalentType.q)
+	}],
+	buffs: [],
+	mainAttr: [AttrKeys.atk, AttrKeys.cpct, AttrKeys.cdmg],
+	defDmgIdx: 0
+}

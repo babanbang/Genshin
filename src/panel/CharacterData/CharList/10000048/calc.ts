@@ -1,38 +1,36 @@
-details = [{
-  title: '开Q满丹火印重击',
-  params: { dhy: 15 },
-  dmg: ({ talent, cons }, { dmg }) => dmg(talent[GsTalentType.a].get('重击伤害2'][cons * 1 === 6 ? 4 : 3], [GsTalentType.a, 2])
-}, {
-  title: '开Q满丹火印重击蒸发',
-    params: { dhy: 15 },
-  dmg: ({ talent, cons }, { dmg }) => dmg(talent[GsTalentType.a].get('重击伤害2'][cons * 1 === 6 ? 4 : 3], [GsTalentType.a, 2], DmgTypes.vaporize)
-}, {
-  title: 'E伤害',
-    dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.e].get('技能伤害'], GsTalentType.e)
-}, {
-  title: '4命护盾量',
-    check: ({ cons }) => cons >= 4,
-      dmg: ({ attr, calc }, { shield }) => shield(calc(attr.hp) * 0.45)
-}]
+import { AttrKeys, CharCalcRuleType, DmgTypes } from "@/types"
+import { GsTalentType } from "karin-plugin-mystool"
+import { metaData } from "./meta"
 
-defDmgIdx = 1
-mainAttr = 'atk,cpct,cdmg,mastery'
-
-buffs = [{
-  title: '烟绯被动：重击消耗4枚丹火印增加20%火伤',
-  cons: 6,
-  data: {
-    a2Dmg: ({ params }) => params.dhy ? 20 : 0
-  }
-}, {
-  title: '烟绯被动：重击消耗3枚丹火印增加15%火伤',
-  check: ({ cons }) => cons < 6,
-  data: {
-    a2Dmg: ({ params }) => params.dhy ? 15 : 0
-  }
-}, {
-  title: '烟绯被动：开Q后提高重击伤害[a2Dmg]%',
-  data: {
-    a2Dmg: ({ talent }) => talent[GsTalentType.q].get('重击伤害额外加成']
-  }
-}, DmgTypes.vaporize]
+/** 烟绯 */
+export const CharCalcRule: CharCalcRuleType = {
+	details: [{
+		title: '开Q满丹火印重击',
+		params: { dhy: 15 },
+		dmg: ({ talent: { a }, cons }, { dmg }) => dmg(metaData.talentData.a["重击伤害2"][a.level][cons === 6 ? 4 : 3], [GsTalentType.a, 2])
+	}, {
+		title: '开Q满丹火印重击蒸发',
+		params: { dhy: 15 },
+		dmg: ({ talent: { a }, cons }, { dmg }) => dmg(metaData.talentData.a["重击伤害2"][a.level][cons === 6 ? 4 : 3], [GsTalentType.a, 2], DmgTypes.vaporize)
+	}, {
+		title: 'E伤害',
+		dmg: ({ talent: { e } }, { dmg }) => dmg(metaData.talentData.e["技能伤害"][e.level], GsTalentType.e)
+	}, {
+		title: '4命护盾量',
+		check: ({ cons }) => cons >= 4,
+		dmg: ({ attr, calc }, { shield }) => shield(calc(attr.hp) * 0.45)
+	}],
+	buffs: [({ cons }) => ({
+		title: `烟绯被动：重击消耗${cons === 6 ? 4 : 3}枚丹火印增加30%火伤`,
+		data: {
+			a2Dmg: ({ params }) => params.dhy ? (cons === 6 ? 20 : 15) : 0
+		}
+	}), {
+		title: '烟绯被动：开Q后提高重击伤害[a2Dmg]%',
+		data: {
+			a2Dmg: ({ talent: { q } }) => metaData.talentData.q["重击伤害额外加成"][q.level]
+		}
+	}],
+	mainAttr: [AttrKeys.atk, AttrKeys.cpct, AttrKeys.cdmg, AttrKeys.mastery],
+	defDmgIdx: 1
+}

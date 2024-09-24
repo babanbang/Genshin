@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 北斗 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "无冕的龙王",
 		allegiance: "南十字船队",
 		birth: "2-14",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 13050,
 		[AttrKeys.atk]: 225.14,
 		[AttrKeys.def]: 648.4
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.dmg,
 		value: 24
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "最胜紫晶",
 		[MaterialType.boss]: "雷光棱镜",
 		[MaterialType.specialty]: "夜泊石",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「黄金」的哲学",
 		[MaterialType.weekly]: "东风的吐息"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 2431,
 			name: "普通攻击·征涛",
@@ -522,8 +522,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				71.12,
 				76.91,
 				82.7,
@@ -539,8 +539,8 @@ export const meta: CharDetailInfo  = {
 				178.71,
 				192.08,
 				206.67
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				70.86,
 				76.63,
 				82.4,
@@ -556,8 +556,8 @@ export const meta: CharDetailInfo  = {
 				178.06,
 				191.38,
 				205.92
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				88.32,
 				95.51,
 				102.7,
@@ -573,8 +573,8 @@ export const meta: CharDetailInfo  = {
 				221.92,
 				238.53,
 				256.65
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				86.52,
 				93.56,
 				100.6,
@@ -590,8 +590,8 @@ export const meta: CharDetailInfo  = {
 				217.39,
 				233.65,
 				251.4
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				112.14,
 				121.27,
 				130.4,
@@ -607,8 +607,8 @@ export const meta: CharDetailInfo  = {
 				281.78,
 				302.87,
 				325.87
-			]],
-			["重击循环伤害", [
+			],
+			"重击循环伤害": [
 				56.24,
 				60.82,
 				65.4,
@@ -624,8 +624,8 @@ export const meta: CharDetailInfo  = {
 				141.32,
 				151.9,
 				163.43
-			]],
-			["重击终结伤害", [
+			],
+			"重击终结伤害": [
 				101.82,
 				110.11,
 				118.4,
@@ -641,8 +641,8 @@ export const meta: CharDetailInfo  = {
 				255.85,
 				275,
 				295.88
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				74.59,
 				80.66,
 				86.73,
@@ -658,8 +658,8 @@ export const meta: CharDetailInfo  = {
 				178.66,
 				189.07,
 				199.48
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -675,8 +675,8 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -692,10 +692,10 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["护盾吸收量", [
+			]
+		},
+		[GsTalentType.e]: {
+			"护盾吸收量": [
 				1400.77,
 				1540.5,
 				1691.79,
@@ -711,8 +711,8 @@ export const meta: CharDetailInfo  = {
 				3843.45,
 				4122.5599999999995,
 				4413.23
-			]],
-			["护盾吸收量2", [
+			],
+			"护盾吸收量2": [
 				[14.4, 1386.37],
 				[15.48, 1525.02],
 				[16.56, 1675.23],
@@ -728,8 +728,8 @@ export const meta: CharDetailInfo  = {
 				[30.6, 3812.85],
 				[32.4, 4090.16],
 				[34.2, 4379.03]
-			]],
-			["基础伤害", [
+			],
+			"基础伤害": [
 				121.6,
 				130.72,
 				139.84,
@@ -745,8 +745,8 @@ export const meta: CharDetailInfo  = {
 				258.4,
 				273.6,
 				288.8
-			]],
-			["受击时伤害提升", [
+			],
+			"受击时伤害提升": [
 				160,
 				172,
 				184,
@@ -762,10 +762,10 @@ export const meta: CharDetailInfo  = {
 				340,
 				360,
 				380
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				121.6,
 				130.72,
 				139.84,
@@ -781,8 +781,8 @@ export const meta: CharDetailInfo  = {
 				258.4,
 				273.6,
 				288.8
-			]],
-			["闪雷伤害", [
+			],
+			"闪雷伤害": [
 				96,
 				103.2,
 				110.4,
@@ -798,8 +798,8 @@ export const meta: CharDetailInfo  = {
 				204,
 				216,
 				228
-			]],
-			["伤害减免", [
+			],
+			"伤害减免": [
 				20,
 				21,
 				22,
@@ -815,8 +815,8 @@ export const meta: CharDetailInfo  = {
 				37,
 				38,
 				39
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -883,7 +883,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

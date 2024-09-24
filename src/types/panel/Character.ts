@@ -1,6 +1,5 @@
-import { CharBaseInfo, GameList, GsElement, GsTalentType } from "karin-plugin-mystool";
-import { AttrKeys, AttrDetailKeys } from "./AttrModel/Attr";
-import { MaterialType } from ".";
+import { GsElement, GsTalentType } from "karin-plugin-mystool";
+import { MaterialType, AttrDetailKeys, AttrKeys } from ".";
 
 export interface CharDetailInfo {
 	info: {
@@ -47,7 +46,9 @@ export interface CharDetailInfo {
 	/** 主角可根据技能确定元素 */
 	talentElem?: Map<number, GsElement>
 	talentData: {
-		[key in GsTalentType]: Map<string, false[] | number[] | (number | undefined)[][]>
+		[key in GsTalentType]: {
+			[key: string]: number[] | number[][]
+		}
 	}
 	cons: Map<number, {
 		name: string

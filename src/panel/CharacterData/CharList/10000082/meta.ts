@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 白术 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "遵生合和",
 		allegiance: "不卜庐",
 		birth: "4-25",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 13348,
 		[AttrKeys.atk]: 192.54,
 		[AttrKeys.def]: 499.56
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.hp + "Pct",
 		value: 28.8
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "生长碧翡",
 		[MaterialType.boss]: "常暗圆环",
 		[MaterialType.specialty]: "琉璃袋",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「黄金」的哲学",
 		[MaterialType.weekly]: "生长天地之蕨草"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 8231,
 			name: "普通攻击·金匮针解",
@@ -451,8 +451,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				37.37,
 				40.17,
 				42.98,
@@ -468,8 +468,8 @@ export const meta: CharDetailInfo  = {
 				79.41,
 				84.08,
 				88.75
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				36.42,
 				39.16,
 				41.89,
@@ -485,8 +485,8 @@ export const meta: CharDetailInfo  = {
 				77.4,
 				81.96,
 				86.51
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				45.08,
 				48.46,
 				51.84,
@@ -502,8 +502,8 @@ export const meta: CharDetailInfo  = {
 				95.8,
 				101.44,
 				107.08
-			]],
-			["三段伤害2", [
+			],
+			"三段伤害2": [
 				[22.54, 2],
 				[24.23, 2],
 				[25.92, 2],
@@ -519,8 +519,8 @@ export const meta: CharDetailInfo  = {
 				[47.9, 2],
 				[50.72, 2],
 				[53.54, 2]
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				54.14,
 				58.2,
 				62.26,
@@ -536,8 +536,8 @@ export const meta: CharDetailInfo  = {
 				115.04,
 				121.81,
 				128.58
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				121.04,
 				130.12,
 				139.2,
@@ -553,8 +553,8 @@ export const meta: CharDetailInfo  = {
 				257.21,
 				272.34,
 				287.47
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -570,8 +570,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -587,8 +587,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -604,10 +604,10 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"技能伤害": [
 				79.2,
 				85.14,
 				91.08,
@@ -623,8 +623,8 @@ export const meta: CharDetailInfo  = {
 				168.3,
 				178.2,
 				188.1
-			]],
-			["治疗量", [
+			],
+			"治疗量": [
 				778.38,
 				856.02,
 				940.09,
@@ -640,8 +640,8 @@ export const meta: CharDetailInfo  = {
 				2135.72,
 				2290.82,
 				2452.33
-			]],
-			["治疗量2", [
+			],
+			"治疗量2": [
 				[8, 770.38],
 				[8.6, 847.42],
 				[9.2, 930.89],
@@ -657,10 +657,10 @@ export const meta: CharDetailInfo  = {
 				[17, 2118.72],
 				[18, 2272.82],
 				[19, 2433.33]
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["无郤气护盾吸收量", [
+			]
+		},
+		[GsTalentType.q]: {
+			"无郤气护盾吸收量": [
 				77.84,
 				85.6,
 				94.01,
@@ -676,8 +676,8 @@ export const meta: CharDetailInfo  = {
 				213.57,
 				229.08,
 				245.23000000000002
-			]],
-			["无郤气护盾吸收量2", [
+			],
+			"无郤气护盾吸收量2": [
 				[0.8, 77.04],
 				[0.86, 84.74],
 				[0.92, 93.09],
@@ -693,8 +693,8 @@ export const meta: CharDetailInfo  = {
 				[1.7, 211.87],
 				[1.8, 227.28],
 				[1.9, 243.33]
-			]],
-			["无郤气护盾治疗量", [
+			],
+			"无郤气护盾治疗量": [
 				505.94,
 				556.4200000000001,
 				611.0600000000001,
@@ -710,8 +710,8 @@ export const meta: CharDetailInfo  = {
 				1388.22,
 				1489.03,
 				1594.02
-			]],
-			["无郤气护盾治疗量2", [
+			],
+			"无郤气护盾治疗量2": [
 				[5.2, 500.74],
 				[5.59, 550.83],
 				[5.98, 605.08],
@@ -727,8 +727,8 @@ export const meta: CharDetailInfo  = {
 				[11.05, 1377.17],
 				[11.7, 1477.33],
 				[12.35, 1581.67]
-			]],
-			["灵气脉技能伤害", [
+			],
+			"灵气脉技能伤害": [
 				97.06,
 				104.34,
 				111.62,
@@ -744,8 +744,8 @@ export const meta: CharDetailInfo  = {
 				206.26,
 				218.39,
 				230.53
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -813,7 +813,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

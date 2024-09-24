@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 甘雨 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "循循守月",
 		allegiance: "月海亭",
 		birth: "12-2",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [203701],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 9797,
 		[AttrKeys.atk]: 334.85,
 		[AttrKeys.def]: 630.21
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cdmg,
 		value: 38.4
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "哀叙冰玉",
 		[MaterialType.boss]: "极寒之核",
 		[MaterialType.specialty]: "清心",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「勤劳」的哲学",
 		[MaterialType.weekly]: "武炼之魂·孤影"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 3731,
 			name: "普通攻击·流天射术",
@@ -496,8 +496,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				31.73,
 				34.32,
 				36.9,
@@ -513,8 +513,8 @@ export const meta: CharDetailInfo  = {
 				79.74,
 				85.7,
 				92.21
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				35.6,
 				38.5,
 				41.4,
@@ -530,8 +530,8 @@ export const meta: CharDetailInfo  = {
 				89.46,
 				96.16,
 				103.46
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				45.49,
 				49.2,
 				52.9,
@@ -547,8 +547,8 @@ export const meta: CharDetailInfo  = {
 				114.31,
 				122.87,
 				132.2
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				45.49,
 				49.2,
 				52.9,
@@ -564,8 +564,8 @@ export const meta: CharDetailInfo  = {
 				114.31,
 				122.87,
 				132.2
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				48.25,
 				52.17,
 				56.1,
@@ -581,8 +581,8 @@ export const meta: CharDetailInfo  = {
 				121.23,
 				130.3,
 				140.19
-			]],
-			["六段伤害", [
+			],
+			"六段伤害": [
 				57.62,
 				62.31,
 				67,
@@ -598,8 +598,8 @@ export const meta: CharDetailInfo  = {
 				144.78,
 				155.61,
 				167.43
-			]],
-			["瞄准射击", [
+			],
+			"瞄准射击": [
 				43.86,
 				47.43,
 				51,
@@ -615,8 +615,8 @@ export const meta: CharDetailInfo  = {
 				105.06,
 				111.18,
 				117.3
-			]],
-			["一段蓄力瞄准射击", [
+			],
+			"一段蓄力瞄准射击": [
 				124,
 				133.3,
 				142.6,
@@ -632,8 +632,8 @@ export const meta: CharDetailInfo  = {
 				263.5,
 				279,
 				294.5
-			]],
-			["霜华矢命中伤害", [
+			],
+			"霜华矢命中伤害": [
 				128,
 				137.6,
 				147.2,
@@ -649,8 +649,8 @@ export const meta: CharDetailInfo  = {
 				272,
 				288,
 				304
-			]],
-			["霜华矢·霜华绽发伤害", [
+			],
+			"霜华矢·霜华绽发伤害": [
 				217.6,
 				233.92,
 				250.24,
@@ -666,8 +666,8 @@ export const meta: CharDetailInfo  = {
 				462.4,
 				489.6,
 				516.8
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -683,8 +683,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -700,8 +700,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -717,10 +717,10 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["继承生命", [
+			]
+		},
+		[GsTalentType.e]: {
+			"继承生命": [
 				120,
 				129,
 				138,
@@ -736,8 +736,8 @@ export const meta: CharDetailInfo  = {
 				255,
 				270,
 				285
-			]],
-			["技能伤害", [
+			],
+			"技能伤害": [
 				132,
 				141.9,
 				151.8,
@@ -753,10 +753,10 @@ export const meta: CharDetailInfo  = {
 				280.5,
 				297,
 				313.5
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["冰棱伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"冰棱伤害": [
 				70.27,
 				75.54,
 				80.81,
@@ -772,8 +772,8 @@ export const meta: CharDetailInfo  = {
 				149.33,
 				158.11,
 				166.9
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -838,7 +838,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

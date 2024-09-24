@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 芙宁娜 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "不休独舞",
 		allegiance: "枫丹廷",
 		birth: "10-13",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 15307,
 		[AttrKeys.atk]: 243.96,
 		[AttrKeys.def]: 695.54
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cpct,
 		value: 19.2
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "涤净青金",
 		[MaterialType.boss]: "未能达成超越之水",
 		[MaterialType.specialty]: "湖光铃兰",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「正义」的哲学",
 		[MaterialType.weekly]: "无光质块"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 8931,
 			name: "普通攻击·独舞之邀",
@@ -656,8 +656,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				48.39,
 				52.32,
 				56.26,
@@ -673,8 +673,8 @@ export const meta: CharDetailInfo  = {
 				115.9,
 				122.65,
 				129.4
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				43.73,
 				47.29,
 				50.85,
@@ -690,8 +690,8 @@ export const meta: CharDetailInfo  = {
 				104.75,
 				110.85,
 				116.95
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				55.12,
 				59.61,
 				64.09,
@@ -707,8 +707,8 @@ export const meta: CharDetailInfo  = {
 				132.03,
 				139.72,
 				147.41
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				73.3,
 				79.26,
 				85.23,
@@ -724,8 +724,8 @@ export const meta: CharDetailInfo  = {
 				175.57,
 				185.8,
 				196.03
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				74.22,
 				80.26,
 				86.3,
@@ -741,8 +741,8 @@ export const meta: CharDetailInfo  = {
 				177.78,
 				188.13,
 				198.49
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				63.93,
 				69.14,
 				74.34,
@@ -758,8 +758,8 @@ export const meta: CharDetailInfo  = {
 				153.14,
 				162.06,
 				170.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -775,8 +775,8 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -792,8 +792,8 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]],
-			["灵息之刺/流涌之刃伤害", [
+			],
+			"灵息之刺/流涌之刃伤害": [
 				9.46,
 				10.23,
 				11,
@@ -809,10 +809,10 @@ export const meta: CharDetailInfo  = {
 				22.66,
 				23.98,
 				25.3
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["荒性泡沫伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"荒性泡沫伤害": [
 				7.86,
 				8.45,
 				9.04,
@@ -828,8 +828,8 @@ export const meta: CharDetailInfo  = {
 				16.71,
 				17.69,
 				18.68
-			]],
-			["乌瑟勋爵伤害", [
+			],
+			"乌瑟勋爵伤害": [
 				5.96,
 				6.41,
 				6.85,
@@ -845,8 +845,8 @@ export const meta: CharDetailInfo  = {
 				12.67,
 				13.41,
 				14.16
-			]],
-			["海薇玛夫人伤害", [
+			],
+			"海薇玛夫人伤害": [
 				3.23,
 				3.47,
 				3.72,
@@ -862,8 +862,8 @@ export const meta: CharDetailInfo  = {
 				6.87,
 				7.27,
 				7.68
-			]],
-			["谢贝蕾妲小姐伤害", [
+			],
+			"谢贝蕾妲小姐伤害": [
 				8.29,
 				8.91,
 				9.53,
@@ -879,8 +879,8 @@ export const meta: CharDetailInfo  = {
 				17.61,
 				18.65,
 				19.68
-			]],
-			["乌瑟勋爵消耗生命值", [
+			],
+			"乌瑟勋爵消耗生命值": [
 				2.4,
 				2.4,
 				2.4,
@@ -896,8 +896,8 @@ export const meta: CharDetailInfo  = {
 				2.4,
 				2.4,
 				2.4
-			]],
-			["海薇玛夫人消耗生命值", [
+			],
+			"海薇玛夫人消耗生命值": [
 				1.6,
 				1.6,
 				1.6,
@@ -913,8 +913,8 @@ export const meta: CharDetailInfo  = {
 				1.6,
 				1.6,
 				1.6
-			]],
-			["谢贝蕾妲小姐消耗生命值", [
+			],
+			"谢贝蕾妲小姐消耗生命值": [
 				3.6,
 				3.6,
 				3.6,
@@ -930,8 +930,8 @@ export const meta: CharDetailInfo  = {
 				3.6,
 				3.6,
 				3.6
-			]],
-			["众水的歌者治疗量", [
+			],
+			"众水的歌者治疗量": [
 				467.03000000000003,
 				513.61,
 				564.06,
@@ -947,8 +947,8 @@ export const meta: CharDetailInfo  = {
 				1281.43,
 				1374.49,
 				1471.4
-			]],
-			["众水的歌者治疗量2", [
+			],
+			"众水的歌者治疗量2": [
 				[4.8, 462.23],
 				[5.16, 508.45],
 				[5.52, 558.54],
@@ -964,10 +964,10 @@ export const meta: CharDetailInfo  = {
 				[10.2, 1271.23],
 				[10.8, 1363.69],
 				[11.4, 1460]
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				11.41,
 				12.26,
 				13.12,
@@ -983,8 +983,8 @@ export const meta: CharDetailInfo  = {
 				24.24,
 				25.66,
 				27.09
-			]],
-			["气氛值转化提升伤害比例", [
+			],
+			"气氛值转化提升伤害比例": [
 				0.07,
 				0.09,
 				0.11,
@@ -1000,8 +1000,8 @@ export const meta: CharDetailInfo  = {
 				0.31,
 				0.33,
 				0.35
-			]],
-			["气氛值转化受治疗加成比例", [
+			],
+			"气氛值转化受治疗加成比例": [
 				0.01,
 				0.02,
 				0.03,
@@ -1017,8 +1017,8 @@ export const meta: CharDetailInfo  = {
 				0.13,
 				0.14,
 				0.15
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -1090,7 +1090,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

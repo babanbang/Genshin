@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 娜维娅 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "明花蔓舵",
 		allegiance: "刺玫会",
 		birth: "8-16",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 12650,
 		[AttrKeys.atk]: 351.59,
 		[AttrKeys.def]: 793.15
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cdmg,
 		value: 38.4
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "坚牢黄玉",
 		[MaterialType.boss]: "奇械发条备件·科培琉司",
 		[MaterialType.specialty]: "初露之源",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「公平」的哲学",
 		[MaterialType.weekly]: "无光丝线"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 9131,
 			name: "普通攻击·直率的辞绝",
@@ -498,8 +498,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				93.52,
 				101.13,
 				108.74,
@@ -515,8 +515,8 @@ export const meta: CharDetailInfo  = {
 				224.01,
 				237.06,
 				250.11
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				86.51,
 				93.55,
 				100.59,
@@ -532,8 +532,8 @@ export const meta: CharDetailInfo  = {
 				207.21,
 				219.28,
 				231.35
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				104.67,
 				113.19,
 				121.68,
@@ -549,8 +549,8 @@ export const meta: CharDetailInfo  = {
 				250.68,
 				265.29,
 				279.9
-			]],
-			["三段伤害2", [
+			],
+			"三段伤害2": [
 				[34.89, 3],
 				[37.73, 3],
 				[40.56, 3],
@@ -566,8 +566,8 @@ export const meta: CharDetailInfo  = {
 				[83.56, 3],
 				[88.43, 3],
 				[93.3, 3]
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				133.43,
 				144.29,
 				155.15,
@@ -583,8 +583,8 @@ export const meta: CharDetailInfo  = {
 				319.62,
 				338.23,
 				356.85
-			]],
-			["重击循环伤害", [
+			],
+			"重击循环伤害": [
 				62.52,
 				67.61,
 				72.7,
@@ -600,8 +600,8 @@ export const meta: CharDetailInfo  = {
 				149.76,
 				158.49,
 				167.21
-			]],
-			["重击终结伤害", [
+			],
+			"重击终结伤害": [
 				113.09,
 				122.29,
 				131.5,
@@ -617,8 +617,8 @@ export const meta: CharDetailInfo  = {
 				270.89,
 				286.67,
 				302.45
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				74.59,
 				80.66,
 				86.73,
@@ -634,8 +634,8 @@ export const meta: CharDetailInfo  = {
 				178.66,
 				189.07,
 				199.48
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -651,8 +651,8 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -668,10 +668,10 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["玫瑰晶弹基础伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"玫瑰晶弹基础伤害": [
 				394.8,
 				424.41,
 				454.02,
@@ -687,8 +687,8 @@ export const meta: CharDetailInfo  = {
 				838.95,
 				888.3,
 				937.65
-			]],
-			["流涌之刃伤害", [
+			],
+			"流涌之刃伤害": [
 				36,
 				38.7,
 				41.4,
@@ -704,10 +704,10 @@ export const meta: CharDetailInfo  = {
 				76.5,
 				81,
 				85.5
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				75.2,
 				80.84,
 				86.48,
@@ -723,8 +723,8 @@ export const meta: CharDetailInfo  = {
 				159.8,
 				169.2,
 				178.6
-			]],
-			["支援炮击伤害", [
+			],
+			"支援炮击伤害": [
 				43.15,
 				46.39,
 				49.62,
@@ -740,8 +740,8 @@ export const meta: CharDetailInfo  = {
 				91.69,
 				97.09,
 				102.48
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -804,7 +804,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

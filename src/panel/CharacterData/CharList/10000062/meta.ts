@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 埃洛伊 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "「异界的救世主」",
 		allegiance: "游侠",
 		birth: "4-4",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 10899,
 		[AttrKeys.atk]: 233.92,
 		[AttrKeys.def]: 676.33
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.dmg,
 		value: 28.8
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "哀叙冰玉",
 		[MaterialType.boss]: "晶凝之华",
 		[MaterialType.specialty]: "晶化骨髓",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「自由」的哲学",
 		[MaterialType.weekly]: "熔毁之刻"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 6231,
 			name: "普通攻击·快速射击",
@@ -517,8 +517,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				44.88,
 				47.94,
 				51,
@@ -534,8 +534,8 @@ export const meta: CharDetailInfo  = {
 				93.84,
 				98.43,
 				103.02
-			]],
-			["一段伤害2", [
+			],
+			"一段伤害2": [
 				[21.12, 23.76],
 				[22.56, 25.38],
 				[24, 27],
@@ -551,8 +551,8 @@ export const meta: CharDetailInfo  = {
 				[44.16, 49.68],
 				[46.32, 52.11],
 				[48.48, 54.54]
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				43.12,
 				46.06,
 				49,
@@ -568,8 +568,8 @@ export const meta: CharDetailInfo  = {
 				90.16,
 				94.57,
 				98.98
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				52.8,
 				56.4,
 				60,
@@ -585,8 +585,8 @@ export const meta: CharDetailInfo  = {
 				110.4,
 				115.8,
 				121.2
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				65.65,
 				70.12,
 				74.6,
@@ -602,8 +602,8 @@ export const meta: CharDetailInfo  = {
 				137.26,
 				143.98,
 				150.69
-			]],
-			["瞄准射击", [
+			],
+			"瞄准射击": [
 				43.86,
 				47.43,
 				51,
@@ -619,8 +619,8 @@ export const meta: CharDetailInfo  = {
 				105.06,
 				111.18,
 				117.3
-			]],
-			["满蓄力瞄准射击", [
+			],
+			"满蓄力瞄准射击": [
 				124,
 				133.3,
 				142.6,
@@ -636,8 +636,8 @@ export const meta: CharDetailInfo  = {
 				263.5,
 				279,
 				294.5
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -653,8 +653,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -670,8 +670,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -687,10 +687,10 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["冰尘弹伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"冰尘弹伤害": [
 				177.6,
 				190.92,
 				204.24,
@@ -706,8 +706,8 @@ export const meta: CharDetailInfo  = {
 				377.4,
 				399.6,
 				421.8
-			]],
-			["冷冻炸弹伤害", [
+			],
+			"冷冻炸弹伤害": [
 				40,
 				43,
 				46,
@@ -723,8 +723,8 @@ export const meta: CharDetailInfo  = {
 				85,
 				90,
 				95
-			]],
-			["攻击力降低", [
+			],
+			"攻击力降低": [
 				12,
 				12,
 				12,
@@ -740,8 +740,8 @@ export const meta: CharDetailInfo  = {
 				15,
 				15,
 				15
-			]],
-			["线圈普通攻击伤害提升", [
+			],
+			"线圈普通攻击伤害提升": [
 				[5.84, 11.69, 17.53],
 				[6.19, 12.39, 18.58],
 				[6.54, 13.09, 19.63],
@@ -757,8 +757,8 @@ export const meta: CharDetailInfo  = {
 				[10.89, 21.77, 32.66],
 				[11.34, 22.68, 34.02],
 				[11.79, 23.59, 35.39]
-			]],
-			["线圈普通攻击伤害提升2", [
+			],
+			"线圈普通攻击伤害提升2": [
 				[5.84, 11.69, 17.53],
 				[6.19, 12.39, 18.58],
 				[6.54, 13.09, 19.63],
@@ -774,8 +774,8 @@ export const meta: CharDetailInfo  = {
 				[10.89, 21.77, 32.66],
 				[11.34, 22.68, 34.02],
 				[11.79, 23.59, 35.39]
-			]],
-			["冰驰普通攻击伤害提升", [
+			],
+			"冰驰普通攻击伤害提升": [
 				29.23,
 				30.97,
 				32.73,
@@ -791,10 +791,10 @@ export const meta: CharDetailInfo  = {
 				54.43,
 				56.7,
 				58.97
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				359.2,
 				386.14,
 				413.08,
@@ -810,8 +810,8 @@ export const meta: CharDetailInfo  = {
 				763.3,
 				808.2,
 				853.1
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -871,7 +871,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

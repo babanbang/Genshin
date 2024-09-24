@@ -19,7 +19,7 @@ const WeaponIdMap = new Map<number, WeaponBaseInfo<GameList.Gs>>();
 })
 
 export const WeaponMap = {
-	getById: (id: number) => WeaponIdMap.get(id),
+	getById: WeaponIdMap.get,
 	getByName: (name: string) => {
 		const id = WeaponNameIdMap.get(name)
 		return WeaponIdMap.get(id || 0)

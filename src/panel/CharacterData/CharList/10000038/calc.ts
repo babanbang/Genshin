@@ -1,46 +1,38 @@
-details = [{
-  title: 'E阳华伤害',
-  talent: GsTalentType.e,
-  dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.e].get('技能伤害'], GsTalentType.e)
-}, {
-  title: 'E刹那之花伤害',
-    dmg: ({ talent, attr }, { basic }) => {
-      let ret = talent[GsTalentType.e].get('刹那之花伤害'] * attr.def / 100 + attr.e.plus
-    return basic(ret, GsTalentType.e)
-    }
-}, {
-  title: 'E刹那之花(打半血)',
-    params: {
-    half: true
-  },
-  dmg: ({ talent, attr }, { basic }) => {
-    let ret = talent[GsTalentType.e].get('刹那之花伤害'] * attr.def / 100 + attr.e.plus
-    return basic(ret, GsTalentType.e)
-  }
-}, {
-  title: 'Q总伤害',
-    check: ({ cons }) => cons < 2,
-      params: { buff: 0 },
-  dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.q].get('爆发伤害']+ talent[GsTalentType.q].get('生灭之花伤害'] * 7, GsTalentType.q)
-}, {
-  title: '满BuffQ总伤害',
-    cons: 2,
-      dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.q].get('爆发伤害']+ talent[GsTalentType.q].get('生灭之花伤害'] * 7, GsTalentType.q)
-}]
+import { AttrKeys, CharCalcRuleType } from "@/types"
+import { GsTalentType } from "karin-plugin-mystool"
+import { metaData } from "./meta"
 
-defDmgIdx = 1
-mainAttr = 'def,atk,cpct,cdmg'
-
-buffs = [{
-  title: '阿贝多被动：刹那之花对生命值低于50%的敌人造成的伤害提高25%',
-  data: {
-    eDmg: ({ params }) => params.half ? 25 : 0
-  }
-}, {
-  title: '阿贝多2命：4层Buff提高Q [qPlus]伤害',
-  cons: 2,
-  sort: 9,
-  data: {
-    qPlus: ({ params, attr }) => params.buff === 0 ? 0 : attr.def * 1.2
-  }
-}]
+/** 阿贝多 */
+export const CharCalcRule: CharCalcRuleType = {
+	details: [{
+		title: 'E阳华伤害',
+		dmg: ({ talent: { e } }, { dmg }) => dmg(metaData.talentData.e["技能伤害"][e.level], GsTalentType.e)
+	}, {
+		title: 'E刹那之花伤害',
+		dmg: ({ talent: { e }, attr, calc }, { basic }) =>
+			basic(metaData.talentData.e["刹那之花伤害"][e.level] * calc(attr.def) / 100 + attr.e.plus, GsTalentType.e)
+	}, {
+		title: 'E刹那之花(打半血)',
+		params: { half: true },
+		dmg: ({ talent: { e }, attr, calc }, { basic }) =>
+			basic(metaData.talentData.e["刹那之花伤害"][e.level] * calc(attr.def) / 100 + attr.e.plus, GsTalentType.e)
+	}, ({ cons }) => ({
+		title: cons >= 2 ? '满Buff-Q总伤害' : 'Q总伤害',
+		params: { buff: cons >= 2 ? 1 : 0 },
+		dmg: ({ talent: { q } }, { dmg }) => dmg(metaData.talentData.q["爆发伤害"][q.level] + metaData.talentData.q["生灭之花伤害"][q.level] * 7, GsTalentType.q)
+	})],
+	buffs: [{
+		title: '阿贝多被动：刹那之花对生命值低于50%的敌人造成的伤害提高25%',
+		data: {
+			eDmg: ({ params }) => params.half ? 25 : 0
+		}
+	}, {
+		title: '阿贝多2命：4层Buff提高Q [qPlus]伤害',
+		check: ({ cons }) => cons >= 2,
+		sort: 9, data: {
+			qPlus: ({ params, attr, calc }) => params.buff === 0 ? 0 : calc(attr.def) * 1.2
+		}
+	}],
+	mainAttr: [AttrKeys.def, AttrKeys.atk, AttrKeys.cpct, AttrKeys.cdmg],
+	defDmgIdx: 1
+}

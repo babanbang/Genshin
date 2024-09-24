@@ -1,30 +1,31 @@
-import { AttrKeys, CharCalcRuleType } from "@/types"
-import { DmgTypes } from "@/types/panel/AttrModel/Dmg"
+import { AttrKeys, CharCalcRuleType, DmgTypes } from "@/types"
 import { GsTalentType } from "karin-plugin-mystool"
+import { metaData } from "./meta"
 
+/** 芭芭拉 */
 export const CharCalcRule: CharCalcRuleType = {
 	details: [{
 		title: '重击伤害',
-		dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.a].get('重击伤害')!, [GsTalentType.a, 2])
+		dmg: ({ talent: { a } }, { dmg }) => dmg(metaData.talentData.a["重击伤害"][a.level], [GsTalentType.a, 2])
 	}, {
 		title: '重击蒸发',
-		dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.a].get('重击伤害')!, [GsTalentType.a, 2], DmgTypes.vaporize)
+		dmg: ({ talent: { a } }, { dmg }) => dmg(metaData.talentData.a["重击伤害"][a.level], [GsTalentType.a, 2], DmgTypes.vaporize)
 	}, {
 		title: 'E每跳治疗',
-		dmg: ({ talent, attr, calc }, { heal }) =>
-			heal((talent[GsTalentType.e].get('持续治疗量2')![0] as number) * calc(attr.hp) / 100 + (talent[GsTalentType.e].get('持续治疗量2')![1] as number))
+		dmg: ({ talent: { e }, attr, calc }, { heal }) =>
+			heal(metaData.talentData.e["持续治疗量2"][e.level][0] * calc(attr.hp) / 100 + metaData.talentData.e["持续治疗量2"][e.level][1])
 	}, {
 		title: 'Q治疗量',
-		dmg: ({ talent, attr, calc }, { heal }) =>
-			heal((talent[GsTalentType.q].get('治疗量2')![0] as number) * calc(attr.hp) / 100 + (talent[GsTalentType.q].get('治疗量2')![1] as number))
+		dmg: ({ talent: { q }, attr, calc }, { heal }) =>
+			heal(metaData.talentData.q["治疗量2"][q.level][0] * calc(attr.hp) / 100 + metaData.talentData.q["治疗量2"][q.level][1])
 	}],
-	mainAttr: [AttrKeys.atk, AttrKeys.hp, AttrKeys.cpct, AttrKeys.cdmg, AttrKeys.mastery],
-	defDmgIdx: 3,
 	buffs: [{
 		title: '芭芭拉2命：开E水环持续期间获得15%水伤加成',
-		cons: 2,
+		check: ({ cons }) => cons >= 2,
 		data: {
 			dmg: 15
 		}
-	}]
+	}],
+	mainAttr: [AttrKeys.atk, AttrKeys.hp, AttrKeys.cpct, AttrKeys.cdmg, AttrKeys.mastery],
+	defDmgIdx: 3
 }

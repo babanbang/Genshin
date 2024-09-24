@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 纳西妲 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "白草净华",
 		allegiance: "须弥城",
 		birth: "10-27",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 10360,
 		[AttrKeys.atk]: 298.97,
 		[AttrKeys.def]: 630.21
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.mastery,
 		value: 115.19999694824
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "生长碧翡",
 		[MaterialType.boss]: "灭诤草蔓",
 		[MaterialType.specialty]: "劫波莲",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「巧思」的哲学",
 		[MaterialType.weekly]: "傀儡的悬丝"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 7331,
 			name: "普通攻击·行相",
@@ -593,8 +593,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				40.3,
 				43.33,
 				46.35,
@@ -610,8 +610,8 @@ export const meta: CharDetailInfo  = {
 				85.65,
 				90.69,
 				95.72
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				36.97,
 				39.75,
 				42.52,
@@ -627,8 +627,8 @@ export const meta: CharDetailInfo  = {
 				78.57,
 				83.19,
 				87.81
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				45.87,
 				49.31,
 				52.76,
@@ -644,8 +644,8 @@ export const meta: CharDetailInfo  = {
 				97.48,
 				103.22,
 				108.95
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				58.41,
 				62.79,
 				67.17,
@@ -661,8 +661,8 @@ export const meta: CharDetailInfo  = {
 				124.11,
 				131.41,
 				138.72
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				132,
 				141.9,
 				151.8,
@@ -678,8 +678,8 @@ export const meta: CharDetailInfo  = {
 				280.5,
 				297,
 				313.5
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -695,8 +695,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -712,8 +712,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -729,10 +729,10 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["点按伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"点按伤害": [
 				98.4,
 				105.78,
 				113.16,
@@ -748,8 +748,8 @@ export const meta: CharDetailInfo  = {
 				209.1,
 				221.4,
 				233.7
-			]],
-			["长按伤害", [
+			],
+			"长按伤害": [
 				130.4,
 				140.18,
 				149.96,
@@ -765,8 +765,8 @@ export const meta: CharDetailInfo  = {
 				277.1,
 				293.4,
 				309.7
-			]],
-			["灭净三业伤害", [
+			],
+			"灭净三业伤害": [
 				309.6,
 				332.82,
 				356.04,
@@ -782,8 +782,8 @@ export const meta: CharDetailInfo  = {
 				657.9000000000001,
 				696.5999999999999,
 				735.3
-			]],
-			["灭净三业伤害2", [
+			],
+			"灭净三业伤害2": [
 				[103.2, 206.4],
 				[110.94, 221.88],
 				[118.68, 237.36],
@@ -799,10 +799,10 @@ export const meta: CharDetailInfo  = {
 				[219.3, 438.6],
 				[232.2, 464.4],
 				[245.1, 490.2]
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["火1伤害提升", [
+			]
+		},
+		[GsTalentType.q]: {
+			"火1伤害提升": [
 				14.88,
 				16,
 				17.11,
@@ -818,8 +818,8 @@ export const meta: CharDetailInfo  = {
 				31.62,
 				33.48,
 				35.34
-			]],
-			["火2伤害提升", [
+			],
+			"火2伤害提升": [
 				22.32,
 				23.99,
 				25.67,
@@ -835,8 +835,8 @@ export const meta: CharDetailInfo  = {
 				47.43,
 				50.22,
 				53.01
-			]],
-			["雷1间隔降低", [
+			],
+			"雷1间隔降低": [
 				0.25,
 				0.27,
 				0.29,
@@ -852,8 +852,8 @@ export const meta: CharDetailInfo  = {
 				0.53,
 				0.56,
 				0.59
-			]],
-			["雷2间隔降低", [
+			],
+			"雷2间隔降低": [
 				0.37,
 				0.4,
 				0.43,
@@ -869,8 +869,8 @@ export const meta: CharDetailInfo  = {
 				0.79,
 				0.84,
 				0.88
-			]],
-			["水1持续时间延长", [
+			],
+			"水1持续时间延长": [
 				3.34,
 				3.59,
 				3.85,
@@ -886,8 +886,8 @@ export const meta: CharDetailInfo  = {
 				7.11,
 				7.52,
 				7.94
-			]],
-			["水2持续时间延长", [
+			],
+			"水2持续时间延长": [
 				5.02,
 				5.39,
 				5.77,
@@ -903,8 +903,8 @@ export const meta: CharDetailInfo  = {
 				10.66,
 				11.29,
 				11.91
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -974,7 +974,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

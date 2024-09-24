@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 那维莱特 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "谕告的潮音",
 		allegiance: "枫丹廷",
 		birth: "12-18",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 14695,
 		[AttrKeys.atk]: 208.32,
 		[AttrKeys.def]: 576.42
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cdmg,
 		value: 38.4
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "涤净青金",
 		[MaterialType.boss]: "原海麟角",
 		[MaterialType.specialty]: "幽光星星",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「公平」的哲学",
 		[MaterialType.weekly]: "亘古树海之一瞬"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 8731,
 			name: "普通攻击·如水从平",
@@ -502,8 +502,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				54.58,
 				58.67,
 				62.76,
@@ -519,8 +519,8 @@ export const meta: CharDetailInfo  = {
 				115.98,
 				122.8,
 				129.62
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				46.25,
 				49.71,
 				53.18,
@@ -536,8 +536,8 @@ export const meta: CharDetailInfo  = {
 				98.27,
 				104.05,
 				109.83
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				72.34,
 				77.76,
 				83.19,
@@ -553,8 +553,8 @@ export const meta: CharDetailInfo  = {
 				153.72,
 				162.76,
 				171.8
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				136.8,
 				147.06,
 				157.32,
@@ -570,8 +570,8 @@ export const meta: CharDetailInfo  = {
 				290.7,
 				307.8,
 				324.9
-			]],
-			["重击·衡平推裁持续伤害", [
+			],
+			"重击·衡平推裁持续伤害": [
 				7.32,
 				7.91,
 				8.51,
@@ -587,8 +587,8 @@ export const meta: CharDetailInfo  = {
 				17.53,
 				18.55,
 				19.57
-			]],
-			["恢复生命值", [
+			],
+			"恢复生命值": [
 				[16, 0],
 				[16, 0],
 				[16, 0],
@@ -604,8 +604,8 @@ export const meta: CharDetailInfo  = {
 				[16, 0],
 				[16, 0],
 				[16, 0]
-			]],
-			["恢复生命值2", [
+			],
+			"恢复生命值2": [
 				[16, 0],
 				[16, 0],
 				[16, 0],
@@ -621,8 +621,8 @@ export const meta: CharDetailInfo  = {
 				[16, 0],
 				[16, 0],
 				[16, 0]
-			]],
-			["损失生命值", [
+			],
+			"损失生命值": [
 				[8, 0.5],
 				[8, 0.5],
 				[8, 0.5],
@@ -638,8 +638,8 @@ export const meta: CharDetailInfo  = {
 				[8, 0.5],
 				[8, 0.5],
 				[8, 0.5]
-			]],
-			["损失生命值2", [
+			],
+			"损失生命值2": [
 				[8, 0.5],
 				[8, 0.5],
 				[8, 0.5],
@@ -655,8 +655,8 @@ export const meta: CharDetailInfo  = {
 				[8, 0.5],
 				[8, 0.5],
 				[8, 0.5]
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -672,8 +672,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -704,8 +704,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -736,10 +736,10 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"技能伤害": [
 				12.86,
 				13.83,
 				14.79,
@@ -755,8 +755,8 @@ export const meta: CharDetailInfo  = {
 				27.34,
 				28.94,
 				30.55
-			]],
-			["灵息之刺伤害", [
+			],
+			"灵息之刺伤害": [
 				20.8,
 				22.36,
 				23.92,
@@ -772,10 +772,10 @@ export const meta: CharDetailInfo  = {
 				44.2,
 				46.8,
 				49.4
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				22.26,
 				23.93,
 				25.6,
@@ -791,8 +791,8 @@ export const meta: CharDetailInfo  = {
 				47.3,
 				50.08,
 				52.86
-			]],
-			["水瀑伤害", [
+			],
+			"水瀑伤害": [
 				9.11,
 				9.79,
 				10.47,
@@ -808,8 +808,8 @@ export const meta: CharDetailInfo  = {
 				19.35,
 				20.49,
 				21.63
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -876,7 +876,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

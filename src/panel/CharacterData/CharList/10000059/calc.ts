@@ -1,25 +1,31 @@
-details = [{
-  title: '勠心拳伤害',
-  params: { e: 0 },
-  dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.e].get('技能伤害'], GsTalentType.e)
-}, {
-  title: '满层勠心拳伤害',
-    params: { e: 4 },
-  dmg: ({ talent }, { dmg }) => {
-    return dmg(talent[GsTalentType.e].get('技能伤害'] * 1 + talent[GsTalentType.e].get('变格伤害提升'] * 4 + talent[GsTalentType.e].get('正论伤害提升'] * 1, GsTalentType.e)
-  }
-}, {
-  title: 'Q真空弹伤害',
-    dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.q].get('不动流·真空弹伤害'], GsTalentType.q)
-}]
+import { AttrKeys, CharCalcRuleType } from "@/types"
+import { GsTalentType } from "karin-plugin-mystool"
+import { metaData } from "./meta"
 
-defDmgIdx = 1
-
-buffs = [{
-  title: '平藏6命：每层「变格」提高E 4%暴击率,「正论」提高E 32%暴击伤害',
-  cons: 6,
-  data: {
-    eCpct: ({ params }) => params.e === 4 ? 24 : 0,
-    eCdmg: ({ params }) => params.e === 4 ? 32 : 0
-  }
-}]
+/** 鹿野院平藏 */
+export const CharCalcRule: CharCalcRuleType = {
+	details: [{
+		title: '勠心拳伤害',
+		params: { e: 0 },
+		dmg: ({ talent: { a, e, q } }, { dmg }) => dmg(metaData.talentData.e["技能伤害"][e.level], GsTalentType.e)
+	}, {
+		title: '满层勠心拳伤害',
+		params: { e: 4 },
+		dmg: ({ talent: { a, e, q } }, { dmg }) => {
+			return dmg(metaData.talentData.e["技能伤害"][e.level] + metaData.talentData.e["变格伤害提升"][e.level] * 4 + metaData.talentData.e["正论伤害提升"][e.level], GsTalentType.e)
+		}
+	}, {
+		title: 'Q真空弹伤害',
+		dmg: ({ talent: { a, e, q } }, { dmg }) => dmg(metaData.talentData.q["不动流·真空弹伤害"][q.level], GsTalentType.q)
+	}],
+	buffs: [{
+		title: '平藏6命：每层「变格」提高E 4%暴击率,「正论」提高E 32%暴击伤害',
+		check: ({ cons }) => cons === 6,
+		data: {
+			eCpct: ({ params }) => params.e === 4 ? 24 : 0,
+			eCdmg: ({ params }) => params.e === 4 ? 32 : 0
+		}
+	}],
+	mainAttr: [AttrKeys.atk, AttrKeys.cpct, AttrKeys.cdmg],
+	defDmgIdx: 1
+}

@@ -1,21 +1,27 @@
-details = [{
-  title: 'E每跳治疗',
-  dmg: ({ talent, attr, calc }, { heal }) =>
-    heal(talent[GsTalentType.e].get('持续治疗量2'][0] * calc(attr.atk) / 100 + talent[GsTalentType.e].get('持续治疗量2'][1] * 1)
-}, {
-  title: '度厄真符每次治疗',
-    dmg: ({ talent, attr, calc }, { heal }) => heal(talent[GsTalentType.q].get('治疗量2'][0] * calc(attr.atk) / 100 + talent[GsTalentType.q].get('治疗量2'][1] * 1)
-}, {
-  title: '重击伤害',
-    dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.a].get('重击伤害'], [GsTalentType.a, 2], 'phy')
-}]
+import { AttrKeys, CharCalcRuleType, DmgTypes } from "@/types"
+import { GsTalentType } from "karin-plugin-mystool"
+import { metaData } from "./meta"
 
-mainAttr = 'atk,cpct,cdmg,heal'
-
-buffs = [{
-  title: '七七二命：对受冰元素影响的敌人普攻及重击伤害提升15%',
-  cons: 2,
-  data: {
-    a2: 15
-  }
-}]
+/** 七七 */
+export const CharCalcRule: CharCalcRuleType = {
+	details: [{
+		title: 'E每跳治疗',
+		dmg: ({ talent: { a, e, q }, attr, calc }, { heal }) =>
+			heal(metaData.talentData.e["持续治疗量2"][e.level][0] * calc(attr.atk) / 100 + metaData.talentData.e["持续治疗量2"][e.level][1])
+	}, {
+		title: '度厄真符每次治疗',
+		dmg: ({ talent: { a, e, q }, attr, calc }, { heal }) => heal(metaData.talentData.q["治疗量2"][q.level][0] * calc(attr.atk) / 100 + metaData.talentData.q["治疗量2"][q.level][1])
+	}, {
+		title: '重击伤害',
+		dmg: ({ talent: { a, e, q } }, { dmg }) => dmg(metaData.talentData.a["重击伤害"][a.level], [GsTalentType.a, 2], DmgTypes.phy)
+	}],
+	buffs: [{
+		title: '七七二命：对受冰元素影响的敌人普攻及重击伤害提升15%',
+		check: ({ cons }) => cons >= 2,
+		data: {
+			a2: 15
+		}
+	}],
+	mainAttr: [AttrKeys.atk, AttrKeys.cpct, AttrKeys.cdmg, AttrKeys.heal],
+	defDmgIdx: 0
+}

@@ -2,7 +2,7 @@ import { AvatarData, CharDetailInfo } from "@/types";
 import { BaseCharacter, CharBaseInfo, Data, GameList, GamePathType, GsElement, GsTalentType, karinPath } from "karin-plugin-mystool";
 import { lodash } from "node-karin/modules.js";
 import { Avatar } from "./Avatar";
-import { CharCalcRule, CharMap } from "./CharacterData";
+import { CharCalcRule, CharMap, getCharMetaData } from "./CharacterData";
 
 export class Character extends BaseCharacter<GameList.Gs> {
 	/** 图片缓存 */
@@ -25,9 +25,7 @@ export class Character extends BaseCharacter<GameList.Gs> {
 			return this.#detailInfo
 		}
 
-		const id = this.isTraveler ? `${this.id}/${this.elem}` : this.id
-		this.#detailInfo = Data.readJSON(`resources/metaData/characters/${id}/data.json`, GamePathType[this.game], karinPath.node, {})
-
+		this.#detailInfo = getCharMetaData(this.id, this.elem)!
 		return this.#detailInfo
 	}
 

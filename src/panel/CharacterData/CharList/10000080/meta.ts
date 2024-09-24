@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 米卡 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "晴霜的标绘",
 		allegiance: "西风骑士团",
 		birth: "8-11",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 12506,
 		[AttrKeys.atk]: 223.02,
 		[AttrKeys.def]: 713.23
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.hp + "Pct",
 		value: 24
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "哀叙冰玉",
 		[MaterialType.boss]: "苍砾蕊羽",
 		[MaterialType.specialty]: "钩钩果",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「诗文」的哲学",
 		[MaterialType.weekly]: "无心的渊镜"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 8031,
 			name: "普通攻击·西风枪术·镝传",
@@ -517,8 +517,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				43.26,
 				46.78,
 				50.31,
@@ -534,8 +534,8 @@ export const meta: CharDetailInfo  = {
 				103.63,
 				109.67,
 				115.7
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				41.5,
 				44.88,
 				48.26,
@@ -551,8 +551,8 @@ export const meta: CharDetailInfo  = {
 				99.41,
 				105.2,
 				110.99
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				54.5,
 				58.94,
 				63.38,
@@ -568,8 +568,8 @@ export const meta: CharDetailInfo  = {
 				130.55,
 				138.16,
 				145.76
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				55.22,
 				59.72,
 				64.22,
@@ -585,8 +585,8 @@ export const meta: CharDetailInfo  = {
 				132.3,
 				140,
 				147.7
-			]],
-			["四段伤害2", [
+			],
+			"四段伤害2": [
 				[27.61, 27.61],
 				[29.86, 29.86],
 				[32.11, 32.11],
@@ -602,8 +602,8 @@ export const meta: CharDetailInfo  = {
 				[66.15, 66.15],
 				[70, 70],
 				[73.85, 73.85]
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				70.87,
 				76.64,
 				82.41,
@@ -619,8 +619,8 @@ export const meta: CharDetailInfo  = {
 				169.77,
 				179.66,
 				189.55
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				112.75,
 				121.92,
 				131.1,
@@ -636,8 +636,8 @@ export const meta: CharDetailInfo  = {
 				270.07,
 				285.8,
 				301.53
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				63.93,
 				69.14,
 				74.34,
@@ -653,8 +653,8 @@ export const meta: CharDetailInfo  = {
 				153.14,
 				162.06,
 				170.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -670,8 +670,8 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -687,10 +687,10 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["霜流矢伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"霜流矢伤害": [
 				67.2,
 				72.24,
 				77.28,
@@ -706,8 +706,8 @@ export const meta: CharDetailInfo  = {
 				142.8,
 				151.2,
 				159.6
-			]],
-			["冰星信标伤害", [
+			],
+			"冰星信标伤害": [
 				84,
 				90.3,
 				96.6,
@@ -723,8 +723,8 @@ export const meta: CharDetailInfo  = {
 				178.5,
 				189,
 				199.5
-			]],
-			["冰星破片伤害", [
+			],
+			"冰星破片伤害": [
 				25.2,
 				27.09,
 				28.98,
@@ -740,8 +740,8 @@ export const meta: CharDetailInfo  = {
 				53.55,
 				56.7,
 				59.85
-			]],
-			["攻击速度提升", [
+			],
+			"攻击速度提升": [
 				13,
 				14,
 				15,
@@ -757,10 +757,10 @@ export const meta: CharDetailInfo  = {
 				25,
 				25,
 				25
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["施放治疗量", [
+			]
+		},
+		[GsTalentType.q]: {
+			"施放治疗量": [
 				1184.21,
 				1302.34,
 				1430.23,
@@ -776,8 +776,8 @@ export const meta: CharDetailInfo  = {
 				3249.2400000000002,
 				3485.2000000000003,
 				3730.9300000000003
-			]],
-			["施放治疗量2", [
+			],
+			"施放治疗量2": [
 				[12.17, 1172.04],
 				[13.08, 1289.26],
 				[13.99, 1416.24],
@@ -793,8 +793,8 @@ export const meta: CharDetailInfo  = {
 				[25.86, 3223.38],
 				[27.38, 3457.82],
 				[28.9, 3702.03]
-			]],
-			["鹰翎治疗量", [
+			],
+			"鹰翎治疗量": [
 				236.38,
 				259.96000000000004,
 				285.5,
@@ -810,8 +810,8 @@ export const meta: CharDetailInfo  = {
 				648.5999999999999,
 				695.7,
 				744.76
-			]],
-			["鹰翎治疗量2", [
+			],
+			"鹰翎治疗量2": [
 				[2.43, 233.95],
 				[2.61, 257.35],
 				[2.8, 282.7],
@@ -827,8 +827,8 @@ export const meta: CharDetailInfo  = {
 				[5.17, 643.43],
 				[5.47, 690.23],
 				[5.78, 738.98]
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -897,7 +897,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

@@ -1,11 +1,16 @@
-details = [{
-  title: 'Q施放治疗量',
-  dmg: ({ talent, calc, attr }, { heal }) => heal(talent[GsTalentType.q].get('施放治疗量2'][0] * calc(attr.hp) / 100 + talent[GsTalentType.q].get('施放治疗量2'][1])
-}, {
-  title: '鹰翎治疗量',
-    dmg: ({ talent, calc, attr }, { heal }) => heal(talent[GsTalentType.q].get('鹰翎治疗量2'][0] * calc(attr.hp) / 100 + talent[GsTalentType.q].get('鹰翎治疗量2'][1])
-}]
+import { AttrKeys, CharCalcRuleType } from "@/types"
+import { metaData } from "./meta"
 
-mainAttr = 'hp,cpct,cdmg'
-
-buffs = []
+/** 米卡 */
+export const CharCalcRule: CharCalcRuleType = {
+	details: [{
+		title: 'Q施放治疗量',
+		dmg: ({ talent: { q }, calc, attr }, { heal }) => heal(metaData.talentData.q["施放治疗量2"][q.level][0] * calc(attr.hp) / 100 + metaData.talentData.q["施放治疗量2"][q.level][1])
+	}, {
+		title: '鹰翎治疗量',
+		dmg: ({ talent: { q }, calc, attr }, { heal }) => heal(metaData.talentData.q["鹰翎治疗量2"][q.level][0] * calc(attr.hp) / 100 + metaData.talentData.q["鹰翎治疗量2"][q.level][1])
+	}],
+	buffs: [],
+	mainAttr: [AttrKeys.hp, AttrKeys.cpct, AttrKeys.cdmg],
+	defDmgIdx: 0
+}

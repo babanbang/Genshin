@@ -1,37 +1,37 @@
-import { AttrKeys, CharCalcRuleType } from "@/types"
-import { DmgTypes } from "@/types/panel/AttrModel/Dmg"
+import { AttrKeys, CharCalcRuleType, DmgTypes } from "@/types"
 import { GsTalentType } from "karin-plugin-mystool"
+import { metaData } from "./meta"
 
+/** 香菱 */
 export const CharCalcRule: CharCalcRuleType = {
 	details: [{
 		title: '锅巴单口伤害',
-		dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.e].get('喷火伤害')!, GsTalentType.e)
+		dmg: ({ talent: { e } }, { dmg }) => dmg(metaData.talentData.e["喷火伤害"][e.level], GsTalentType.e)
 	}, {
 		title: '锅巴单口蒸发',
-		dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.e].get('喷火伤害')!, GsTalentType.e, DmgTypes.vaporize)
+		dmg: ({ talent: { e } }, { dmg }) => dmg(metaData.talentData.e["喷火伤害"][e.level], GsTalentType.e, DmgTypes.vaporize)
 	}, {
 		title: '旋火轮单次伤害',
 		params: { isQ: true },
-		dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.q].get('旋火轮伤害')!, GsTalentType.q)
+		dmg: ({ talent: { q } }, { dmg }) => dmg(metaData.talentData.q["旋火轮伤害"][q.level], GsTalentType.q)
 	}, {
 		title: '旋火轮单次蒸发',
 		params: { isQ: true },
-		dmg: ({ talent }, { dmg }) => dmg(talent[GsTalentType.q].get('旋火轮伤害')!, GsTalentType.q, DmgTypes.vaporize)
+		dmg: ({ talent: { q } }, { dmg }) => dmg(metaData.talentData.q["旋火轮伤害"][q.level], GsTalentType.q, DmgTypes.vaporize)
 	}],
-	defDmgIdx: 3,
-	mainAttr: [AttrKeys.atk, AttrKeys.cpct, AttrKeys.cdmg],
 	buffs: [{
-		cons: 1,
 		title: '香菱1命：锅巴降低敌人火抗15',
+		check: ({ cons }) => cons >= 1,
 		data: {
 			kx: 15
 		}
 	}, {
-		check: ({ params }) => !params.isQ,
+		check: ({ params, cons }) => cons === 6 && !params.isQ,
 		title: '香菱6命：旋火轮持续期间获得15%火伤加成',
-		cons: 6,
 		data: {
 			dmg: 15
 		}
-	}]
+	}],
+	mainAttr: [AttrKeys.atk, AttrKeys.cpct, AttrKeys.cdmg],
+	defDmgIdx: 3
 }

@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 克洛琳德 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "秉烛狝影",
 		allegiance: "审判庭",
 		birth: "9-20",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 12956,
 		[AttrKeys.atk]: 337.24,
 		[AttrKeys.def]: 783.93
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cpct,
 		value: 19.2
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "最胜紫晶",
 		[MaterialType.boss]: "原海麟角",
 		[MaterialType.specialty]: "幽光星星",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「正义」的哲学",
 		[MaterialType.weekly]: "亘古树海之一瞬"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 9831,
 			name: "普通攻击·逐影之誓",
@@ -545,8 +545,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				54.06,
 				58.46,
 				62.86,
@@ -562,8 +562,8 @@ export const meta: CharDetailInfo  = {
 				129.49,
 				137.03,
 				144.58
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				51.63,
 				55.83,
 				60.03,
@@ -579,8 +579,8 @@ export const meta: CharDetailInfo  = {
 				123.67,
 				130.87,
 				138.08
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				68.38,
 				73.94,
 				79.5,
@@ -596,8 +596,8 @@ export const meta: CharDetailInfo  = {
 				163.78,
 				173.32,
 				182.86
-			]],
-			["三段伤害2", [
+			],
+			"三段伤害2": [
 				[34.19, 34.19],
 				[36.97, 36.97],
 				[39.75, 39.75],
@@ -613,8 +613,8 @@ export const meta: CharDetailInfo  = {
 				[81.89, 81.89],
 				[86.66, 86.66],
 				[91.43, 91.43]
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				69.39,
 				75.06,
 				80.69999999999999,
@@ -630,8 +630,8 @@ export const meta: CharDetailInfo  = {
 				166.23,
 				175.92000000000002,
 				185.60999999999999
-			]],
-			["四段伤害2", [
+			],
+			"四段伤害2": [
 				[23.13, 23.13, 23.13],
 				[25.02, 25.02, 25.02],
 				[26.9, 26.9, 26.9],
@@ -647,8 +647,8 @@ export const meta: CharDetailInfo  = {
 				[55.41, 55.41, 55.41],
 				[58.64, 58.64, 58.64],
 				[61.87, 61.87, 61.87]
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				90.01,
 				97.34,
 				104.66,
@@ -664,8 +664,8 @@ export const meta: CharDetailInfo  = {
 				215.61,
 				228.17,
 				240.72
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				128.14,
 				138.57,
 				149,
@@ -681,8 +681,8 @@ export const meta: CharDetailInfo  = {
 				306.94,
 				324.82,
 				342.7
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				63.93,
 				69.14,
 				74.34,
@@ -698,8 +698,8 @@ export const meta: CharDetailInfo  = {
 				153.14,
 				162.06,
 				170.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -715,8 +715,8 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -732,10 +732,10 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["驰猎伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"驰猎伤害": [
 				[26.76, 38.79],
 				[28.94, 41.94],
 				[31.12, 45.1],
@@ -751,8 +751,8 @@ export const meta: CharDetailInfo  = {
 				[64.11, 92.91],
 				[67.84, 98.32],
 				[71.58, 103.73]
-			]],
-			["驰猎伤害2", [
+			],
+			"驰猎伤害2": [
 				[26.76, 38.79],
 				[28.94, 41.94],
 				[31.12, 45.1],
@@ -768,8 +768,8 @@ export const meta: CharDetailInfo  = {
 				[64.11, 92.91],
 				[67.84, 98.32],
 				[71.58, 103.73]
-			]],
-			["驰猎赋予生命之契", [
+			],
+			"驰猎赋予生命之契": [
 				35,
 				35,
 				35,
@@ -785,8 +785,8 @@ export const meta: CharDetailInfo  = {
 				35,
 				35,
 				35
-			]],
-			["贯夜伤害", [
+			],
+			"贯夜伤害": [
 				[32.97, 43.96, 70.17],
 				[35.66, 47.54, 75.9],
 				[38.34, 51.12, 81.6],
@@ -802,8 +802,8 @@ export const meta: CharDetailInfo  = {
 				[78.98, 105.31, 168.09],
 				[83.58, 111.44, 177.89999999999998],
 				[88.18, 117.58, 187.68]
-			]],
-			["贯夜伤害2", [
+			],
+			"贯夜伤害2": [
 				[32.97, 43.96, 23.39, 3],
 				[35.66, 47.54, 25.3, 3],
 				[38.34, 51.12, 27.2, 3],
@@ -819,8 +819,8 @@ export const meta: CharDetailInfo  = {
 				[78.98, 105.31, 56.03, 3],
 				[83.58, 111.44, 59.3, 3],
 				[88.18, 117.58, 62.56, 3]
-			]],
-			["流涌之刃伤害", [
+			],
+			"流涌之刃伤害": [
 				43.2,
 				46.44,
 				49.68,
@@ -836,10 +836,10 @@ export const meta: CharDetailInfo  = {
 				91.8,
 				97.2,
 				102.6
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				634.4,
 				682,
 				729.55,
@@ -855,8 +855,8 @@ export const meta: CharDetailInfo  = {
 				1348.1,
 				1427.4,
 				1506.6999999999998
-			]],
-			["技能伤害2", [
+			],
+			"技能伤害2": [
 				[126.88, 5],
 				[136.4, 5],
 				[145.91, 5],
@@ -872,8 +872,8 @@ export const meta: CharDetailInfo  = {
 				[269.62, 5],
 				[285.48, 5],
 				[301.34, 5]
-			]],
-			["赋予生命之契", [
+			],
+			"赋予生命之契": [
 				66,
 				72,
 				78,
@@ -889,8 +889,8 @@ export const meta: CharDetailInfo  = {
 				138,
 				144,
 				150
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -961,7 +961,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

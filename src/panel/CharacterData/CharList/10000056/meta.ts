@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 九条裟罗 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "黑羽鸣镝",
 		allegiance: "天领奉行",
 		birth: "7-14",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 9570,
 		[AttrKeys.atk]: 195.41,
 		[AttrKeys.def]: 627.92
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.atk + "Pct",
 		value: 24
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "最胜紫晶",
 		[MaterialType.boss]: "雷霆数珠",
 		[MaterialType.specialty]: "血斛",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「风雅」的哲学",
 		[MaterialType.weekly]: "灰烬之心"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 5631,
 			name: "普通攻击·天狗传弓术",
@@ -433,8 +433,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				36.89,
 				39.9,
 				42.9,
@@ -450,8 +450,8 @@ export const meta: CharDetailInfo  = {
 				88.37,
 				93.52,
 				98.67
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				38.7,
 				41.85,
 				45,
@@ -467,8 +467,8 @@ export const meta: CharDetailInfo  = {
 				92.7,
 				98.1,
 				103.5
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				48.5,
 				52.45,
 				56.4,
@@ -484,8 +484,8 @@ export const meta: CharDetailInfo  = {
 				116.18,
 				122.95,
 				129.72
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				50.4,
 				54.5,
 				58.6,
@@ -501,8 +501,8 @@ export const meta: CharDetailInfo  = {
 				120.72,
 				127.75,
 				134.78
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				58.05,
 				62.77,
 				67.5,
@@ -518,8 +518,8 @@ export const meta: CharDetailInfo  = {
 				139.05,
 				147.15,
 				155.25
-			]],
-			["瞄准射击", [
+			],
+			"瞄准射击": [
 				43.86,
 				47.43,
 				51,
@@ -535,8 +535,8 @@ export const meta: CharDetailInfo  = {
 				105.06,
 				111.18,
 				117.3
-			]],
-			["满蓄力瞄准射击", [
+			],
+			"满蓄力瞄准射击": [
 				124,
 				133.3,
 				142.6,
@@ -552,8 +552,8 @@ export const meta: CharDetailInfo  = {
 				263.5,
 				279,
 				294.5
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -569,8 +569,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -586,8 +586,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -603,10 +603,10 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["天狗咒雷·伏 伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"天狗咒雷·伏 伤害": [
 				125.76,
 				135.19,
 				144.62,
@@ -622,8 +622,8 @@ export const meta: CharDetailInfo  = {
 				267.24,
 				282.96,
 				298.68
-			]],
-			["攻击力加成比例", [
+			],
+			"攻击力加成比例": [
 				42.96,
 				46.18,
 				49.4,
@@ -639,10 +639,10 @@ export const meta: CharDetailInfo  = {
 				91.29,
 				96.66,
 				102.03
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["天狗咒雷·金刚坏 伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"天狗咒雷·金刚坏 伤害": [
 				409.6,
 				440.32,
 				471.04,
@@ -658,8 +658,8 @@ export const meta: CharDetailInfo  = {
 				870.4,
 				921.6,
 				972.8
-			]],
-			["天狗咒雷·雷砾 伤害", [
+			],
+			"天狗咒雷·雷砾 伤害": [
 				34.12,
 				36.68,
 				39.24,
@@ -675,8 +675,8 @@ export const meta: CharDetailInfo  = {
 				72.5,
 				76.77,
 				81.04
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -739,7 +739,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

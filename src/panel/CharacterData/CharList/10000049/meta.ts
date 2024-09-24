@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 宵宫 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "琉焰华舞",
 		allegiance: "长野原烟花店",
 		birth: "6-21",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 10164,
 		[AttrKeys.atk]: 322.89,
 		[AttrKeys.def]: 614.84
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cpct,
 		value: 19.2
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "燃愿玛瑙",
 		[MaterialType.boss]: "阴燃之珠",
 		[MaterialType.specialty]: "鸣草",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「浮世」的哲学",
 		[MaterialType.weekly]: "龙王之冕"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 4931,
 			name: "普通攻击·烟火打扬",
@@ -456,8 +456,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				71.28,
 				76.14,
 				81,
@@ -473,8 +473,8 @@ export const meta: CharDetailInfo  = {
 				149.04,
 				156.34,
 				163.62
-			]],
-			["一段伤害2", [
+			],
+			"一段伤害2": [
 				[35.64, 2],
 				[38.07, 2],
 				[40.5, 2],
@@ -490,8 +490,8 @@ export const meta: CharDetailInfo  = {
 				[74.52, 2],
 				[78.17, 2],
 				[81.81, 2]
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				68.38,
 				73.04,
 				77.7,
@@ -507,8 +507,8 @@ export const meta: CharDetailInfo  = {
 				142.97,
 				149.96,
 				156.95
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				88.89,
 				94.95,
 				101.01,
@@ -524,8 +524,8 @@ export const meta: CharDetailInfo  = {
 				185.86,
 				194.95,
 				204.04
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				92.84,
 				99.16,
 				105.5,
@@ -541,8 +541,8 @@ export const meta: CharDetailInfo  = {
 				194.12,
 				203.62,
 				213.1
-			]],
-			["四段伤害2", [
+			],
+			"四段伤害2": [
 				[46.42, 2],
 				[49.58, 2],
 				[52.75, 2],
@@ -558,8 +558,8 @@ export const meta: CharDetailInfo  = {
 				[97.06, 2],
 				[101.81, 2],
 				[106.55, 2]
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				105.86,
 				113.08,
 				120.3,
@@ -575,8 +575,8 @@ export const meta: CharDetailInfo  = {
 				221.35,
 				232.18,
 				243.01
-			]],
-			["瞄准射击", [
+			],
+			"瞄准射击": [
 				43.86,
 				47.43,
 				51,
@@ -592,8 +592,8 @@ export const meta: CharDetailInfo  = {
 				105.06,
 				111.18,
 				117.3
-			]],
-			["满蓄力瞄准射击", [
+			],
+			"满蓄力瞄准射击": [
 				124,
 				133.3,
 				142.6,
@@ -609,8 +609,8 @@ export const meta: CharDetailInfo  = {
 				263.5,
 				279,
 				294.5
-			]],
-			["焰硝矢伤害", [
+			],
+			"焰硝矢伤害": [
 				16.4,
 				17.63,
 				18.86,
@@ -626,8 +626,8 @@ export const meta: CharDetailInfo  = {
 				34.85,
 				36.9,
 				38.95
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -643,8 +643,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -660,8 +660,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -677,10 +677,10 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["炽焰箭伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"炽焰箭伤害": [
 				137.91,
 				140.18,
 				142.45,
@@ -696,10 +696,10 @@ export const meta: CharDetailInfo  = {
 				170.6,
 				173.55,
 				176.5
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				127.2,
 				136.74,
 				146.28,
@@ -715,8 +715,8 @@ export const meta: CharDetailInfo  = {
 				270.3,
 				286.2,
 				302.1
-			]],
-			["琉金火光爆炸伤害", [
+			],
+			"琉金火光爆炸伤害": [
 				122,
 				131.15,
 				140.3,
@@ -732,8 +732,8 @@ export const meta: CharDetailInfo  = {
 				259.25,
 				274.5,
 				289.75
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -797,7 +797,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

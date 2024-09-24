@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 阿贝多 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "白垩之子",
 		allegiance: "西风骑士团",
 		birth: "9-13",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 13226,
 		[AttrKeys.atk]: 251.14,
 		[AttrKeys.def]: 876.15
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.dmg,
 		value: 28.8
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "坚牢黄玉",
 		[MaterialType.boss]: "玄岩之塔",
 		[MaterialType.specialty]: "塞西莉亚花",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「诗文」的哲学",
 		[MaterialType.weekly]: "吞天之鲸·只角"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 3831,
 			name: "普通攻击·西风剑术·白",
@@ -437,8 +437,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				36.74,
 				39.73,
 				42.72,
@@ -454,8 +454,8 @@ export const meta: CharDetailInfo  = {
 				92.31,
 				99.22,
 				106.76
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				36.74,
 				39.73,
 				42.72,
@@ -471,8 +471,8 @@ export const meta: CharDetailInfo  = {
 				92.31,
 				99.22,
 				106.76
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				47.45,
 				51.32,
 				55.18,
@@ -488,8 +488,8 @@ export const meta: CharDetailInfo  = {
 				119.24,
 				128.16,
 				137.89
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				49.75,
 				53.8,
 				57.85,
@@ -505,8 +505,8 @@ export const meta: CharDetailInfo  = {
 				125.01,
 				134.36,
 				144.57
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				62.07,
 				67.13,
 				72.18,
@@ -522,8 +522,8 @@ export const meta: CharDetailInfo  = {
 				155.97,
 				167.64,
 				180.38
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				107.5,
 				116.25,
 				125,
@@ -539,8 +539,8 @@ export const meta: CharDetailInfo  = {
 				270.11,
 				290.32,
 				312.37
-			]],
-			["重击伤害2", [
+			],
+			"重击伤害2": [
 				[47.3, 60.2],
 				[51.15, 65.1],
 				[55, 70],
@@ -556,8 +556,8 @@ export const meta: CharDetailInfo  = {
 				[118.85, 151.26],
 				[127.74, 162.58],
 				[137.44, 174.93]
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				63.93,
 				69.14,
 				74.34,
@@ -573,8 +573,8 @@ export const meta: CharDetailInfo  = {
 				153.14,
 				162.06,
 				170.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -590,8 +590,8 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -607,10 +607,10 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"技能伤害": [
 				130.4,
 				140.18,
 				149.96,
@@ -626,8 +626,8 @@ export const meta: CharDetailInfo  = {
 				277.1,
 				293.4,
 				309.7
-			]],
-			["刹那之花伤害", [
+			],
+			"刹那之花伤害": [
 				133.6,
 				143.62,
 				153.64,
@@ -643,10 +643,10 @@ export const meta: CharDetailInfo  = {
 				283.9,
 				300.6,
 				317.3
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["爆发伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"爆发伤害": [
 				367.2,
 				394.74,
 				422.28,
@@ -662,8 +662,8 @@ export const meta: CharDetailInfo  = {
 				780.3,
 				826.2,
 				872.1
-			]],
-			["生灭之花伤害", [
+			],
+			"生灭之花伤害": [
 				72,
 				77.4,
 				82.8,
@@ -679,8 +679,8 @@ export const meta: CharDetailInfo  = {
 				153,
 				162,
 				171
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -745,7 +745,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

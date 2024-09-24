@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 迪希雅 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "炽鬃之狮",
 		allegiance: "镀金旅团",
 		birth: "4-7",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 15675,
 		[AttrKeys.atk]: 265.49,
 		[AttrKeys.def]: 627.91
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.hp + "Pct",
 		value: 28.8
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "燃愿玛瑙",
 		[MaterialType.boss]: "导光四面体",
 		[MaterialType.specialty]: "沙脂蛹",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「笃行」的哲学",
 		[MaterialType.weekly]: "傀儡的悬丝"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 7931,
 			name: "普通攻击·拂金剑斗术",
@@ -552,8 +552,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				62.12,
 				67.17,
 				72.23,
@@ -569,8 +569,8 @@ export const meta: CharDetailInfo  = {
 				148.79,
 				157.46,
 				166.13
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				61.71,
 				66.73,
 				71.76,
@@ -586,8 +586,8 @@ export const meta: CharDetailInfo  = {
 				147.82,
 				156.43,
 				165.04
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				76.63,
 				82.87,
 				89.11,
@@ -603,8 +603,8 @@ export const meta: CharDetailInfo  = {
 				183.56,
 				194.25,
 				204.94
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				95.29,
 				103.05,
 				110.8,
@@ -620,8 +620,8 @@ export const meta: CharDetailInfo  = {
 				228.26,
 				241.55,
 				254.85
-			]],
-			["重击循环伤害", [
+			],
+			"重击循环伤害": [
 				56.33,
 				60.91,
 				65.5,
@@ -637,8 +637,8 @@ export const meta: CharDetailInfo  = {
 				134.93,
 				142.79,
 				150.65
-			]],
-			["重击终结伤害", [
+			],
+			"重击终结伤害": [
 				101.82,
 				110.11,
 				118.4,
@@ -654,8 +654,8 @@ export const meta: CharDetailInfo  = {
 				243.9,
 				258.11,
 				272.32
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				74.59,
 				80.66,
 				86.73,
@@ -671,8 +671,8 @@ export const meta: CharDetailInfo  = {
 				178.66,
 				189.07,
 				199.48
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -688,8 +688,8 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -705,10 +705,10 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["净焰昂藏伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"净焰昂藏伤害": [
 				112.88,
 				121.35,
 				129.81,
@@ -724,8 +724,8 @@ export const meta: CharDetailInfo  = {
 				239.87,
 				253.98,
 				268.09
-			]],
-			["剑域炽焰伤害", [
+			],
+			"剑域炽焰伤害": [
 				132.8,
 				142.76,
 				152.72,
@@ -741,8 +741,8 @@ export const meta: CharDetailInfo  = {
 				282.2,
 				298.8,
 				315.4
-			]],
-			["领域伤害", [
+			],
+			"领域伤害": [
 				61.230000000000004,
 				65.82,
 				70.42,
@@ -758,8 +758,8 @@ export const meta: CharDetailInfo  = {
 				130.12,
 				137.76999999999998,
 				145.42
-			]],
-			["领域伤害2", [
+			],
+			"领域伤害2": [
 				[60.2, 1.03],
 				[64.71, 1.11],
 				[69.23, 1.19],
@@ -775,8 +775,8 @@ export const meta: CharDetailInfo  = {
 				[127.93, 2.19],
 				[135.45, 2.32],
 				[142.97, 2.45]
-			]],
-			["消解减免", [
+			],
+			"消解减免": [
 				32,
 				34,
 				36,
@@ -792,8 +792,8 @@ export const meta: CharDetailInfo  = {
 				56,
 				56,
 				56
-			]],
-			["赤鬃之血上限", [
+			],
+			"赤鬃之血上限": [
 				200,
 				200,
 				200,
@@ -809,10 +809,10 @@ export const meta: CharDetailInfo  = {
 				200,
 				200,
 				200
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["炽鬃拳伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"炽鬃拳伤害": [
 				100.39,
 				107.91999999999999,
 				115.46000000000001,
@@ -828,8 +828,8 @@ export const meta: CharDetailInfo  = {
 				213.34,
 				225.89000000000001,
 				238.43
-			]],
-			["炽鬃拳伤害2", [
+			],
+			"炽鬃拳伤害2": [
 				[98.7, 1.69],
 				[106.1, 1.82],
 				[113.51, 1.95],
@@ -845,8 +845,8 @@ export const meta: CharDetailInfo  = {
 				[209.74, 3.6],
 				[222.08, 3.81],
 				[234.41, 4.02]
-			]],
-			["焚落踢伤害", [
+			],
+			"焚落踢伤害": [
 				141.69,
 				152.32,
 				162.95,
@@ -862,8 +862,8 @@ export const meta: CharDetailInfo  = {
 				301.08,
 				318.79,
 				336.51
-			]],
-			["焚落踢伤害2", [
+			],
+			"焚落踢伤害2": [
 				[139.3, 2.39],
 				[149.75, 2.57],
 				[160.2, 2.75],
@@ -879,8 +879,8 @@ export const meta: CharDetailInfo  = {
 				[296.01, 5.07],
 				[313.42, 5.37],
 				[330.84, 5.67]
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -948,7 +948,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

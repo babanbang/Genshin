@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 八重神子 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "浮世笑百姿",
 		allegiance: "鸣神大社",
 		birth: "6-27",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 10372,
 		[AttrKeys.atk]: 339.63,
 		[AttrKeys.def]: 568.73
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cpct,
 		value: 19.2
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "最胜紫晶",
 		[MaterialType.boss]: "龙嗣伪鳍",
 		[MaterialType.specialty]: "海灵芝",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「天光」的哲学",
 		[MaterialType.weekly]: "万劫之真意"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 5831,
 			name: "普通攻击·狐灵食罪式",
@@ -433,8 +433,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				39.66,
 				42.63,
 				45.61,
@@ -450,8 +450,8 @@ export const meta: CharDetailInfo  = {
 				84.27,
 				89.23,
 				94.19
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				38.52,
 				41.41,
 				44.3,
@@ -467,8 +467,8 @@ export const meta: CharDetailInfo  = {
 				81.85,
 				86.67,
 				91.48
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				56.89,
 				61.16,
 				65.42,
@@ -484,8 +484,8 @@ export const meta: CharDetailInfo  = {
 				120.89,
 				128,
 				135.11
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				142.89,
 				153.61,
 				164.33,
@@ -501,8 +501,8 @@ export const meta: CharDetailInfo  = {
 				303.65,
 				321.51,
 				339.38
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -518,8 +518,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -535,8 +535,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -552,10 +552,10 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["杀生樱伤害·壹阶", [
+			]
+		},
+		[GsTalentType.e]: {
+			"杀生樱伤害·壹阶": [
 				60.67,
 				65.22,
 				69.77,
@@ -571,8 +571,8 @@ export const meta: CharDetailInfo  = {
 				128.93,
 				136.51,
 				144.1
-			]],
-			["杀生樱伤害·贰阶", [
+			],
+			"杀生樱伤害·贰阶": [
 				75.84,
 				81.53,
 				87.22,
@@ -588,8 +588,8 @@ export const meta: CharDetailInfo  = {
 				161.16,
 				170.64,
 				180.12
-			]],
-			["杀生樱伤害·叁阶", [
+			],
+			"杀生樱伤害·叁阶": [
 				94.8,
 				101.91,
 				109.02,
@@ -605,8 +605,8 @@ export const meta: CharDetailInfo  = {
 				201.45,
 				213.3,
 				225.15
-			]],
-			["杀生樱伤害·肆阶", [
+			],
+			"杀生樱伤害·肆阶": [
 				118.5,
 				127.39,
 				136.28,
@@ -622,10 +622,10 @@ export const meta: CharDetailInfo  = {
 				251.81,
 				266.62,
 				281.44
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				260,
 				279.5,
 				299,
@@ -641,8 +641,8 @@ export const meta: CharDetailInfo  = {
 				552.5,
 				585,
 				617.5
-			]],
-			["天狐霆雷伤害", [
+			],
+			"天狐霆雷伤害": [
 				333.82,
 				358.85,
 				383.89,
@@ -658,8 +658,8 @@ export const meta: CharDetailInfo  = {
 				709.36,
 				751.09,
 				792.81
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -721,7 +721,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 神里绫华 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "白鹭霜华",
 		allegiance: "社奉行",
 		birth: "9-28",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [200201],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 12858,
 		[AttrKeys.atk]: 342.03,
 		[AttrKeys.def]: 783.93
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.cdmg,
 		value: 38.4
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "哀叙冰玉",
 		[MaterialType.boss]: "恒常机关之心",
 		[MaterialType.specialty]: "绯樱绣球",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「风雅」的哲学",
 		[MaterialType.weekly]: "血玉之枝"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 231,
 			name: "普通攻击·神里流·倾",
@@ -407,8 +407,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				45.73,
 				49.45,
 				53.17,
@@ -424,8 +424,8 @@ export const meta: CharDetailInfo  = {
 				109.53,
 				115.91,
 				122.29
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				48.68,
 				52.65,
 				56.61,
@@ -441,8 +441,8 @@ export const meta: CharDetailInfo  = {
 				116.62,
 				123.41,
 				130.2
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				62.62,
 				67.72,
 				72.82,
@@ -458,8 +458,8 @@ export const meta: CharDetailInfo  = {
 				150,
 				158.74,
 				167.48
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				67.94999999999999,
 				73.47,
 				78.99,
@@ -475,8 +475,8 @@ export const meta: CharDetailInfo  = {
 				162.75,
 				172.23,
 				181.71
-			]],
-			["四段伤害2", [
+			],
+			"四段伤害2": [
 				[22.65, 3],
 				[24.49, 3],
 				[26.33, 3],
@@ -492,8 +492,8 @@ export const meta: CharDetailInfo  = {
 				[54.25, 3],
 				[57.41, 3],
 				[60.57, 3]
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				78.18,
 				84.55,
 				90.91,
@@ -509,8 +509,8 @@ export const meta: CharDetailInfo  = {
 				187.27,
 				198.18,
 				209.09
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				165.39000000000001,
 				178.82999999999998,
 				192.29999999999998,
@@ -526,8 +526,8 @@ export const meta: CharDetailInfo  = {
 				396.15000000000003,
 				419.22,
 				442.29
-			]],
-			["重击伤害2", [
+			],
+			"重击伤害2": [
 				[55.13, 3],
 				[59.61, 3],
 				[64.1, 3],
@@ -543,8 +543,8 @@ export const meta: CharDetailInfo  = {
 				[132.05, 3],
 				[139.74, 3],
 				[147.43, 3]
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				63.93,
 				69.14,
 				74.34,
@@ -560,8 +560,8 @@ export const meta: CharDetailInfo  = {
 				153.14,
 				162.06,
 				170.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -577,8 +577,8 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -594,10 +594,10 @@ export const meta: CharDetailInfo  = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"技能伤害": [
 				239.2,
 				257.14,
 				275.08,
@@ -613,10 +613,10 @@ export const meta: CharDetailInfo  = {
 				508.3,
 				538.2,
 				568.1
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["切割伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"切割伤害": [
 				112.3,
 				120.72,
 				129.15,
@@ -632,8 +632,8 @@ export const meta: CharDetailInfo  = {
 				238.64,
 				252.68,
 				266.71
-			]],
-			["绽放伤害", [
+			],
+			"绽放伤害": [
 				168.45,
 				181.08,
 				193.72,
@@ -649,8 +649,8 @@ export const meta: CharDetailInfo  = {
 				357.96,
 				379.01,
 				400.07
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -726,7 +726,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

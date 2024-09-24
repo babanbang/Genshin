@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 嘉明 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "骏猊頕首",
 		allegiance: "剑匣镖局",
 		birth: "12-22",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 11419,
 		[AttrKeys.atk]: 301.6,
 		[AttrKeys.def]: 703
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.atk + "Pct",
 		value: 24
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "燃愿玛瑙",
 		[MaterialType.boss]: "帝皇的决断",
 		[MaterialType.specialty]: "星螺",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「繁荣」的哲学",
 		[MaterialType.weekly]: "无光质块"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 9231,
 			name: "普通攻击·刃爪悬星",
@@ -457,8 +457,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				83.86,
 				90.68,
 				97.51,
@@ -474,8 +474,8 @@ export const meta: CharDetailInfo  = {
 				200.86,
 				212.57,
 				224.27
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				79.04,
 				85.48,
 				91.91,
@@ -491,8 +491,8 @@ export const meta: CharDetailInfo  = {
 				189.34,
 				200.37,
 				211.4
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				106.65,
 				115.33,
 				124.01,
@@ -508,8 +508,8 @@ export const meta: CharDetailInfo  = {
 				255.45,
 				270.34,
 				285.22
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				127.95,
 				138.36,
 				148.78,
@@ -525,8 +525,8 @@ export const meta: CharDetailInfo  = {
 				306.48,
 				324.34,
 				342.19
-			]],
-			["重击循环伤害", [
+			],
+			"重击循环伤害": [
 				62.52,
 				67.61,
 				72.7,
@@ -542,8 +542,8 @@ export const meta: CharDetailInfo  = {
 				149.76,
 				158.49,
 				167.21
-			]],
-			["重击终结伤害", [
+			],
+			"重击终结伤害": [
 				113.09,
 				122.29,
 				131.5,
@@ -559,8 +559,8 @@ export const meta: CharDetailInfo  = {
 				270.89,
 				286.67,
 				302.45
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				64.15,
 				69.37,
 				74.59,
@@ -576,8 +576,8 @@ export const meta: CharDetailInfo  = {
 				153.65,
 				162.6,
 				171.55
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[128.26, 160.21],
 				[138.7, 173.25],
 				[149.14, 186.29],
@@ -593,8 +593,8 @@ export const meta: CharDetailInfo  = {
 				[307.24, 383.76],
 				[325.13, 406.11],
 				[343.03, 428.46]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[128.26, 160.21],
 				[138.7, 173.25],
 				[149.14, 186.29],
@@ -610,10 +610,10 @@ export const meta: CharDetailInfo  = {
 				[307.24, 383.76],
 				[325.13, 406.11],
 				[343.03, 428.46]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["下落攻击·踏云献瑞伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"下落攻击·踏云献瑞伤害": [
 				230.4,
 				247.68,
 				264.96,
@@ -629,8 +629,8 @@ export const meta: CharDetailInfo  = {
 				489.6,
 				518.4,
 				547.2
-			]],
-			["消耗生命值", [
+			],
+			"消耗生命值": [
 				15,
 				15,
 				15,
@@ -646,10 +646,10 @@ export const meta: CharDetailInfo  = {
 				15,
 				15,
 				15
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["猊兽·文仔砸击伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"猊兽·文仔砸击伤害": [
 				370.4,
 				398.18,
 				425.96,
@@ -665,8 +665,8 @@ export const meta: CharDetailInfo  = {
 				787.1,
 				833.4,
 				879.7
-			]],
-			["技能治疗量", [
+			],
+			"技能治疗量": [
 				30,
 				30,
 				30,
@@ -682,8 +682,8 @@ export const meta: CharDetailInfo  = {
 				30,
 				30,
 				30
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -746,7 +746,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

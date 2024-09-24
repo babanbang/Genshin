@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 菲米尼 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "潜怀遐梦",
 		allegiance: "布法蒂公馆",
 		birth: "9-24",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 12071,
 		[AttrKeys.atk]: 254.88,
 		[AttrKeys.def]: 708.46
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.atk + "Pct",
 		value: 24
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "哀叙冰玉",
 		[MaterialType.boss]: "奇械发条备件·科培琉司",
 		[MaterialType.specialty]: "海露花",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「正义」的哲学",
 		[MaterialType.weekly]: "生长天地之蕨草"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 8531,
 			name: "普通攻击·洑流剑",
@@ -589,8 +589,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				84.24,
 				91.09,
 				97.95,
@@ -606,8 +606,8 @@ export const meta: CharDetailInfo  = {
 				201.78,
 				213.53,
 				225.29
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				80.68,
 				87.24,
 				93.81,
@@ -623,8 +623,8 @@ export const meta: CharDetailInfo  = {
 				193.25,
 				204.5,
 				215.76
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				101.9,
 				110.2,
 				118.49,
@@ -640,8 +640,8 @@ export const meta: CharDetailInfo  = {
 				244.1,
 				258.31,
 				272.53
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				123.8,
 				133.88,
 				143.96,
@@ -657,8 +657,8 @@ export const meta: CharDetailInfo  = {
 				296.56,
 				313.83,
 				331.11
-			]],
-			["重击循环伤害", [
+			],
+			"重击循环伤害": [
 				62.52,
 				67.61,
 				72.7,
@@ -674,8 +674,8 @@ export const meta: CharDetailInfo  = {
 				149.76,
 				158.49,
 				167.21
-			]],
-			["重击终结伤害", [
+			],
+			"重击终结伤害": [
 				113.09,
 				122.29,
 				131.5,
@@ -691,8 +691,8 @@ export const meta: CharDetailInfo  = {
 				270.89,
 				286.67,
 				302.45
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				74.59,
 				80.66,
 				86.73,
@@ -708,8 +708,8 @@ export const meta: CharDetailInfo  = {
 				178.66,
 				189.07,
 				199.48
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -725,8 +725,8 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[149.14, 186.29],
 				[161.28, 201.45],
 				[173.42, 216.62],
@@ -742,10 +742,10 @@ export const meta: CharDetailInfo  = {
 				[357.25, 446.23],
 				[378.06, 472.22],
 				[398.87, 498.21]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["上挑攻击伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"上挑攻击伤害": [
 				83.04,
 				89.27,
 				95.5,
@@ -761,8 +761,8 @@ export const meta: CharDetailInfo  = {
 				176.46,
 				186.84,
 				197.22
-			]],
-			["霜寒伤害", [
+			],
+			"霜寒伤害": [
 				7.16,
 				7.7,
 				8.23,
@@ -778,8 +778,8 @@ export const meta: CharDetailInfo  = {
 				15.22,
 				16.11,
 				17
-			]],
-			["零阶高压粉碎伤害", [
+			],
+			"零阶高压粉碎伤害": [
 				200.48,
 				215.52,
 				230.55,
@@ -795,8 +795,8 @@ export const meta: CharDetailInfo  = {
 				426.02,
 				451.08,
 				476.14
-			]],
-			["一阶高压粉碎伤害", [
+			],
+			"一阶高压粉碎伤害": [
 				148.93,
 				160.10000000000002,
 				171.27,
@@ -812,8 +812,8 @@ export const meta: CharDetailInfo  = {
 				316.46999999999997,
 				335.09,
 				353.7
-			]],
-			["一阶高压粉碎伤害2", [
+			],
+			"一阶高压粉碎伤害2": [
 				[100.24, 48.69],
 				[107.76, 52.34],
 				[115.28, 55.99],
@@ -829,8 +829,8 @@ export const meta: CharDetailInfo  = {
 				[213.01, 103.46],
 				[225.54, 109.55],
 				[238.07, 115.63]
-			]],
-			["二阶高压粉碎伤害", [
+			],
+			"二阶高压粉碎伤害": [
 				155.37,
 				167.02,
 				178.67000000000002,
@@ -846,8 +846,8 @@ export const meta: CharDetailInfo  = {
 				330.17,
 				349.59000000000003,
 				369.01
-			]],
-			["二阶高压粉碎伤害2", [
+			],
+			"二阶高压粉碎伤害2": [
 				[70.17, 85.2],
 				[75.43, 91.59],
 				[80.69, 97.98],
@@ -863,8 +863,8 @@ export const meta: CharDetailInfo  = {
 				[149.11, 181.06],
 				[157.88, 191.71],
 				[166.65, 202.36]
-			]],
-			["三阶高压粉碎伤害", [
+			],
+			"三阶高压粉碎伤害": [
 				161.82,
 				173.95,
 				186.08999999999997,
@@ -880,8 +880,8 @@ export const meta: CharDetailInfo  = {
 				343.84999999999997,
 				364.09000000000003,
 				384.32
-			]],
-			["三阶高压粉碎伤害2", [
+			],
+			"三阶高压粉碎伤害2": [
 				[40.1, 121.72],
 				[43.1, 130.85],
 				[46.11, 139.98],
@@ -897,8 +897,8 @@ export const meta: CharDetailInfo  = {
 				[85.2, 258.65],
 				[90.22, 273.87],
 				[95.23, 289.09]
-			]],
-			["四阶高压粉碎伤害", [
+			],
+			"四阶高压粉碎伤害": [
 				243.44,
 				261.7,
 				279.96,
@@ -914,8 +914,8 @@ export const meta: CharDetailInfo  = {
 				517.31,
 				547.74,
 				578.17
-			]],
-			["灵息之刺伤害", [
+			],
+			"灵息之刺伤害": [
 				14.4,
 				15.48,
 				16.56,
@@ -931,10 +931,10 @@ export const meta: CharDetailInfo  = {
 				30.6,
 				32.4,
 				34.2
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["技能伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"技能伤害": [
 				318.4,
 				342.28,
 				366.16,
@@ -950,8 +950,8 @@ export const meta: CharDetailInfo  = {
 				676.6,
 				716.4,
 				756.2
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -1014,7 +1014,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

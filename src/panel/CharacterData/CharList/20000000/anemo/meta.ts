@@ -1,8 +1,8 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType, GsElement } from "karin-plugin-mystool";
 
 /** 旅行者 */
-export const meta: CharDetailInfo = {
+export const metaData = {
 	info: {
 		title: "异界的旅人",
 		allegiance: "——",
@@ -500,8 +500,8 @@ export const meta: CharDetailInfo = {
 		[10068, GsElement.anemo]
 	]),
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				44.46,
 				48.08,
 				51.7,
@@ -517,8 +517,8 @@ export const meta: CharDetailInfo = {
 				106.5,
 				112.71,
 				118.91
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				43.43,
 				46.97,
 				50.5,
@@ -534,8 +534,8 @@ export const meta: CharDetailInfo = {
 				104.03,
 				110.09,
 				116.15
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				52.98,
 				57.29,
 				61.6,
@@ -551,8 +551,8 @@ export const meta: CharDetailInfo = {
 				126.9,
 				134.29,
 				141.68
-			]],
-			["四段伤害", [
+			],
+			"四段伤害": [
 				58.31,
 				63.05,
 				67.8,
@@ -568,8 +568,8 @@ export const meta: CharDetailInfo = {
 				139.67,
 				147.8,
 				155.94
-			]],
-			["五段伤害", [
+			],
+			"五段伤害": [
 				70.78,
 				76.54,
 				82.3,
@@ -585,8 +585,8 @@ export const meta: CharDetailInfo = {
 				169.54,
 				179.41,
 				189.29
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				128.14,
 				138.57,
 				149,
@@ -602,8 +602,8 @@ export const meta: CharDetailInfo = {
 				306.94,
 				324.82,
 				342.7
-			]],
-			["重击伤害2", [
+			],
+			"重击伤害2": [
 				[55.9, 72.24],
 				[60.45, 78.12],
 				[65, 84],
@@ -619,8 +619,8 @@ export const meta: CharDetailInfo = {
 				[133.9, 173.04],
 				[141.7, 183.12],
 				[149.5, 193.2]
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				63.93,
 				69.14,
 				74.34,
@@ -636,8 +636,8 @@ export const meta: CharDetailInfo = {
 				153.14,
 				162.06,
 				170.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -653,8 +653,8 @@ export const meta: CharDetailInfo = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[127.84, 159.68],
 				[138.24, 172.67],
 				[148.65, 185.67],
@@ -670,10 +670,10 @@ export const meta: CharDetailInfo = {
 				[306.22, 382.48],
 				[324.05, 404.76],
 				[341.89, 427.04]
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["初始切割伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"初始切割伤害": [
 				12,
 				12.9,
 				13.8,
@@ -689,8 +689,8 @@ export const meta: CharDetailInfo = {
 				25.5,
 				27,
 				28.5
-			]],
-			["最大切割伤害", [
+			],
+			"最大切割伤害": [
 				16.8,
 				18.06,
 				19.32,
@@ -706,8 +706,8 @@ export const meta: CharDetailInfo = {
 				35.7,
 				37.8,
 				39.9
-			]],
-			["初始爆风伤害", [
+			],
+			"初始爆风伤害": [
 				176,
 				189.2,
 				202.4,
@@ -723,8 +723,8 @@ export const meta: CharDetailInfo = {
 				374,
 				396,
 				418
-			]],
-			["最大爆风伤害", [
+			],
+			"最大爆风伤害": [
 				192,
 				206.4,
 				220.8,
@@ -740,10 +740,10 @@ export const meta: CharDetailInfo = {
 				408,
 				432,
 				456
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["龙卷风伤害", [
+			]
+		},
+		[GsTalentType.q]: {
+			"龙卷风伤害": [
 				80.8,
 				86.86,
 				92.92,
@@ -759,8 +759,8 @@ export const meta: CharDetailInfo = {
 				171.7,
 				181.8,
 				191.9
-			]],
-			["附加元素伤害", [
+			],
+			"附加元素伤害": [
 				24.8,
 				26.66,
 				28.52,
@@ -776,8 +776,8 @@ export const meta: CharDetailInfo = {
 				52.7,
 				55.8,
 				58.9
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {

@@ -1,9 +1,9 @@
-import { AttrKeys, CharDetailInfo, MaterialType } from "@/types";
+import { AttrKeys, MaterialType } from "@/types";
 import { GsTalentType } from "karin-plugin-mystool";
 
 /** 夏洛蒂 */
-export const meta: CharDetailInfo  = {
-    info: {
+export const metaData = {
+	info: {
 		title: "朗镜索真",
 		allegiance: "蒸汽鸟报社",
 		birth: "4-10",
@@ -14,16 +14,16 @@ export const meta: CharDetailInfo  = {
 		ver: 1
 	},
 	costumes: [],
-	baseAttr:{
+	baseAttr: {
 		[AttrKeys.hp]: 10766,
 		[AttrKeys.atk]: 173.1,
 		[AttrKeys.def]: 546.02
 	},
-	growAttr:{
+	growAttr: {
 		key: AttrKeys.atk + "Pct",
 		value: 24
 	},
-	materials:{
+	materials: {
 		[MaterialType.gem]: "哀叙冰玉",
 		[MaterialType.boss]: "「图比昂装置」",
 		[MaterialType.specialty]: "苍晶螺",
@@ -31,7 +31,7 @@ export const meta: CharDetailInfo  = {
 		[MaterialType.talent]: "「正义」的哲学",
 		[MaterialType.weekly]: "无光丝线"
 	},
-	talent:{
+	talent: {
 		[GsTalentType.a]: {
 			id: 8831,
 			name: "普通攻击·冷色摄影律",
@@ -625,8 +625,8 @@ export const meta: CharDetailInfo  = {
 		}
 	},
 	talentData: {
-		[GsTalentType.a]: new Map([
-			["一段伤害", [
+		[GsTalentType.a]: {
+			"一段伤害": [
 				49.85,
 				53.58,
 				57.32,
@@ -642,8 +642,8 @@ export const meta: CharDetailInfo  = {
 				105.92,
 				112.15,
 				118.38
-			]],
-			["二段伤害", [
+			],
+			"二段伤害": [
 				43.38,
 				46.63,
 				49.88,
@@ -659,8 +659,8 @@ export const meta: CharDetailInfo  = {
 				92.17,
 				97.59,
 				103.02
-			]],
-			["三段伤害", [
+			],
+			"三段伤害": [
 				64.6,
 				69.45,
 				74.29,
@@ -676,8 +676,8 @@ export const meta: CharDetailInfo  = {
 				137.28,
 				145.35,
 				153.43
-			]],
-			["重击伤害", [
+			],
+			"重击伤害": [
 				100.51,
 				108.05,
 				115.59,
@@ -693,8 +693,8 @@ export const meta: CharDetailInfo  = {
 				213.59,
 				226.15,
 				238.72
-			]],
-			["下坠期间伤害", [
+			],
+			"下坠期间伤害": [
 				56.83,
 				61.45,
 				66.08,
@@ -710,8 +710,8 @@ export const meta: CharDetailInfo  = {
 				136.12,
 				144.05,
 				151.98
-			]],
-			["低空/高空坠地冲击伤害", [
+			],
+			"低空/高空坠地冲击伤害": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -727,8 +727,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["低空/高空坠地冲击伤害2", [
+			],
+			"低空/高空坠地冲击伤害2": [
 				[113.63, 141.93],
 				[122.88, 153.49],
 				[132.13, 165.04],
@@ -744,8 +744,8 @@ export const meta: CharDetailInfo  = {
 				[272.19, 339.98],
 				[288.05, 359.79],
 				[303.9, 379.59]
-			]],
-			["灵息之刺伤害", [
+			],
+			"灵息之刺伤害": [
 				11.17,
 				12.01,
 				12.84,
@@ -761,10 +761,10 @@ export const meta: CharDetailInfo  = {
 				23.73,
 				25.13,
 				26.52
-			]]
-		]),
-		[GsTalentType.e]: new Map([
-			["点按拍照伤害", [
+			]
+		},
+		[GsTalentType.e]: {
+			"点按拍照伤害": [
 				67.2,
 				72.24,
 				77.28,
@@ -780,8 +780,8 @@ export const meta: CharDetailInfo  = {
 				142.8,
 				151.2,
 				159.6
-			]],
-			["长按拍照伤害", [
+			],
+			"长按拍照伤害": [
 				139.2,
 				149.64,
 				160.08,
@@ -797,8 +797,8 @@ export const meta: CharDetailInfo  = {
 				295.8,
 				313.2,
 				330.6
-			]],
-			["「瞬时剪影」印记伤害", [
+			],
+			"「瞬时剪影」印记伤害": [
 				39.2,
 				42.14,
 				45.08,
@@ -814,8 +814,8 @@ export const meta: CharDetailInfo  = {
 				83.3,
 				88.2,
 				93.1
-			]],
-			["「聚焦印象」印记伤害", [
+			],
+			"「聚焦印象」印记伤害": [
 				40.6,
 				43.65,
 				46.69,
@@ -831,10 +831,10 @@ export const meta: CharDetailInfo  = {
 				86.27,
 				91.35,
 				96.43
-			]]
-		]),
-		[GsTalentType.q]: new Map([
-			["施放治疗量", [
+			]
+		},
+		[GsTalentType.q]: {
+			"施放治疗量": [
 				1865.06,
 				2045.1799999999998,
 				2238.69,
@@ -850,8 +850,8 @@ export const meta: CharDetailInfo  = {
 				4968.95,
 				5322.76,
 				5689.98
-			]],
-			["施放治疗量2", [
+			],
+			"施放治疗量2": [
 				[256.57, 1608.49],
 				[275.82, 1769.36],
 				[295.06, 1943.63],
@@ -867,8 +867,8 @@ export const meta: CharDetailInfo  = {
 				[545.22, 4423.73],
 				[577.29, 4745.47],
 				[609.36, 5080.62]
-			]],
-			["技能伤害", [
+			],
+			"技能伤害": [
 				77.62,
 				83.44,
 				89.26,
@@ -884,8 +884,8 @@ export const meta: CharDetailInfo  = {
 				164.93,
 				174.64,
 				184.34
-			]],
-			["相机持续治疗量", [
+			],
+			"相机持续治疗量": [
 				66.67,
 				73.1,
 				80.02,
@@ -901,8 +901,8 @@ export const meta: CharDetailInfo  = {
 				177.57,
 				190.22,
 				203.33999999999997
-			]],
-			["相机持续治疗量2", [
+			],
+			"相机持续治疗量2": [
 				[9.22, 57.45],
 				[9.91, 63.19],
 				[10.6, 69.42],
@@ -918,8 +918,8 @@ export const meta: CharDetailInfo  = {
 				[19.58, 157.99],
 				[20.74, 169.48],
 				[21.89, 181.45]
-			]],
-			["相机伤害", [
+			],
+			"相机伤害": [
 				6.47,
 				6.95,
 				7.44,
@@ -935,8 +935,8 @@ export const meta: CharDetailInfo  = {
 				13.74,
 				14.55,
 				15.36
-			]]
-		])
+			]
+		}
 	},
 	cons: new Map([
 		[1, {
@@ -998,7 +998,7 @@ export const meta: CharDetailInfo  = {
 			],
 		}
 	],
-	attr:{
+	attr: {
 		keys: [
 			AttrKeys.hp + "Base",
 			AttrKeys.atk + "Base",

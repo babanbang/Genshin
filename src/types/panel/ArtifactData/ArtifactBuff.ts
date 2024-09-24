@@ -11,6 +11,9 @@ export interface ArtifactBuffData {
 		}
 		weaponType: GsWeaponType
 		currentTalent: GsTalentType
+		params: {
+			[key: string]: number | boolean
+		}
 	}) => boolean)
 	isStatic?: boolean
 	elem?: GsElement

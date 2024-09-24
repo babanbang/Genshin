@@ -30,7 +30,7 @@ export class Artis extends BasePanel<GameList.Gs>{
 	}
 
 	setArtis(idx: ArtifactMapKey, ds: AvatarArtifactBase) {
-		const atrisData = Artifact.Create()
+		const atrisData = Artifact.Create(ds)
 	}
 
 }

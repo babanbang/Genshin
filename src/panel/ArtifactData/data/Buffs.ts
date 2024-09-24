@@ -24,7 +24,7 @@ const attr = (key: string, val: number, elem?: GsElement, unit = '%'): ArtifactB
 export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	/** 行者之心 */
 	[400003, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			title: '重击的暴击率提高30%',
 			data: {
@@ -34,7 +34,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 勇士之心 */
 	[400008, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			title: '对生命值高于50%的敌人，造成的伤害增加30%',
 			data: {
@@ -42,14 +42,13 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 			}
 		}]
 	])],
-
 	/** 守护之心 */
 	[400013, new Map([
-		[2, attr('defPct', 30)]
+		[2, attr(AttrKeys.def + 'Pct', 30)]
 	])],
 	/** 战狂 */
 	[400023, new Map([
-		[2, attr('cpct', 12)],
+		[2, attr(AttrKeys.cpct, 12)],
 		[4, {
 			title: '生命值低于70%时，暴击率提升24%',
 			data: {
@@ -76,7 +75,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 教官 */
 	[400033, new Map([
-		[2, attr('mastery', 80)],
+		[2, attr(AttrKeys.mastery, 80)],
 		[4, {
 			title: '触发元素反应后，队伍中所有角色的元素精通提高120点',
 			data: {
@@ -96,23 +95,23 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 流放者 */
 	[400043, new Map([
-		[2, attr('recharge', 20)]
+		[2, attr(AttrKeys.recharge, 20)]
 	])],
 	/** 冒险家 */
 	[400048, new Map([
-		[2, attr('hpPlus', 1000, undefined, '点')]
+		[2, attr(AttrKeys.hp + 'Plus', 1000, undefined, '点')]
 	])],
 	/** 幸运儿 */
 	[400052, new Map([
-		[2, attr('defPlus', 100, undefined, '点')]
+		[2, attr(AttrKeys.def + 'Plus', 100, undefined, '点')]
 	])],
 	/** 学士 */
 	[400058, new Map([
-		[2, attr('recharge', 20)]
+		[2, attr(AttrKeys.recharge, 20)]
 	])],
 	/** 冰风迷途的勇士 */
 	[400069, new Map([
-		[2, attr('dmg', 15, GsElement.cryo)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.cryo)],
 		[4, {
 			check: ({ elem }) => elem === GsElement.cryo,
 			title: '攻击处于冰元素影响下的敌人时，暴击率提高20%',
@@ -143,7 +142,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 被怜爱的少女 */
 	[400084, new Map([
-		[2, attr('heal', 15)],
+		[2, attr(AttrKeys.heal, 15)],
 		[4, {
 			title: '施放元素战技或元素爆发后，受治疗效果加成提高20%',
 			data: {
@@ -153,7 +152,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 角斗士的终幕礼 */
 	[400089, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			check: ({ weaponType }) => [GsWeaponType.claymore, GsWeaponType.polearm, GsWeaponType.sword].some(t => t === weaponType),
 			title: '角色普通攻击造成的伤害提高35%',
@@ -164,7 +163,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 翠绿之影 */
 	[400094, new Map([
-		[2, attr('dmg', 15, GsElement.anemo)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.anemo)],
 		[4, {
 			title: '扩散反应造成的伤害提升60%，降低对应元素抗性40%',
 			data: {
@@ -175,7 +174,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 流浪大地的乐团 */
 	[400099, new Map([
-		[2, attr('mastery', 80)],
+		[2, attr(AttrKeys.mastery, 80)],
 		[4, {
 			check: ({ weaponType }) => [GsWeaponType.bow, GsWeaponType.catalyst].some(t => t === weaponType),
 			title: '角色重击造成的伤害提高35%',
@@ -186,7 +185,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 如雷的盛怒 */
 	[400104, new Map([
-		[2, attr('dmg', 15, GsElement.electro)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.electro)],
 		[4, {
 			title: '超载、感电、超导反应造成的伤害提升40%，超激化反应带来的伤害提升提高20%',
 			data: {
@@ -199,7 +198,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 炽烈的炎之魔女 */
 	[400109, new Map([
-		[2, attr('dmg', 15, GsElement.pyro)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.pyro)],
 		[4, {
 			check: ({ elem }) => elem === GsElement.pyro,
 			title: '蒸发、融化伤害提高15%，[buffCount]层额外提高[dmg]%火元素伤害加成，超载、燃烧、烈绽放反应造成的伤害提升40%',
@@ -232,7 +231,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 染血的骑士道 */
 	[400119, new Map([
-		[2, attr('phy', 25)],
+		[2, attr(AttrKeys.phy, 25)],
 		[4, {
 			title: '击败敌人后的10秒内，重击造成的伤害提升50%',
 			data: {
@@ -242,7 +241,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 悠古的磐岩 */
 	[400154, new Map([
-		[2, attr('dmg', 15, GsElement.geo)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.geo)],
 		[4, {
 			title: '获得元素反应晶片，对应元素伤害提高35%',
 			data: {
@@ -252,7 +251,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 逆飞的流星 */
 	[400159, new Map([
-		[2, attr('shield', 35)],
+		[2, attr(AttrKeys.shield, 35)],
 		[4, {
 			title: '处于护盾庇护下时，获得40%普攻和重击伤害加成',
 			data: {
@@ -263,7 +262,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 沉沦之心 */
 	[400164, new Map([
-		[2, attr('dmg', 15, GsElement.hydro)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.hydro)],
 		[4, {
 			title: '施放元素战技后，普攻与重击伤害提高30%',
 			data: {
@@ -274,7 +273,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 千岩牢固 */
 	[400169, new Map([
-		[2, attr('hpPct', 20)],
+		[2, attr(AttrKeys.hp + 'Pct', 20)],
 		[4, {
 			title: '元素战技命中敌人后，攻击力提升[atkPct]%，护盾强效提升[shield]%',
 			data: {
@@ -285,7 +284,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 苍白之火 */
 	[400174, new Map([
-		[2, attr('phy', 25)],
+		[2, attr(AttrKeys.phy, 25)],
 		[4, {
 			title: '2层提高18%攻击力，物理伤害额外提高25%',
 			data: {
@@ -296,7 +295,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 追忆之注连 */
 	[400179, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			title: '施放元素战技后，普通攻击、重击、下落攻击造成的伤害提高50%',
 			data: {
@@ -308,7 +307,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 绝缘之旗印 */
 	[400184, new Map([
-		[2, attr('recharge', 20)],
+		[2, attr(AttrKeys.recharge, 20)],
 		[4, {
 			title: '基于元素充能效率提高元素爆发[qDmg]%伤害',
 			sort: 4,
@@ -319,7 +318,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 华馆梦醒形骸记 */
 	[400189, new Map([
-		[2, attr('defPct', 30)],
+		[2, attr(AttrKeys.def + 'Pct', 30)],
 		[4, {
 			title: '满层获得24%防御及24%岩伤加成',
 			data: {
@@ -330,11 +329,11 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 海染砗磲 */
 	[400194, new Map([
-		[2, attr('heal', 15)]
+		[2, attr(AttrKeys.heal, 15)]
 	])],
 	/** 辰砂往生录 */
 	[400199, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			title: '满层提高48%攻击力',
 			data: {
@@ -344,7 +343,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 来歆余响 */
 	[400204, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			title: '触发提高普攻[aPlus]伤害',
 			sort: 9,
@@ -355,7 +354,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 深林的记忆 */
 	[400209, new Map([
-		[2, attr('dmg', 15, GsElement.dendro)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.dendro)],
 		[4, {
 			title: '元素战技或元素爆发命中敌人后，使命中目标的草元素抗性降低30%',
 			check: ({ elem }) => elem === GsElement.dendro,
@@ -366,7 +365,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 饰金之梦 */
 	[400214, new Map([
-		[2, attr('mastery', 80)],
+		[2, attr(AttrKeys.mastery, 80)],
 		[4, {
 			title: '队伍存在[mArtisDiffCount]个不同元素类型角色，[sameCount]个相同类型角色，精通提高[mastery]，攻击力提高[atkPct]%',
 			data: {
@@ -379,7 +378,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 沙上楼阁史话 */
 	[400221, new Map([
-		[2, attr('dmg', 15, GsElement.anemo)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.anemo)],
 		[4, {
 			title: '重击命中敌人后，普攻重击与下落攻击伤害提升40',
 			data: {
@@ -391,7 +390,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 乐园遗落之花 */
 	[400231, new Map([
-		[2, attr('mastery', 80)],
+		[2, attr(AttrKeys.mastery, 80)],
 		[4, {
 			title: '满层提高绽放、超绽放、烈绽放反应造成的伤害提升80%',
 			data: {
@@ -403,7 +402,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 水仙之梦 */
 	[400241, new Map([
-		[2, attr('dmg', 15, GsElement.hydro)],
+		[2, attr(AttrKeys.dmg, 15, GsElement.hydro)],
 		[4, {
 			title: '3层Buff下提高攻击力25%，水伤15%',
 			data: {
@@ -414,7 +413,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 花海甘露之光 */
 	[400251, new Map([
-		[2, attr('hpPct', 20)],
+		[2, attr(AttrKeys.hp + 'Pct', 20)],
 		[4, {
 			title: '5层Buff下提高元素战技与元素爆发伤害50%',
 			data: {
@@ -456,7 +455,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 昔时之歌 */
 	[400281, new Map([
-		[2, attr('heal', 15)],
+		[2, attr(AttrKeys.heal, 15)],
 		[4, {
 			title: '触发后，普通攻击、重击、下落攻击、元素战技与元素爆发伤害提高1200',
 			sort: 9,
@@ -471,7 +470,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 回声之林夜话 */
 	[400291, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			check: ({ elem }) => elem === GsElement.geo,
 			title: '施放元素战技后，岩元素伤害加成提升50%',
@@ -482,7 +481,7 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 谐律异想断章 */
 	[400301, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			title: '生命之契的数值提升或降低时，角色造成的伤害提升[dmg]%',
 			data: {
@@ -492,11 +491,38 @@ export const artisSuitBuffsMap: Map<number, ArtifactBuffDataMap> = new Map([
 	])],
 	/** 未竟的遐思 */
 	[400311, new Map([
-		[2, attr('atkPct', 18)],
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
 		[4, {
 			title: '存在处于燃烧状态下的敌人时，伤害提升[dmg]%',
 			data: {
 				dmg: 10 * 5
+			}
+		}]
+	])],
+	/** 烬城勇者绘卷 */
+	[400321, new Map([
+		[2, attr(AttrKeys.atk + 'Pct', 18)],
+		[4, {
+			title: '存在处于燃烧状态下的敌人时，伤害提升[dmg]%',
+			data: {
+				dmg: 10 * 5
+			}
+		}]
+	])],
+	/** 黑曜秘典 */
+	[400331, new Map([
+		[2, {
+			check: ({ params }) => params.Nightsoul === true,
+			title: '在场上处于夜魂加持状态时，造成的伤害提高[dmg]%',
+			data: {
+				dmg: 15
+			}
+		}],
+		[4, {
+			check: ({ params }) => params.Nightsoul === true,
+			title: '在场上消耗夜魂值后，暴击率提高[cpct]%',
+			data: {
+				cpct: 40
 			}
 		}]
 	])]

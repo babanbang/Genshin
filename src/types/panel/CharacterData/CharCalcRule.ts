@@ -50,7 +50,7 @@ interface CalcRuleBuff {
 			params: {
 				[key: string]: number | boolean
 			}
-		}) => number | false[] | number[] | (number | undefined)[][])
+		}) => number)
 	}
 }
 
